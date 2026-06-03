@@ -25,7 +25,7 @@ import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-ch
 import gfgcLiquidSoapBleachDemo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-liquid-soap-jik-practical-demo.jpg";
 import gfgcSanitaryPadBoxes from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-sanitary-pad-support-boxes.jpg";
 import gfgcGirlChildSpeaker from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-girl-child-speaker.jpg";
-import gfgcPadDaySkillsVideo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/g-girl-child-pad-day-skills-video.mov?url";
+// import gfgcPadDaySkillsVideo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/g-girl-child-pad-day-skills-video.mov?url";
 
 import gfgcWomenLeadersGroup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-women-leaders-and-ginitiative-group.jpg";
 
@@ -583,6 +583,10 @@ export function GirlChildWomenInitiativePage({
         </div>
       </section>
 
+      {/*
+        Video story section temporarily commented out because the .mov file is too large for GitHub/Vercel.
+        Later, upload the video to Cloudinary/YouTube/Supabase Storage or convert/compress it to a web-friendly .mp4.
+
       <section className="bg-[#fff8f3] px-5 py-10 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1280px]">
           <div className="relative overflow-hidden rounded-[2.2rem] border border-[#13271b]/10 bg-[#07120d] shadow-[0_35px_100px_rgba(16,35,25,0.18)]">
@@ -625,6 +629,8 @@ export function GirlChildWomenInitiativePage({
           </p>
         </div>
       </section>
+
+      */}
 
       <section className="bg-[#fff8f3] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1440px]">

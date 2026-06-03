@@ -29,7 +29,7 @@ import gfgcGirlChildSpeaker from "@/assets/girl-child-women/01-g-for-the-girl-ch
 import gfgcHealthWorkerSpeaker from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-health-worker-speaker.jpg";
 import gfgcLiquidSoapBleachDemo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-liquid-soap-jik-practical-demo.jpg";
 import gfgcSanitaryPadBoxes from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-sanitary-pad-support-boxes.jpg";
-import gfgcPadDaySkillsVideo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/g-girl-child-pad-day-skills-video.mov?url";
+// import gfgcPadDaySkillsVideo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/g-girl-child-pad-day-skills-video.mov?url";
 
 import gfgcCollaborationTeamGroup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-collaboration-team-group-01.jpg";
 import gfgcCommunityLeaderAddress from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-community-leader-address.jpg";
@@ -527,6 +527,10 @@ export function GForTheGirlChildProjectPage({
         </div>
       </section>
 
+      {/*
+        Project video temporarily commented out because the .mov file is too large for GitHub/Vercel.
+        Later, upload the video to Cloudinary/YouTube/Supabase Storage and replace this section with the hosted video URL.
+
       <section className="bg-[#fff8ef] px-5 pb-16 text-[#13271b] sm:px-8 lg:px-12 lg:pb-24">
         <div className="mx-auto grid max-w-[1440px] gap-8 rounded-[2rem] bg-[#07120d] p-5 text-[#fff8e7] shadow-[0_30px_90px_rgba(16,35,25,0.18)] sm:p-8 lg:grid-cols-[0.78fr_1.22fr] lg:p-10">
           <div className="flex flex-col justify-center">
@@ -556,6 +560,8 @@ export function GForTheGirlChildProjectPage({
           </div>
         </div>
       </section>
+
+      */}
 
       <section
         id="project-gallery"
