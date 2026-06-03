@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Download, Menu, Play, X } from "lucide-react";
 import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { GForTheGirlChildProjectPage } from "@/components/projects/GForTheGirlChildProjectPage";
+import { NwaihaWomenDevelopmentCenterPage } from "@/components/projects/NwaihaWomenDevelopmentCenterPage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 import { getProjectBySlug, projects } from "@/data/projects";
 
@@ -123,6 +124,12 @@ function ProjectDetailPage() {
 
       {project.slug === "g-for-the-girl-child-project" ? (
         <GForTheGirlChildProjectPage
+          project={project}
+          parentInitiative={parentInitiative}
+          relatedProjects={relatedProjects}
+        />
+      ) : project.slug === "nwaiha-women-development-center" ? (
+        <NwaihaWomenDevelopmentCenterPage
           project={project}
           parentInitiative={parentInitiative}
           relatedProjects={relatedProjects}

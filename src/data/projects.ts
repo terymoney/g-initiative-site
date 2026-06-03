@@ -21,6 +21,7 @@ import seFoodSecurityGreenFieldCloseup from "@/assets/initiativessouth-east-food
 import gfgcHeroAudience from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/gfgc-hero-audience-under-canopy.jpg";
 import gfgcGirlsLineupWide from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/gfgc-full-girls-lineup-wide.jpg";
 import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/women-community-lineup-and-officials.jpg";
+import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-development-center/nwaiha-center-design-render.jpeg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -418,31 +419,31 @@ export const projects: ImpactProject[] = [
     storyReady: true,
   },
   {
-    title: "Nwaha Women Development Center",
-    slug: "nwaha-women-development-center",
+    title: "Nwaiha Women Development Center",
+    slug: "nwaiha-women-development-center",
     category: "Women & Girls",
     status: "Completed",
-    image: womenCommunityLineup,
+    image: nwaihaCenterDesignRender,
     year: "Community Infrastructure",
     parentInitiativeSlug: "girl-child-women-development-initiative",
     parentInitiativeTitle: "Girl Child & Women Development Initiative",
     description:
-      "A women development center built through crowdfunding as a functional event hub for recreation, conferences, seminars, skill acquisition, and counselling.",
+      "A women development center designed and built through a crowdfunding system as a functional event hub for recreation, conferences, educational seminars, skill acquisition, and counseling.",
     overview:
-      "The Nwaha Women Development Center is a community space for women development, recreation, conferences, educational seminars, skill acquisition, and counselling.",
+      "Nwaiha Women Development Center is a community space designed and built through crowdfunding to support women through recreation, conferences, educational seminars, skill acquisition, and counseling.",
     highlights: [
-      "Designed and built through crowdfunding.",
-      "Functional event hub for women development.",
-      "Supports seminars, counselling, recreation, and skill acquisition.",
+      "Designed and built through a crowdfunding system.",
+      "Fully functional event hub for women development.",
+      "Supports recreation, conferences, educational seminars, skill acquisition, and counseling.",
     ],
     sdgs: ["SDG 4", "SDG 5", "SDG 8", "SDG 11", "SDG 17"],
     pathway: {
       source: "Girl Child & Women Development Initiative",
-      output: "Women development center and community hub",
+      output: "Women development center and community event hub",
       impact:
-        "A functional space for learning, counselling, skills, and empowerment",
+        "A functional space for learning, counseling, skills, recreation, and empowerment",
     },
-    storyReady: false,
+    storyReady: true,
   },
   {
     title: "Rehabilitation of a 2-Classroom Block",
@@ -615,7 +616,12 @@ export const projects: ImpactProject[] = [
 export const recordedCsrEvidenceImage = gfgcGirlsLineupWide;
 
 export function getProjectBySlug(slug: string) {
-  return projects.find((project) => project.slug === slug);
+  const normalizedSlug =
+    slug === "nwaha-women-development-center"
+      ? "nwaiha-women-development-center"
+      : slug;
+
+  return projects.find((project) => project.slug === normalizedSlug);
 }
 
 export function getProjectsByInitiative(slug: string) {

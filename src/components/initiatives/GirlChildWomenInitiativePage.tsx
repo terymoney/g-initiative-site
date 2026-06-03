@@ -172,7 +172,7 @@ const relatedProjects = [
     sdgs: ["SDG 4", "SDG 5", "SDG 8", "SDG 10"],
   },
   {
-    title: "Nwaha Women Development Center",
+    title: "Nwaiha Women Development Center",
     summary:
       "A functional women-development centre for conferences, seminars, skill acquisition, counselling, recreation, and empowerment activities.",
     image: womenCommunityLineup,

@@ -10,6 +10,7 @@ import {
   HeartHandshake,
   HeartPulse,
   MapPin,
+  Play,
   Sparkles,
   Target,
   UsersRound,
@@ -29,7 +30,6 @@ import gfgcGirlChildSpeaker from "@/assets/girl-child-women/01-g-for-the-girl-ch
 import gfgcHealthWorkerSpeaker from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-health-worker-speaker.jpg";
 import gfgcLiquidSoapBleachDemo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-liquid-soap-jik-practical-demo.jpg";
 import gfgcSanitaryPadBoxes from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-sanitary-pad-support-boxes.jpg";
-// import gfgcPadDaySkillsVideo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/g-girl-child-pad-day-skills-video.mov?url";
 
 import gfgcCollaborationTeamGroup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-collaboration-team-group-01.jpg";
 import gfgcCommunityLeaderAddress from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-community-leader-address.jpg";
@@ -40,6 +40,7 @@ import gfgcMaleSpeakerAddress from "@/assets/girl-child-women/01-g-for-the-girl-
 import gfgcPartnersSeatedUnderCanopy from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-partners-seated-under-canopy.jpg";
 import gfgcSupportTeamSafetyVests from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-support-team-safety-vests.jpg";
 import gfgcWomenLeadersGroup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-women-leaders-and-ginitiative-group.jpg";
+import gfgcMissAkaboFlyer from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-miss-akabo-beauty-pageant-flyer.png";
 
 const gGirlSdgColors: Record<string, string> = {
   "SDG 3": "bg-[#2f9b48]",
@@ -74,9 +75,9 @@ const gGirlJourney = [
   },
   {
     number: "04",
-    title: "Voice & confidence",
+    title: "Voice, confidence & representation",
     body:
-      "Girls listened, participated, asked questions, and experienced a platform that encouraged confidence and future readiness.",
+      "Through girl-child platforms, participation, and the Miss Akabo Beauty Pageant & Contest, the project supports confidence, visibility, and a stronger voice for the girl child.",
     Icon: Sparkles,
   },
   {
@@ -92,102 +93,119 @@ const gGirlGallery = [
   {
     src: gfgcGirlsLineupWide,
     alt: "Wide lineup of girls and officials at the project event",
+    label: "Girl Child Participants & Officials",
     position: "object-[center_28%]",
     span: "lg:col-span-2",
   },
   {
     src: gfgcCollaborationTeamGroup,
     alt: "Collaboration team group at the project event",
+    label: "Programme Partners & G Initiative",
     position: "object-[center_22%]",
     span: "",
   },
   {
     src: gfgcCommunityLeaderAddress,
     alt: "Community leader addressing the programme",
+    label: "Community Leadership",
     position: "object-[center_12%]",
     span: "",
   },
   {
     src: gfgcCommunityStakeholdersGroup,
     alt: "Community stakeholders group during the programme",
+    label: "Community Stakeholders",
     position: "object-[center_22%]",
     span: "lg:col-span-2",
   },
   {
     src: gfgcEventTeamWhiteShirts,
     alt: "Event team in white shirts during the programme",
+    label: "G Initiative Team",
     position: "object-[center_18%]",
     span: "",
   },
   {
     src: gfgcFacilitatorStandingAddress,
     alt: "Facilitator standing and addressing participants",
+    label: "G Initiative",
     position: "object-[center_10%]",
     span: "",
   },
   {
     src: gfgcMaleSpeakerAddress,
     alt: "Male speaker addressing the project audience",
+    label: "G Initiative",
     position: "object-[center_12%]",
     span: "",
   },
   {
     src: gfgcPartnersSeatedUnderCanopy,
     alt: "Partners seated under the canopy during the programme",
+    label: "Programme Partners",
     position: "object-[center_18%]",
     span: "",
   },
   {
     src: gfgcSupportTeamSafetyVests,
     alt: "Support team in safety vests during the event",
+    label: "Support Team",
     position: "object-[center_18%]",
     span: "",
   },
   {
     src: gfgcWomenLeadersGroup,
     alt: "Women leaders and G Initiative group",
+    label: "Women Leaders & G Initiative",
     position: "object-[center_22%]",
     span: "lg:col-span-2",
   },
   {
     src: gfgcFemaleFacilitatorAddress,
     alt: "Female facilitator addressing girls during the programme",
+    label: "Office of the Wife of the Governor of Imo State",
     position: "object-[center_18%]",
     span: "",
   },
   {
     src: gfgcHealthWorkerSpeaker,
     alt: "Health worker speaking during the girl-child empowerment programme",
+    label: "World Health Organisation",
     position: "object-[center_16%]",
     span: "",
   },
   {
     src: gfgcSanitaryPadBoxes,
     alt: "Sanitary pad boxes provided during PAD Day support",
+    label: "Imo Primary Healthcare Agency",
     position: "object-[center_14%]",
     span: "",
   },
   {
     src: gfgcLiquidSoapBleachDemo,
     alt: "Liquid soap and bleach practical skills demonstration",
+    label: "Healthcare Agency",
     position: "object-[center_18%]",
     span: "",
   },
   {
     src: gfgcGirlChildSpeaker,
     alt: "Girl speaking during the empowerment programme",
+    label: "Akabo High School",
     position: "object-[center_22%]",
     span: "",
   },
   {
     src: womenCommunityLineup,
     alt: "Girls, women, and community officials during the programme",
+    label: "Girls, Women & Community Officials",
     position: "object-[center_26%]",
     span: "",
   },
   {
     src: gfgcGirlsCelebration,
     alt: "Girls celebrating during the programme",
+    label: "Girl Child Participants",
     position: "object-[center_28%]",
     span: "",
   },
@@ -227,8 +245,8 @@ export function GForTheGirlChildProjectPage({
   return (
     <>
       <section className="relative overflow-hidden bg-[#07120d] px-5 pt-32 pb-16 text-[#fff8e7] sm:px-8 lg:px-12 lg:pt-40 lg:pb-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(196,90,123,0.24),transparent_30%),radial-gradient(circle_at_78%_18%,rgba(198,154,66,0.18),transparent_28%),linear-gradient(135deg,#07120d_0%,#0c2117_52%,#07120d_100%)]" />
-        <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full border border-[#c69a42]/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(196,90,123,0.24),transparent_30%),radial-gradient(circle_at_78%_18%,rgba(196,90,123,0.18),transparent_28%),linear-gradient(135deg,#07120d_0%,#0c2117_52%,#07120d_100%)]" />
+        <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full border border-[#c45a7b]/20" />
         <div className="absolute right-8 top-28 hidden text-[12rem] font-black leading-none text-white/[0.025] lg:block">
           G
         </div>
@@ -256,7 +274,7 @@ export function GForTheGirlChildProjectPage({
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/74 sm:text-lg">
               Empowering the Igbo girl-child through dignity, health support,
-              practical skills, digital literacy, and self-reliance.
+              practical skills, voice, digital literacy, and self-reliance.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -280,14 +298,14 @@ export function GForTheGirlChildProjectPage({
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="#project-journey"
-                className="inline-flex items-center gap-2 rounded-full bg-[#c69a42] px-6 py-3 text-sm font-black text-[#07120d] shadow-[0_18px_45px_rgba(198,154,66,0.22)] transition hover:-translate-y-0.5 hover:bg-[#e3bb62]"
+                className="inline-flex items-center gap-2 rounded-full bg-[#c45a7b] px-6 py-3 text-sm font-black text-white shadow-[0_18px_45px_rgba(196,90,123,0.24)] transition hover:-translate-y-0.5 hover:bg-[#d85d89]"
               >
                 Explore the Project <ArrowRight className="h-4 w-4" />
               </a>
 
               <a
                 href="#project-gallery"
-                className="inline-flex items-center gap-2 rounded-full border border-[#c69a42]/55 px-6 py-3 text-sm font-black text-[#fff8e7] transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-[#c45a7b]/55 px-6 py-3 text-sm font-black text-[#fff8e7] transition hover:bg-white/10"
               >
                 View Gallery <Camera className="h-4 w-4" />
               </a>
@@ -295,7 +313,7 @@ export function GForTheGirlChildProjectPage({
           </div>
 
           <div className="relative min-h-[540px] lg:min-h-[620px]">
-            <div className="absolute left-[3%] top-[5%] h-[78%] w-[78%] rotate-[-2deg] overflow-hidden rounded-[2rem] border border-[#c69a42]/55 bg-white/8 p-2 shadow-[0_32px_100px_rgba(0,0,0,0.38)] backdrop-blur">
+            <div className="absolute left-[3%] top-[5%] h-[78%] w-[78%] rotate-[-2deg] overflow-hidden rounded-[2rem] border border-white/45 bg-white p-2 shadow-[0_32px_100px_rgba(0,0,0,0.38)] backdrop-blur">
               <img
                 src={gfgcGirlsCelebration}
                 alt="Girls seated at the G–For the Girl Child Project event"
@@ -345,7 +363,7 @@ export function GForTheGirlChildProjectPage({
             },
             {
               label: "Focus",
-              value: "Health dignity, practical skills & empowerment",
+              value: "Health dignity, practical skills, voice & representation",
               Icon: Target,
             },
             {
@@ -394,7 +412,7 @@ export function GForTheGirlChildProjectPage({
             </p>
 
             <h2 className="max-w-xl font-serif text-[clamp(2.5rem,4.4vw,5.2rem)] font-normal leading-[0.9] tracking-[-0.06em]">
-              A day of learning, dignity & empowerment.
+              A wider journey of dignity, skills & representation.
             </h2>
 
             <div className="mt-10 space-y-7">
@@ -472,6 +490,46 @@ export function GForTheGirlChildProjectPage({
       </section>
 
       <section className="bg-[#fff8ef] px-5 pb-16 text-[#13271b] sm:px-8 lg:px-12 lg:pb-24">
+        <div className="mx-auto grid max-w-[1440px] gap-8 rounded-[2rem] border border-[#13271b]/10 bg-[#150d07] p-5 text-[#fff8e7] shadow-[0_30px_90px_rgba(16,35,25,0.12)] sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
+          <div className="flex flex-col justify-center">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#f4b2c7]">
+              Girl-child representation
+            </p>
+
+            <h2 className="max-w-xl font-serif text-[clamp(2.6rem,4.8vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em]">
+              Miss Akabo Beauty Pageant & Contest.
+            </h2>
+
+            <p className="mt-5 max-w-xl text-sm leading-7 text-white/72">
+              Under G–For The Girl Child Projects, the Miss Akabo Beauty Pageant
+              & Contest extends the mission to empower, uplift, and give voice
+              to the girl child through visibility, confidence, and community
+              recognition.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-2">
+              {["Empower", "Uplift", "Give voice"].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[#c69a42]/45 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#f4b2c7]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[1.5rem] border border-[#c69a42]/30 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.28)]">
+            <img
+              src={gfgcMissAkaboFlyer}
+              alt="Miss Akabo Beauty Pageant and Contest flyer under G–For The Girl Child Projects"
+              className="h-full max-h-[720px] w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fff8ef] px-5 pb-16 text-[#13271b] sm:px-8 lg:px-12 lg:pb-24">
         <div className="mx-auto grid max-w-[1440px] overflow-hidden rounded-[2rem] border border-[#13271b]/10 bg-white shadow-[0_30px_90px_rgba(16,35,25,0.1)] lg:grid-cols-3">
           {[
             {
@@ -527,10 +585,6 @@ export function GForTheGirlChildProjectPage({
         </div>
       </section>
 
-      {/*
-        Project video temporarily commented out because the .mov file is too large for GitHub/Vercel.
-        Later, upload the video to Cloudinary/YouTube/Supabase Storage and replace this section with the hosted video URL.
-
       <section className="bg-[#fff8ef] px-5 pb-16 text-[#13271b] sm:px-8 lg:px-12 lg:pb-24">
         <div className="mx-auto grid max-w-[1440px] gap-8 rounded-[2rem] bg-[#07120d] p-5 text-[#fff8e7] shadow-[0_30px_90px_rgba(16,35,25,0.18)] sm:p-8 lg:grid-cols-[0.78fr_1.22fr] lg:p-10">
           <div className="flex flex-col justify-center">
@@ -549,19 +603,24 @@ export function GForTheGirlChildProjectPage({
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-[1.5rem] bg-black">
-            <video
-              src={gfgcPadDaySkillsVideo}
-              poster={gfgcHeroAudience}
-              controls
-              playsInline
-              className="h-[420px] w-full object-cover object-[center_32%]"
+          <div className="relative min-h-[380px] overflow-hidden rounded-[1.5rem] bg-black">
+            <img
+              src={gfgcHeroAudience}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover object-[center_32%] opacity-72"
             />
+
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(7,18,13,0.45),rgba(7,18,13,0.08),rgba(196,90,123,0.24))]" />
+
+            <div className="absolute inset-0 grid place-items-center">
+              <div className="grid h-24 w-24 place-items-center rounded-full border border-white/35 bg-white/12 text-white shadow-[0_25px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+                <Play className="ml-1 h-10 w-10 fill-white" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      */}
 
       <section
         id="project-gallery"
@@ -760,11 +819,17 @@ export function GForTheGirlChildProjectPage({
           </button>
 
           <div className="flex max-h-[88vh] max-w-[92vw] flex-col items-center">
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="max-h-[82vh] w-auto max-w-full rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.45)]"
-            />
+            <div className="relative">
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="max-h-[82vh] w-auto max-w-full rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.45)]"
+              />
+
+              <div className="absolute bottom-4 left-4 max-w-[calc(100%-2rem)] rounded-full border border-white/20 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#13271b] shadow-[0_18px_55px_rgba(0,0,0,0.22)] sm:text-sm">
+                {selectedImage.label}
+              </div>
+            </div>
 
             <div className="mt-4 flex items-center gap-3 sm:hidden">
               <button
