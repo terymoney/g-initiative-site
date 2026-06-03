@@ -1,0 +1,44 @@
+.about-brand-art {
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.about-brand-art__mark {
+  position: absolute;
+  right: -8%;
+  top: 58%;
+  width: min(100%, 620px);
+  transform: translateY(-50%) rotate(-4deg);
+  opacity: 0.13;
+  filter: blur(6px) saturate(1.04);
+  z-index: 1;
+  animation: brandMarkFloat 10s ease-in-out infinite;
+}
+
+@keyframes brandMarkFloat {
+  0% {
+    transform: translateY(-50%) rotate(-4deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-49%) rotate(-2.5deg) scale(1.035);
+  }
+
+  100% {
+    transform: translateY(-50%) rotate(-4deg) scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-brand-art {
+    min-height: 330px;
+  }
+
+  .about-brand-art__mark {
+    right: -16%;
+    top: 58%;
+    width: min(116%, 500px);
+    opacity: 0.12;
+    filter: blur(5px) saturate(1.04);
+  }
+}
