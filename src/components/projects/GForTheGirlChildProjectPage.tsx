@@ -490,32 +490,72 @@ export function GForTheGirlChildProjectPage({
       </section>
 
       <section className="bg-[#fff8ef] px-5 pb-16 text-[#13271b] sm:px-8 lg:px-12 lg:pb-24">
-        <div className="mx-auto grid max-w-[1440px] gap-8 rounded-[2rem] border border-[#13271b]/10 bg-[#150d07] p-5 text-[#fff8e7] shadow-[0_30px_90px_rgba(16,35,25,0.12)] sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
+        <div className="mx-auto grid max-w-[1440px] gap-8 overflow-hidden rounded-[2rem] border border-[#c69a42]/25 bg-[#150d07] p-5 text-[#fff8e7] shadow-[0_30px_90px_rgba(16,35,25,0.14)] sm:p-8 lg:grid-cols-[0.92fr_1.08fr] lg:p-10">
           <div className="flex flex-col justify-center">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#f4b2c7]">
               Girl-child representation
             </p>
 
             <h2 className="max-w-xl font-serif text-[clamp(2.6rem,4.8vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em]">
-              Miss Akabo Beauty Pageant & Contest.
+              Beauty with purpose. A voice for the girl child.
             </h2>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-white/72">
-              Under G–For The Girl Child Projects, the Miss Akabo Beauty Pageant
-              & Contest extends the mission to empower, uplift, and give voice
-              to the girl child through visibility, confidence, and community
-              recognition.
+            <p className="mt-5 max-w-xl text-sm leading-7 text-white/74">
+              This pageant extension turns visibility into advocacy, giving the
+              crowned ambassador a community-facing role in education, health,
+              confidence, cultural pride, and SDG-aligned change for young girls.
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-2">
-              {["Empower", "Uplift", "Give voice"].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-[#c69a42]/45 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#f4b2c7]"
-                >
-                  {item}
-                </span>
-              ))}
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              {[
+                {
+                  title: "Girl-child advocacy",
+                  body: "Using visibility to spotlight education, health, dignity, and empowerment.",
+                  Icon: Sparkles,
+                },
+                {
+                  title: "CSR ambassador",
+                  body: "Creating a community-facing role model for girl-child focused initiatives.",
+                  Icon: HeartHandshake,
+                },
+                {
+                  title: "Cultural pride",
+                  body: "Celebrating Akabo heritage while giving young girls a larger stage.",
+                  Icon: Target,
+                },
+                {
+                  title: "Leadership & confidence",
+                  body: "Encouraging young girls to rise with courage, intelligence, and purpose.",
+                  Icon: GraduationCap,
+                },
+              ].map((item) => {
+                const Icon = item.Icon;
+
+                return (
+                  <article
+                    key={item.title}
+                    className="rounded-[1.1rem] border border-[#c69a42]/25 bg-white/[0.06] p-4 backdrop-blur"
+                  >
+                    <div className="mb-3 grid h-10 w-10 place-items-center rounded-full bg-[#c69a42]/16 text-[#f4b2c7]">
+                      <Icon className="h-5 w-5" />
+                    </div>
+
+                    <h3 className="text-sm font-black uppercase tracking-[0.13em] text-[#fff8e7]">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-xs leading-6 text-white/62">
+                      {item.body}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+
+            <div className="mt-7 rounded-[1.2rem] border border-[#c69a42]/35 bg-[#c69a42]/10 p-5">
+              <p className="font-serif text-2xl italic leading-tight text-[#f4b2c7]">
+                “Beauty with Purpose. Intelligence with Power. A Voice for the Girl Child.”
+              </p>
             </div>
           </div>
 
@@ -523,7 +563,7 @@ export function GForTheGirlChildProjectPage({
             <img
               src={gfgcMissAkaboFlyer}
               alt="Miss Akabo Beauty Pageant and Contest flyer under G–For The Girl Child Projects"
-              className="h-full max-h-[720px] w-full object-cover"
+              className="h-full max-h-[760px] w-full object-cover object-center"
             />
           </div>
         </div>

@@ -25,6 +25,7 @@ import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-ch
 import gfgcLiquidSoapBleachDemo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-liquid-soap-jik-practical-demo.jpg";
 import gfgcSanitaryPadBoxes from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-sanitary-pad-support-boxes.jpg";
 import gfgcGirlChildSpeaker from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-girl-child-speaker.jpg";
+import gfgcMaleSpeakerAddress from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-male-speaker-address.jpg";
 // import gfgcPadDaySkillsVideo from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/g-girl-child-pad-day-skills-video.mov?url";
 
 import gfgcWomenLeadersGroup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-women-leaders-and-ginitiative-group.jpg";
@@ -392,18 +393,18 @@ export function GirlChildWomenInitiativePage({
       <section className="bg-[#fff8f3] px-5 pb-14 sm:px-8 lg:px-12 lg:pb-20">
         <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="overflow-hidden rounded-[2rem] border border-[#13271b]/10 bg-white/55 p-2 shadow-[0_30px_90px_rgba(16,35,25,0.1)]">
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="relative overflow-hidden rounded-[1.55rem] bg-[#07120d]">
               <img
-                src={gfgcSanitaryPadBoxes}
-                alt="Sanitary pad support boxes for the girl child project"
-                className="h-[420px] w-full rounded-[1.55rem] object-cover sm:col-span-1"
+                src={gfgcMaleSpeakerAddress}
+                alt="G Initiative representative addressing the Girl Child and Women Development Initiative audience"
+                className="h-[520px] w-full object-cover object-[center_12%]"
               />
 
-              <img
-                src={gfgcLiquidSoapBleachDemo}
-                alt="Liquid soap and bleach practical skills demonstration"
-                className="h-[420px] w-full rounded-[1.55rem] object-cover sm:col-span-1"
-              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,13,0.02)_0%,rgba(7,18,13,0.14)_42%,rgba(7,18,13,0.7)_100%)]" />
+
+              <div className="absolute bottom-5 left-5 rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#13271b] shadow-[0_18px_55px_rgba(0,0,0,0.22)]">
+                G Initiative
+              </div>
             </div>
 
             <div className="mt-3 rounded-[1.45rem] bg-[#c45a7b] p-6 text-white shadow-[0_20px_55px_rgba(196,90,123,0.24)]">
