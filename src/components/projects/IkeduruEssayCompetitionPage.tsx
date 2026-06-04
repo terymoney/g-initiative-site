@@ -173,6 +173,54 @@ const recognitionGallery: ProjectImage[] = [
   },
 ];
 
+const examSupportCards = [
+  {
+    value: "20",
+    title: "Students Supported",
+    body: "Exam-form support for school students in Ikeduru.",
+    Icon: UsersRound,
+  },
+  {
+    value: "WAEC",
+    title: "Forms Sponsored",
+    body: "Helping students reach an important academic transition point.",
+    Icon: BookOpen,
+  },
+  {
+    value: "FSL",
+    title: "School Leaving Forms",
+    body: "Supporting younger learners with First School Leaving forms.",
+    Icon: GraduationCap,
+  },
+  {
+    value: "Access",
+    title: "Reduced Barriers",
+    body: "Easing financial pressure so education can continue.",
+    Icon: Sparkles,
+  },
+];
+
+const examSupportSdgs = [
+  {
+    code: "SDG 1",
+    title: "No Poverty",
+    body: "Reducing education-related financial pressure on families.",
+    className: "bg-[#e5243b]",
+  },
+  {
+    code: "SDG 4",
+    title: "Quality Education",
+    body: "Helping students continue their academic journey.",
+    className: "bg-[#c5192d]",
+  },
+  {
+    code: "SDG 10",
+    title: "Reduced Inequalities",
+    body: "Opening access for students who may otherwise be left behind.",
+    className: "bg-[#dd1367]",
+  },
+];
+
 const sdgCards = [
   {
     code: "4",
@@ -438,6 +486,96 @@ export function IkeduruEssayCompetitionPage({
                 />
               </button>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-20 text-[#16251c] sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[1.8rem] border border-[#dce7df] bg-[#fbfdf9] shadow-[0_30px_90px_rgba(15,45,25,0.12)]">
+          <div className="relative grid gap-10 p-6 sm:p-8 lg:grid-cols-[0.92fr_1.08fr] lg:p-12">
+            <img
+              src={ikeduruExerciseBookCover}
+              alt="G Projects exercise book cover with Sustainable Development Goals"
+              className="absolute bottom-0 left-0 h-72 w-72 -translate-x-20 translate-y-20 rotate-[-12deg] object-contain opacity-[0.08]"
+            />
+
+            <div className="relative">
+              <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-[#eaf4ec] px-5 py-3 text-xs font-black uppercase tracking-[0.16em] text-[#0a7a3b]">
+                <GraduationCap className="h-5 w-5" />
+                Education Access Support
+              </div>
+
+              <h2 className="max-w-2xl text-[clamp(2.45rem,4.5vw,5rem)] font-black leading-[1.02] tracking-[-0.06em] text-[#17251d]">
+                Beyond the Competition: Exam Form Support
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-xl font-black leading-8 text-[#17251d]">
+                Sponsoring First School Leaving and WAEC forms for 20 students in
+                Ikeduru.
+              </p>
+
+              <p className="mt-5 max-w-2xl text-base leading-8 text-[#3f5146]">
+                Alongside the essay competition, G Initiative extended its
+                education support by helping students cover important exam-form
+                costs. This support reduced pressure on families and helped more
+                learners continue their academic journey with confidence.
+              </p>
+
+              <a
+                href="/#contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#0b7a3a] px-6 py-4 text-sm font-black text-white shadow-[0_18px_45px_rgba(11,122,58,0.2)] transition hover:-translate-y-0.5 hover:bg-[#096b33]"
+              >
+                Help Sponsor More Students <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {examSupportCards.map(({ value, title, body, Icon }) => (
+                <article
+                  key={title}
+                  className="rounded-[1.4rem] border border-[#d8e4da] bg-white p-6 text-center shadow-[0_20px_65px_rgba(15,45,25,0.08)]"
+                >
+                  <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#eaf4ec] text-[#0a7a3b] shadow-[0_15px_35px_rgba(15,45,25,0.08)]">
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <p className="mt-5 text-4xl font-black tracking-[-0.055em] text-[#17251d]">
+                    {value}
+                  </p>
+                  <h3 className="mt-2 text-xl font-black leading-tight tracking-[-0.035em] text-[#17251d]">
+                    {title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#526258]">{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t border-[#dce7df] bg-white/72 px-6 py-6 sm:px-8 lg:px-12">
+            <p className="mb-4 text-center text-xs font-black uppercase tracking-[0.18em] text-[#0a7a3b]">
+              Aligned with the Sustainable Development Goals
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              {examSupportSdgs.map((sdg) => (
+                <article
+                  key={sdg.code}
+                  className="flex items-center gap-4 rounded-[1rem] border border-[#dce7df] bg-white p-4 shadow-[0_14px_40px_rgba(15,45,25,0.05)]"
+                >
+                  <div
+                    className={`${sdg.className} grid h-14 w-14 shrink-0 place-items-center rounded-md text-xs font-black uppercase text-white`}
+                  >
+                    {sdg.code.replace("SDG ", "")}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black text-[#17251d]">
+                      {sdg.code} · {sdg.title}
+                    </h3>
+                    <p className="mt-1 text-xs leading-5 text-[#526258]">
+                      {sdg.body}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -341,33 +341,6 @@ export const projects: ImpactProject[] = [
     storyReady: true,
   },
   {
-    title: "First School Leaving & WAEC Forms Support",
-    slug: "first-school-leaving-waec-forms-support",
-    category: "Education & Leadership",
-    status: "Completed",
-    image: heroImpact,
-    year: "Education Support",
-    parentInitiativeSlug: "education-leadership-empowerment-initiative",
-    parentInitiativeTitle: "Education & Leadership Empowerment Initiative",
-    description:
-      "Sponsorship of First School Leaving and WAEC forms for 20 school students in Ikeduru.",
-    overview:
-      "This education-support project reduced financial barriers for students by sponsoring First School Leaving and WAEC forms.",
-    location: "Ikeduru",
-    highlights: [
-      "Sponsored First School Leaving forms.",
-      "Sponsored WAEC forms.",
-      "Supported 20 school students in Ikeduru.",
-    ],
-    sdgs: ["SDG 1", "SDG 4", "SDG 10"],
-    pathway: {
-      source: "Education & Leadership Empowerment Initiative",
-      output: "Exam-form sponsorship",
-      impact: "Reduced education barriers for 20 students",
-    },
-    storyReady: false,
-  },
-  {
     title: "Aspire Leadership Master Class",
     slug: "aspire-leadership-master-class",
     category: "Education & Leadership",
