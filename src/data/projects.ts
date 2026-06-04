@@ -22,6 +22,7 @@ import gfgcHeroAudience from "@/assets/girl-child-women/01-g-for-the-girl-child-
 import gfgcGirlsLineupWide from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/gfgc-full-girls-lineup-wide.jpg";
 import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/women-community-lineup-and-officials.jpg";
 import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-development-center/nwaiha-center-design-render.jpeg";
+import ikeduruClassroomWide from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -315,27 +316,29 @@ export const projects: ImpactProject[] = [
     slug: "ikeduru-essay-competition",
     category: "Education & Leadership",
     status: "Completed",
-    image: gallery5,
+    image: ikeduruClassroomWide,
     year: "2021",
     parentInitiativeSlug: "education-leadership-empowerment-initiative",
     parentInitiativeTitle: "Education & Leadership Empowerment Initiative",
     description:
-      "Essay competition themed Sustainable Development in Igboland, organized in partnership with Ikeduru Local Government Area.",
+      "Senior secondary school essay writing competition focused on sustainable development in Igboland and South-Eastern Nigeria.",
     overview:
-      "The Ikeduru Essay Competition encouraged youth thinking, writing, and participation around sustainable development in Igboland.",
+      "The Ikeduru Essay Competition encouraged students to research, think critically, and write original ideas on sustainable development, helping them connect classroom learning with leadership, community progress, and the future of the South-East.",
+    location: "Ikeduru L.G.A., Imo State",
     highlights: [
-      "Focused on sustainable development in Igboland.",
-      "Supported youth expression and education.",
-      "Organized in partnership with Ikeduru Local Government Area.",
+      "Focused on sustainable development in Igboland and South-Eastern Nigeria.",
+      "Created a platform for secondary school students to write, think, and propose ideas.",
+      "Included prize recognition and award support for outstanding essays.",
+      "Strengthened early leadership, SDG awareness, and education engagement.",
     ],
-    sdgs: ["SDG 4", "SDG 11", "SDG 17"],
+    sdgs: ["SDG 4", "SDG 8", "SDG 11", "SDG 17"],
     pathway: {
       source: "Education & Leadership Empowerment Initiative",
-      output: "Essay competition and youth expression platform",
+      output: "Essay competition, SDG awareness, and student recognition",
       impact:
-        "Critical thinking, education engagement, and sustainable-development awareness",
+        "Critical thinking, writing confidence, leadership awareness, and sustainable-development consciousness",
     },
-    storyReady: false,
+    storyReady: true,
   },
   {
     title: "First School Leaving & WAEC Forms Support",

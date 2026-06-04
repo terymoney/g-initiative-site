@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { GForTheGirlChildProjectPage } from "@/components/projects/GForTheGirlChildProjectPage";
 import { NwaihaWomenDevelopmentCenterPage } from "@/components/projects/NwaihaWomenDevelopmentCenterPage";
+import { IkeduruEssayCompetitionPage } from "@/components/projects/IkeduruEssayCompetitionPage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 import { getProjectBySlug, projects } from "@/data/projects";
 
@@ -124,6 +125,12 @@ function ProjectDetailPage() {
 
       {project.slug === "g-for-the-girl-child-project" ? (
         <GForTheGirlChildProjectPage
+          project={project}
+          parentInitiative={parentInitiative}
+          relatedProjects={relatedProjects}
+        />
+      ) : project.slug === "ikeduru-essay-competition" ? (
+        <IkeduruEssayCompetitionPage
           project={project}
           parentInitiative={parentInitiative}
           relatedProjects={relatedProjects}
