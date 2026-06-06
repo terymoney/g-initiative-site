@@ -23,6 +23,7 @@ import gfgcGirlsLineupWide from "@/assets/girl-child-women/01-g-for-the-girl-chi
 import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/women-community-lineup-and-officials.jpg";
 import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-development-center/nwaiha-center-design-render.jpeg";
 import ikeduruClassroomWide from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
+import aspireStageSpeakers from "@/assets/aspire/aspire-masterclass-stage-speakers.jpg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -345,7 +346,7 @@ export const projects: ImpactProject[] = [
     slug: "aspire-leadership-master-class",
     category: "Education & Leadership",
     status: "Completed",
-    image: projectHealth,
+    image: aspireStageSpeakers,
     year: "Leadership Training",
     parentInitiativeSlug: "education-leadership-empowerment-initiative",
     parentInitiativeTitle: "Education & Leadership Empowerment Initiative",
@@ -364,7 +365,7 @@ export const projects: ImpactProject[] = [
       output: "Leadership training and seminar",
       impact: "Youth leadership capacity and confidence",
     },
-    storyReady: false,
+    storyReady: true,
   },
   {
     title: "G–For the Girl Child Project",

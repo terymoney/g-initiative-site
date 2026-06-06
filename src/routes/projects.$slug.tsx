@@ -5,6 +5,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { GForTheGirlChildProjectPage } from "@/components/projects/GForTheGirlChildProjectPage";
 import { NwaihaWomenDevelopmentCenterPage } from "@/components/projects/NwaihaWomenDevelopmentCenterPage";
 import { IkeduruEssayCompetitionPage } from "@/components/projects/IkeduruEssayCompetitionPage";
+import { AspireLeadershipMasterClassPage } from "@/components/projects/AspireLeadershipMasterClassPage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 import { getProjectBySlug, projects } from "@/data/projects";
 
@@ -135,6 +136,12 @@ function ProjectDetailPage() {
           parentInitiative={parentInitiative}
           relatedProjects={relatedProjects}
         />
+      ) : project.slug === "aspire-leadership-master-class" ? (
+        <AspireLeadershipMasterClassPage
+          project={project}
+          parentInitiative={parentInitiative}
+          relatedProjects={relatedProjects}
+        />
       ) : project.slug === "nwaiha-women-development-center" ? (
         <NwaihaWomenDevelopmentCenterPage
           project={project}
@@ -254,10 +261,10 @@ function ProjectDetailPage() {
           </section>
 
           <section className="bg-[#fff3e4] px-5 py-20 text-[#13271b] sm:px-8 lg:px-12 lg:py-28">
-            <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+            <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
               <div>
-                <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#e22025]">
-                  What Happened
+                <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#e22025]">
+                  Project Details
                 </p>
                 <h2 className="font-serif text-[clamp(2.6rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.055em]">
                   The specific project story.
