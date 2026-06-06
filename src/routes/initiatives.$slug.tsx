@@ -2,6 +2,7 @@ import { createFileRoute, Navigate } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/initiatives/SiteHeader";
 import { GirlChildWomenInitiativePage } from "@/components/initiatives/GirlChildWomenInitiativePage";
 import { SouthEastFoodSecurityPage } from "@/components/initiatives/south-east-food-security/SouthEastFoodSecurityPage";
+import { EducationLeadershipEmpowermentInitiativePage } from "@/components/initiatives/EducationLeadershipEmpowermentInitiativePage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 
 export const Route = createFileRoute("/initiatives/$slug")({
@@ -33,6 +34,14 @@ function InitiativeDetailPage() {
       </main>
     );
   }
-
+  
+  if (initiative.slug === "education-leadership-empowerment-initiative") {
+  return (
+    <main className="min-h-screen bg-[#fff3e4] text-[#13271b]">
+      <SiteHeader />
+      <EducationLeadershipEmpowermentInitiativePage initiative={initiative} />
+     </main>
+   );
+  }
   return <Navigate to="/projects" />;
 }
