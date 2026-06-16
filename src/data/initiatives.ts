@@ -111,6 +111,27 @@ export const initiatives: Initiative[] = [
     sdgs: ["SDG 4", "SDG 8", "SDG 10", "SDG 17"],
   },
   {
+    title: "Digital Youth Project",
+    slug: "digital-youth-project",
+    status: "Future",
+    image: heroImpact,
+    eyebrow: "Digital Youth",
+    description:
+      "A youth development ecosystem designed to build digital literacy, innovation, enterprise, creative capacity, vocational pathways, and future-ready work opportunities.",
+    storyTitle:
+      "Building the digital, creative, industrial, and vocational workforce of tomorrow.",
+    storySummary:
+      "The Digital Youth Project connects digital literacy, incubation, design, technology, vocational training, enterprise, public service capacity, and BuildIT-linked opportunity pathways into one youth development ecosystem. It is designed to help young people gain skills, create ideas, build products, access markets, and move toward jobs, contracts, enterprise, and economic participation.",
+    focus: [
+      "Digital literacy and future-of-work skills for young people.",
+      "Youth Development Centre with incubation, technology, marketplace, design, data, think tank, and vocational components.",
+      "Creative, enterprise, public service, and vocational pathways that lead to different kinds of opportunity.",
+      "BuildIT-linked advantage for vocational and construction trainees through verified training, profile strength, recommendations, and job visibility.",
+    ],
+    projectCountLabel: "8 ecosystem components",
+    sdgs: ["SDG 4", "SDG 8", "SDG 9", "SDG 17"],
+  },
+  {
     title: "Girl Child & Women Development Initiative",
     slug: "girl-child-women-development-initiative",
     status: "Recorded",

@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/initiatives/SiteHeader";
 import { GirlChildWomenInitiativePage } from "@/components/initiatives/GirlChildWomenInitiativePage";
 import { SouthEastFoodSecurityPage } from "@/components/initiatives/south-east-food-security/SouthEastFoodSecurityPage";
 import { EducationLeadershipEmpowermentInitiativePage } from "@/components/initiatives/EducationLeadershipEmpowermentInitiativePage";
+import { DigitalYouthProjectPage } from "@/components/initiatives/DigitalYouthProjectPage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 
 export const Route = createFileRoute("/initiatives/$slug")({
@@ -34,14 +35,24 @@ function InitiativeDetailPage() {
       </main>
     );
   }
-  
+
   if (initiative.slug === "education-leadership-empowerment-initiative") {
-  return (
-    <main className="min-h-screen bg-[#fff3e4] text-[#13271b]">
-      <SiteHeader />
-      <EducationLeadershipEmpowermentInitiativePage initiative={initiative} />
-     </main>
-   );
+    return (
+      <main className="min-h-screen bg-[#fff3e4] text-[#13271b]">
+        <SiteHeader />
+        <EducationLeadershipEmpowermentInitiativePage initiative={initiative} />
+      </main>
+    );
   }
+
+  if (initiative.slug === "digital-youth-project") {
+    return (
+      <main className="min-h-screen bg-[#fff3e4] text-[#13271b]">
+        <SiteHeader />
+        <DigitalYouthProjectPage initiative={initiative} />
+      </main>
+    );
+  }
+
   return <Navigate to="/projects" />;
 }
