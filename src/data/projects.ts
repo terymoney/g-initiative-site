@@ -2,12 +2,10 @@ import projectFood from "@/assets/project-food.jpg";
 import projectCovid from "@/assets/project-covid.jpg";
 import projectGrillit from "@/assets/project-grillit.jpg";
 import projectHealth from "@/assets/project-health.jpg";
-import projectMarathon from "@/assets/project-marathon.jpg";
 import projectSports from "@/assets/project-sports.jpg";
 import heroCommunity from "@/assets/hero-community.jpg";
 import heroFoodSecurity from "@/assets/hero-foodsecurity.jpg";
 import heroImpact from "@/assets/hero-impact.jpg";
-import heroMarathon from "@/assets/hero-marathon.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -24,6 +22,7 @@ import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-ch
 import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-development-center/nwaiha-center-design-render.jpeg";
 import ikeduruClassroomWide from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
 import aspireStageSpeakers from "@/assets/aspire/aspire-masterclass-stage-speakers.jpg";
+import ikeduruMarathonRunnersRoadWide from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runners-road-wide.jpeg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -263,28 +262,28 @@ export const projects: ImpactProject[] = [
     slug: "ikeduru-half-marathon",
     category: "Youth & Sports",
     status: "Completed",
-    image: heroMarathon,
+    image: ikeduruMarathonRunnersRoadWide,
     year: "2020",
     parentInitiativeSlug: "youth-sports-development-initiative",
     parentInitiativeTitle: "Youth & Sports Development Initiative",
     description:
-      "A Run for Digital Literacy, youth development, and sports promotion in partnership with Ikeduru Local Government Area.",
+      "Ikeduru Marathon: a run for digital literacy, youth development, sports visibility, and community pride.",
     overview:
-      "The Ikeduru Half Marathon was tagged as a run for digital literacy. It promoted fitness, local pride, youth participation, and digital-literacy awareness through sport.",
+      "The objective of the marathon is to expose Ikeduru and its indigenes to the world, digitally. The initiative will project Ikeduru as a leader in youth and sports development.",
     location: "Ikeduru Local Government Area",
     highlights: [
-      "Promoted digital-literacy awareness.",
-      "Supported youth fitness and community participation.",
-      "Created sports visibility for Ikeduru and surrounding communities.",
+      "Awareness campaign for digital literacy.",
+      "The first step in the realization of a digital revolution.",
+      "Athletes exposed to the world on digital platforms, promoting visibility to scouts.",
     ],
     sdgs: ["SDG 3", "SDG 4", "SDG 11", "SDG 17"],
     pathway: {
-      source: "Youth & Sports Development Initiative",
-      output: "Half marathon and sports activation",
+      source: "Public/private partnership initiative",
+      output: "21km half marathon and digital-literacy awareness campaign",
       impact:
-        "Youth visibility, fitness, digital-literacy awareness, and community pride",
+        "Youth visibility, sports participation, digital-literacy awareness, and community pride",
     },
-    storyReady: false,
+    storyReady: true,
   },
   {
     title: "Akabo Super League",

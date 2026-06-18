@@ -6,6 +6,7 @@ import { GForTheGirlChildProjectPage } from "@/components/projects/GForTheGirlCh
 import { NwaihaWomenDevelopmentCenterPage } from "@/components/projects/NwaihaWomenDevelopmentCenterPage";
 import { IkeduruEssayCompetitionPage } from "@/components/projects/IkeduruEssayCompetitionPage";
 import { AspireLeadershipMasterClassPage } from "@/components/projects/AspireLeadershipMasterClassPage";
+import { IkeduruHalfMarathonPage } from "@/components/projects/IkeduruHalfMarathonPage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 import { getProjectBySlug, projects } from "@/data/projects";
 
@@ -126,6 +127,12 @@ function ProjectDetailPage() {
 
       {project.slug === "g-for-the-girl-child-project" ? (
         <GForTheGirlChildProjectPage
+          project={project}
+          parentInitiative={parentInitiative}
+          relatedProjects={relatedProjects}
+        />
+      ) : project.slug === "ikeduru-half-marathon" ? (
+        <IkeduruHalfMarathonPage
           project={project}
           parentInitiative={parentInitiative}
           relatedProjects={relatedProjects}

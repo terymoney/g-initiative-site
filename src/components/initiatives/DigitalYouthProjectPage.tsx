@@ -888,6 +888,27 @@ export function DigitalYouthProjectPage({
             }
           }
 
+          @keyframes sdgWheelSpin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+
+          .sdg-wheel-spin {
+            animation: sdgWheelSpin 24s linear infinite;
+            transform-origin: center;
+            will-change: transform;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .sdg-wheel-spin {
+              animation: none;
+            }
+          }
+
           .hero-float {
             animation: heroFloat 7s ease-in-out infinite;
           }
@@ -1866,7 +1887,7 @@ export function DigitalYouthProjectPage({
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto grid max-w-[1440px] items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="relative overflow-hidden rounded-[1.7rem] bg-[#07120d] p-7 text-white shadow-[0_25px_85px_rgba(7,18,13,0.14)] lg:p-10">
             <div className="absolute bottom-[-35%] right-[-15%] h-[420px] w-[420px] rounded-full bg-[#c69a42]/10 blur-3xl" />
 
@@ -2048,12 +2069,15 @@ export function DigitalYouthProjectPage({
 
               <div className="relative">
                 <div
-                  className="relative mb-8 grid h-28 w-28 place-items-center rounded-full shadow-[0_18px_50px_rgba(16,35,25,0.12)]"
-                  style={{ background: sdgWheelBackground }}
+                  className="relative mb-8 h-28 w-28 overflow-hidden rounded-full shadow-[0_18px_50px_rgba(16,35,25,0.12)]"
                   aria-hidden="true"
                 >
+                  <div
+                    className="sdg-wheel-spin absolute inset-0 rounded-full"
+                    style={{ background: sdgWheelBackground }}
+                  />
                   <div className="absolute inset-[18px] rounded-full bg-white" />
-                  <span className="relative text-sm font-black uppercase tracking-[0.12em] text-[#13271b]">
+                  <span className="absolute inset-0 grid place-items-center text-sm font-black uppercase tracking-[0.12em] text-[#13271b]">
                     SDGs
                   </span>
                 </div>
