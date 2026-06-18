@@ -22,7 +22,7 @@ import womenCommunityLineup from "@/assets/girl-child-women/01-g-for-the-girl-ch
 import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-development-center/nwaiha-center-design-render.jpeg";
 import ikeduruClassroomWide from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
 import aspireStageSpeakers from "@/assets/aspire/aspire-masterclass-stage-speakers.jpg";
-import ikeduruMarathonRunnersRoadWide from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runners-road-wide.jpeg";
+import ikeduruMarathonRunnerPortraitSepia from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runner-portrait-sepia.jpeg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -262,7 +262,7 @@ export const projects: ImpactProject[] = [
     slug: "ikeduru-half-marathon",
     category: "Youth & Sports",
     status: "Completed",
-    image: ikeduruMarathonRunnersRoadWide,
+    image: ikeduruMarathonRunnerPortraitSepia,
     year: "2020",
     parentInitiativeSlug: "youth-sports-development-initiative",
     parentInitiativeTitle: "Youth & Sports Development Initiative",

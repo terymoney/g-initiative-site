@@ -11,14 +11,20 @@ import {
   Trophy,
   Users,
   ArrowRight,
+  X,
+  ZoomIn,
   type LucideIcon,
 } from "lucide-react";
 import { IkeduruMarathonRunner } from "@/components/projects/IkeduruMarathonRunner";
 import { IkeduruRouteMap } from "@/components/projects/IkeduruRouteMap";
+import heroMarathon from "@/assets/ikeduru-half-marathon/hero-marathon.jpg";
 import hydrationSupport from "@/assets/ikeduru-half-marathon/ikeduru-marathon-athlete-hydration-support.jpeg";
 import organizersPortrait from "@/assets/ikeduru-half-marathon/ikeduru-marathon-organizers-portrait.jpeg";
 import runnerPortrait from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runner-portrait-sepia.jpeg";
 import runnersRoadWide from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runners-road-wide.jpeg";
+import gProjectsLogo from "@/assets/essay/logos/g-projects-logo.png";
+import imoOfficeLogo from "@/assets/essay/logos/imo-youth-sports-office-logo.png";
+import imoStateGovernmentLogo from "@/assets/digital-youth-assets/logos/imo-state-government-logo.png";
 import type { ImpactProject } from "@/data/projects";
 
 type InitiativeLike = {
@@ -41,7 +47,29 @@ type StatItem = {
   suffix?: string;
 };
 
+type PartnerItem = {
+  title: string;
+  displayTitle?: string;
+  logo?: string;
+  logoClassName?: string;
+};
+
+type PreviewImage = {
+  src: string;
+  alt: string;
+  label: string;
+};
+
+type PreviewImageButtonProps = {
+  image: PreviewImage;
+  onPreview: (image: PreviewImage) => void;
+  className?: string;
+  imageClassName?: string;
+  showHint?: boolean;
+};
+
 const assets = {
+  hero: heroMarathon,
   roadRace: runnersRoadWide,
   runnerPortrait,
   hydration: hydrationSupport,
@@ -92,11 +120,46 @@ const impactNotes = [
   "Creating pathways for talent, skills, and opportunity.",
 ];
 
-const partners = [
-  "G Initiative / G-Projects Ltd",
-  "Government of Imo State",
-  "Ikeduru Local Government Area",
-  "A Public/Private Partnership Initiative",
+const partners: PartnerItem[] = [
+  {
+    title: "G Projects Ltd",
+    displayTitle: "G Projects Ltd",
+    logo: gProjectsLogo,
+    logoClassName: "h-36 sm:h-40",
+  },
+  {
+    title: "Office of the S.A. on Youth & Sports",
+    logo: imoOfficeLogo,
+    logoClassName: "h-28 sm:h-32",
+  },
+  {
+    title: "Government of Imo State",
+    displayTitle: "Government of Imo State",
+    logo: imoStateGovernmentLogo,
+    logoClassName: "h-28 sm:h-32",
+  },
+  {
+    title: "Public/Private Partnership Initiative",
+  },
+];
+
+const raceMoments = [
+  {
+    src: assets.runnerPortrait,
+    alt: "Ikeduru Half Marathon runner in sepia portrait",
+    label: "Runner Focus",
+    caption: "A powerful portrait of endurance, grit, and race-day intensity.",
+    className: "",
+    imageClassName: "h-[420px] lg:h-[560px] object-[50%_18%]",
+  },
+  {
+    src: assets.hero,
+    alt: "Ikeduru Half Marathon campaign visual",
+    label: "Campaign Identity",
+    caption: "The marathon visual language carried the digital-literacy message.",
+    className: "",
+    imageClassName: "h-[420px] lg:h-[560px] object-center",
+  },
 ];
 
 type CountUpStatValueProps = {
@@ -188,13 +251,57 @@ function CountUpStatValue({
   );
 }
 
+function PreviewImageButton({
+  image,
+  onPreview,
+  className = "",
+  imageClassName = "",
+  showHint = true,
+}: PreviewImageButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={() => onPreview(image)}
+      className={`marathon-preview-button relative block w-full overflow-hidden text-left ${className}`}
+      aria-label={`Open ${image.label} image preview`}
+    >
+      <img
+        src={image.src}
+        alt={image.alt}
+        className={`marathon-preview-image ${imageClassName}`}
+        loading="lazy"
+      />
+      {showHint && (
+        <span className="marathon-preview-hint absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#07120d]/82 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white shadow-[0_14px_45px_rgba(0,0,0,0.25)] backdrop-blur-xl">
+          <ZoomIn className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">View</span>
+        </span>
+      )}
+    </button>
+  );
+}
+
 export function IkeduruHalfMarathonPage({
   project,
   parentInitiative,
   relatedProjects = [],
 }: IkeduruHalfMarathonPageProps) {
+  const [selectedImage, setSelectedImage] = useState<PreviewImage | null>(null);
   const related = relatedProjects.slice(0, 2);
   const initiativeTitle = parentInitiative?.title ?? project.parentInitiativeTitle;
+
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage]);
 
   return (
     <>
@@ -297,10 +404,14 @@ export function IkeduruHalfMarathonPage({
           </div>
 
           <figure className="overflow-hidden rounded-[1.6rem] border border-[#13271b]/10 bg-[#07120d] shadow-[0_24px_70px_rgba(0,0,0,0.14)]">
-            <img
-              src={assets.hydration}
-              alt="Athlete receiving hydration support during the Ikeduru Half Marathon"
-              className="h-[360px] w-full object-cover lg:h-[520px]"
+            <PreviewImageButton
+              image={{
+                src: assets.hydration,
+                alt: "Athlete receiving hydration support during the Ikeduru Half Marathon",
+                label: "Athlete Care & Hydration Support",
+              }}
+              onPreview={setSelectedImage}
+              imageClassName="h-[360px] w-full object-cover lg:h-[520px]"
             />
             <figcaption className="flex items-start gap-4 bg-[#07120d] p-5 text-[#fff8e7]">
               <Droplets className="mt-1 h-6 w-6 shrink-0 text-[#c69a42]" />
@@ -357,10 +468,14 @@ export function IkeduruHalfMarathonPage({
       <section className="bg-[#07120d] px-5 py-10 text-[#13271b] sm:px-8 lg:px-12 lg:pb-16">
         <div className="mx-auto grid max-w-[1440px] gap-5 lg:grid-cols-[0.82fr_1.18fr]">
           <article className="overflow-hidden rounded-[2rem] bg-[#fff8e7] shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
-            <img
-              src={assets.organizers}
-              alt="Ikeduru Half Marathon organizers"
-              className="h-[320px] w-full object-cover"
+            <PreviewImageButton
+              image={{
+                src: assets.organizers,
+                alt: "Ikeduru Half Marathon organizers",
+                label: "Leadership & Commitment",
+              }}
+              onPreview={setSelectedImage}
+              imageClassName="h-[320px] w-full object-cover"
             />
             <div className="p-6">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-[#c69a42]">
@@ -374,10 +489,14 @@ export function IkeduruHalfMarathonPage({
 
           <div className="grid gap-5">
             <article className="overflow-hidden rounded-[2rem] bg-[#fff8e7] shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
-              <img
-                src={assets.roadRace}
-                alt="Ikeduru Half Marathon runners on the road"
-                className="h-[320px] w-full object-cover"
+              <PreviewImageButton
+                image={{
+                  src: assets.roadRace,
+                  alt: "Ikeduru Half Marathon runners on the road",
+                  label: "Ikeduru Half Marathon Runners",
+                }}
+                onPreview={setSelectedImage}
+                imageClassName="h-[320px] w-full object-cover"
               />
             </article>
 
@@ -396,18 +515,81 @@ export function IkeduruHalfMarathonPage({
         </div>
       </section>
 
+      <section className="bg-[#07120d] px-5 py-10 text-[#fff8e7] sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="mb-6 max-w-3xl">
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
+              Race Moments
+            </p>
+            <h2 className="mt-2 font-serif text-4xl tracking-[-0.055em] text-white sm:text-5xl">
+              The visuals behind the run.
+            </h2>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            {raceMoments.map((moment) => (
+              <figure
+                key={moment.label}
+                className={`overflow-hidden rounded-[2rem] border border-[#c69a42]/20 bg-[#fff8e7] text-[#13271b] shadow-[0_24px_70px_rgba(0,0,0,0.18)] ${moment.className}`}
+              >
+                <PreviewImageButton
+                  image={{
+                    src: moment.src,
+                    alt: moment.alt,
+                    label: moment.label,
+                  }}
+                  onPreview={setSelectedImage}
+                  imageClassName={`w-full object-cover ${moment.imageClassName}`}
+                />
+                <figcaption className="p-5 sm:p-6">
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-[#c69a42]">
+                    {moment.label}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-[#33483b]">
+                    {moment.caption}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#07120d] px-5 py-10 text-[#13271b] sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1440px] rounded-[2rem] bg-[#fff8e7] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.18)] sm:p-7">
           <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
             Real Partners & Support Structure
           </p>
-          <div className="grid gap-3 md:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {partners.map((partner) => (
               <article
-                key={partner}
-                className="flex min-h-[108px] items-center justify-center rounded-[1.1rem] border border-[#13271b]/10 bg-white/55 p-4 text-center text-sm font-black uppercase tracking-[0.08em] text-[#13271b]"
+                key={partner.title}
+                className="flex min-h-[230px] flex-col items-center justify-center rounded-[1.1rem] border border-[#13271b]/10 bg-white/70 p-5 text-center shadow-[0_18px_50px_rgba(19,39,27,0.08)]"
               >
-                {partner}
+                {partner.logo ? (
+                  <>
+                    <img
+                      src={partner.logo}
+                      alt={partner.title}
+                      className={`mx-auto max-w-full object-contain ${partner.logoClassName}`}
+                      loading="lazy"
+                    />
+                    {partner.displayTitle && (
+                      <h3 className="mt-5 text-sm font-black uppercase tracking-[0.12em] text-[#13271b]">
+                        {partner.displayTitle}
+                      </h3>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <span className="grid h-24 w-24 place-items-center rounded-full border border-[#c69a42]/35 bg-[#07120d] text-3xl font-black text-[#c69a42]">
+                      PPP
+                    </span>
+                    <h3 className="mt-5 text-sm font-black uppercase tracking-[0.12em] text-[#13271b]">
+                      {partner.title}
+                    </h3>
+                  </>
+                )}
               </article>
             ))}
           </div>
@@ -468,6 +650,126 @@ export function IkeduruHalfMarathonPage({
           </div>
         )}
       </section>
+
+      <style>{`
+        .marathon-preview-button {
+          transition: transform 0.45s ease, filter 0.45s ease;
+        }
+
+        .marathon-preview-button:focus-visible {
+          outline: 3px solid rgba(198, 154, 66, 0.85);
+          outline-offset: 4px;
+        }
+
+        .marathon-preview-image {
+          transition: transform 0.7s ease, filter 0.7s ease;
+        }
+
+        .marathon-preview-hint {
+          animation: marathonHintPulse 2.8s ease-in-out infinite;
+          transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .marathon-preview-button:hover,
+        .marathon-preview-button:focus-visible {
+          transform: translateY(-3px);
+        }
+
+        .marathon-preview-button:hover .marathon-preview-image,
+        .marathon-preview-button:focus-visible .marathon-preview-image {
+          filter: saturate(1.08) contrast(1.04);
+          transform: scale(1.045);
+        }
+
+        .marathon-preview-button:hover .marathon-preview-hint,
+        .marathon-preview-button:focus-visible .marathon-preview-hint {
+          opacity: 1;
+          transform: translateY(-2px) scale(1.04);
+        }
+
+        .marathon-modal-backdrop {
+          animation: marathonFadeIn 0.22s ease-out;
+        }
+
+        .marathon-modal-content {
+          animation: marathonModalIn 0.32s ease-out;
+        }
+
+        @keyframes marathonHintPulse {
+          0%, 100% { box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25); }
+          50% { box-shadow: 0 18px 55px rgba(198, 154, 66, 0.22); }
+        }
+
+        @keyframes marathonFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes marathonModalIn {
+          from {
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marathon-preview-button,
+          .marathon-preview-image,
+          .marathon-preview-hint,
+          .marathon-modal-backdrop,
+          .marathon-modal-content {
+            animation: none;
+            transition: none;
+          }
+
+          .marathon-preview-button:hover,
+          .marathon-preview-button:focus-visible,
+          .marathon-preview-button:hover .marathon-preview-image,
+          .marathon-preview-button:focus-visible .marathon-preview-image {
+            transform: none;
+          }
+        }
+      `}</style>
+
+      {selectedImage && (
+        <div
+          className="marathon-modal-backdrop fixed inset-0 z-[90] grid place-items-center bg-[#07120d]/92 p-4 backdrop-blur-xl"
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedImage(null)}
+            className="absolute inset-0 cursor-zoom-out"
+            aria-label="Close image preview"
+          />
+
+          <button
+            type="button"
+            onClick={() => setSelectedImage(null)}
+            className="absolute right-5 top-5 z-20 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-white/10 text-white shadow-[0_18px_55px_rgba(0,0,0,0.25)] backdrop-blur-2xl transition hover:bg-white/18"
+            aria-label="Close image preview"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <div className="marathon-modal-content relative z-10 max-h-[88vh] max-w-[92vw]">
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-h-[82vh] w-auto max-w-full rounded-[1.5rem] object-contain shadow-[0_30px_120px_rgba(0,0,0,0.45)]"
+            />
+
+            <div className="absolute bottom-4 left-4 max-w-[calc(100%-2rem)] rounded-full border border-white/20 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#13271b] shadow-[0_18px_55px_rgba(0,0,0,0.22)] sm:text-sm">
+              {selectedImage.label}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
