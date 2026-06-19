@@ -25,6 +25,7 @@ import runnersRoadWide from "@/assets/ikeduru-half-marathon/ikeduru-marathon-run
 import gProjectsLogo from "@/assets/essay/logos/g-projects-logo.png";
 import imoOfficeLogo from "@/assets/essay/logos/imo-youth-sports-office-logo.png";
 import imoStateGovernmentLogo from "@/assets/digital-youth-assets/logos/imo-state-government-logo.png";
+import nikeLogo from "@/assets/ikeduru-half-marathon/nike_logo.png";
 import type { ImpactProject } from "@/data/projects";
 
 type InitiativeLike = {
@@ -50,6 +51,7 @@ type StatItem = {
 type PartnerItem = {
   title: string;
   displayTitle?: string;
+  description?: string;
   logo?: string;
   logoClassName?: string;
 };
@@ -139,7 +141,109 @@ const partners: PartnerItem[] = [
     logoClassName: "h-28 sm:h-32",
   },
   {
+    title: "Nike Run Club",
+    displayTitle: "Nike Run Club",
+    description:
+      "Run virtually from anywhere in the world in support of digital literacy and win a smartphone.",
+    logo: nikeLogo,
+    logoClassName: "h-24 rounded-[1.1rem] sm:h-28",
+  },
+  {
     title: "Public/Private Partnership Initiative",
+    description:
+      "A public/private partnership framework supporting the marathon’s youth, sports, and digital-literacy purpose.",
+  },
+];
+
+
+const connectionChain = [
+  {
+    title: "G Initiative Mission",
+    text: "Empower communities through projects that connect people, place, partnership, and long-term development.",
+  },
+  {
+    title: "Youth & Community Development",
+    text: "Use sport, education, enterprise, and visibility platforms to unlock local potential.",
+  },
+  {
+    title: "Digital Literacy Awareness",
+    text: "Make digital literacy visible through a public race that the community can see, join, and remember.",
+  },
+  {
+    title: "Ikeduru Half Marathon",
+    text: "A 21KM route marking a developmental path across Ikeduru and showcasing its people and landmarks.",
+  },
+  {
+    title: "Talent Visibility & Opportunity",
+    text: "Expose athletes and youth to digital platforms, scouts, skills, enterprise, and future employability.",
+  },
+];
+
+const movingForwardNotes = [
+  "Imo State is geographically positioned to flourish economically. It is in the middle of all the South-Eastern states — the heartland. It is a natural hub, a transit station.",
+  "Ikeduru is the northern gateway to the state capital. This is a major advantage because at least 25% of people coming in and out of Owerri pass through there. This traffic is enough to drive the economy.",
+  "By designating the LGA as the technology hub of the state, it automatically becomes the tech development centre of the South-East — like Silicon Valley, San Francisco, California.",
+  "Tech institutions, innovation hubs, and markets servicing the tech industry will spring up once the right infrastructure is set up and an enabling environment is created.",
+  "Youth from all over the South-East can commute in and out for trainings, business, or leisure. The IGR of the LGA will begin to grow at a better rate, sending it on its way to self-sustenance.",
+  "The first step is to provide the educational infrastructure to produce and develop the human resources.",
+];
+
+const technologyActionSteps = [
+  "Situate a world-class institute of technology in the district, cutting across design, research, and development.",
+  "Execute the vision as a public/private partnership for quality control and accountability.",
+  "Give incentives to business owners to set up tech-related businesses in Ikeduru.",
+  "Hold tech events, exhibitions, and expos in the district.",
+  "Encourage tech manufacturing industries to set up in the district.",
+];
+
+const technologyOutcomes = [
+  "The next generation of app developers, website designers, animators, 3D designers, coders, and digital professionals can spring up.",
+  "Employable youth and entrepreneurs will increase as the technology industry grows.",
+  "Interstate trade, transport, hospitality, tourism, commerce, and sustainable green settlements can benefit.",
+];
+
+const sdgDetails = [
+  {
+    code: "SDG 3",
+    color: "#4C9F38",
+    soft: "rgba(76,159,56,0.14)",
+    title: "Good Health & Well-being",
+    text: "The marathon promotes fitness, healthy competition, hydration support, medical readiness, and active youth participation.",
+  },
+  {
+    code: "SDG 4",
+    color: "#C5192D",
+    soft: "rgba(197,25,45,0.12)",
+    title: "Quality Education",
+    text: "The theme is digital literacy, and the wider Ikeduru vision begins with educational infrastructure and human-resource development.",
+  },
+  {
+    code: "SDG 8",
+    color: "#A21942",
+    soft: "rgba(162,25,66,0.12)",
+    title: "Decent Work & Economic Growth",
+    text: "The technology-hub direction connects youth employability, entrepreneurship, commerce, hospitality, tourism, transport, and IGR growth.",
+  },
+  {
+    code: "SDG 9",
+    color: "#FD6925",
+    soft: "rgba(253,105,37,0.14)",
+    title: "Industry, Innovation & Infrastructure",
+    text: "The wider Ikeduru vision points to innovation hubs, technology institutions, research, development, markets, and an enabling infrastructure system.",
+  },
+  {
+    code: "SDG 11",
+    color: "#FD9D24",
+    soft: "rgba(253,157,36,0.14)",
+    title: "Sustainable Cities & Communities",
+    text: "Ikeduru is positioned as a gateway district with potential for better settlement, transport, local planning, and sustainable community development.",
+  },
+  {
+    code: "SDG 17",
+    color: "#19486A",
+    soft: "rgba(25,72,106,0.13)",
+    title: "Partnerships for the Goals",
+    text: "The marathon and technology-district idea both depend on public/private partnership, sponsorship, government support, and community stakeholders.",
   },
 ];
 
@@ -303,6 +407,36 @@ export function IkeduruHalfMarathonPage({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedImage]);
 
+  useEffect(() => {
+    const revealTargets = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        ".marathon-scroll-reveal, .marathon-chain-step, .marathon-check-reveal"
+      )
+    );
+
+    if (!revealTargets.length) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      revealTargets.forEach((target) => target.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.22, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    revealTargets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <section className="relative isolate overflow-hidden bg-[#06100c] px-5 pt-32 pb-16 text-[#fff8e7] sm:px-8 lg:px-12 lg:pt-40 lg:pb-24">
@@ -428,6 +562,149 @@ export function IkeduruHalfMarathonPage({
         </div>
       </section>
 
+
+      <section className="bg-[#07120d] px-5 py-10 text-[#fff8e7] sm:px-8 lg:px-12 lg:py-14">
+        <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[2rem] border border-[#c69a42]/20 bg-[linear-gradient(135deg,#0b1f14,#06100c)] p-5 shadow-[0_30px_95px_rgba(0,0,0,0.22)] sm:p-7 lg:grid lg:grid-cols-[0.42fr_0.58fr] lg:gap-10 lg:p-9">
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
+              From Mission to Movement
+            </p>
+            <h2 className="mt-3 font-serif text-4xl leading-[0.95] tracking-[-0.055em] text-white sm:text-5xl lg:text-6xl">
+              The G Initiative connection chain.
+            </h2>
+            <p className="mt-5 text-sm leading-7 text-white/64">
+              The marathon is not an isolated race. It is a visible public
+              activation of G Initiative’s wider mission to transform community
+              potential into opportunity through youth, digital awareness, and
+              partnership.
+            </p>
+          </div>
+
+          <div className="marathon-chain-track mt-9 space-y-5 lg:mt-0">
+            {connectionChain.map((item, index) => (
+              <article
+                key={item.title}
+                className={`marathon-chain-step marathon-scroll-reveal relative pl-16 ${
+                  index < connectionChain.length - 1 ? "has-connector" : ""
+                }`}
+                style={{ transitionDelay: `${index * 110}ms` }}
+              >
+                <span className="marathon-chain-dot absolute left-0 top-1 z-10 grid h-11 w-11 place-items-center rounded-full border border-[#c69a42]/45 bg-[#07120d] text-sm font-black text-[#e8c06a] shadow-[0_0_0_8px_rgba(198,154,66,0.08),0_16px_35px_rgba(0,0,0,0.24)]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="rounded-[1.35rem] border border-[#c69a42]/22 bg-[#fff3da] p-5 text-[#13271b] shadow-[0_20px_65px_rgba(0,0,0,0.16)] transition hover:-translate-y-1 hover:border-[#b63a2f]/30 hover:bg-[#fff8e7]">
+                  <div className="mb-3 flex items-center justify-between gap-4">
+                    <h3 className="font-serif text-2xl leading-none tracking-[-0.045em] text-[#13271b] sm:text-3xl">
+                      {item.title}
+                    </h3>
+                    {index < connectionChain.length - 1 && (
+                      <span className="marathon-chain-arrow inline-flex h-5 w-5 shrink-0 items-center justify-center text-[#b63a2f]/75">
+                        <ArrowRight className="h-5 w-5 rotate-90" />
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm leading-7 text-[#33483b]">{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#07120d] px-5 py-10 text-[#13271b] sm:px-8 lg:px-12 lg:py-14">
+        <div className="mx-auto max-w-[1440px] rounded-[2rem] border border-[#c69a42]/15 bg-[#fff8e7] p-5 shadow-[0_30px_95px_rgba(0,0,0,0.2)] sm:p-7 lg:p-9">
+          <div className="grid gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="rounded-[1.6rem] bg-[#07120d] p-6 text-[#fff8e7] shadow-[0_24px_80px_rgba(7,18,13,0.22)] sm:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
+                VISION
+              </p>
+              <h2 className="mt-4 font-serif text-[clamp(2.6rem,5vw,5.5rem)] leading-[0.9] tracking-[-0.06em] text-white">
+                Ikeduru: Moving Forward
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-white/68">
+                This is the bigger development logic behind the marathon: Ikeduru
+                is presented as a gateway, a natural hub, and a future technology
+                development centre for the South-East.
+              </p>
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[1.2rem] border border-white/10 bg-white/[0.06] p-4">
+                  <p className="text-3xl font-black text-[#c69a42]">25%</p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-white/58">
+                    Owerri gateway traffic
+                  </p>
+                </div>
+                <div className="rounded-[1.2rem] border border-white/10 bg-white/[0.06] p-4">
+                  <p className="text-3xl font-black text-[#c69a42]">Tech Hub</p>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-white/58">
+                    South-East development centre
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              {movingForwardNotes.map((note, index) => (
+                <article
+                  key={note}
+                  className="rounded-[1.25rem] border border-[#13271b]/10 bg-white/65 p-5 shadow-[0_18px_50px_rgba(19,39,27,0.08)]"
+                >
+                  <div className="flex gap-4">
+                    <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#07120d] text-xs font-black text-[#c69a42]">
+                      {index + 1}
+                    </span>
+                    <p className="text-sm leading-7 text-[#33483b]">{note}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-5 lg:grid-cols-2">
+            <article className="rounded-[1.6rem] border border-[#13271b]/10 bg-white/65 p-5 sm:p-6">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
+                Strategic steps
+              </p>
+              <h3 className="mt-3 font-serif text-3xl tracking-[-0.05em] text-[#13271b]">
+                Educational infrastructure, enterprise, and events.
+              </h3>
+              <div className="mt-5 space-y-3">
+                {technologyActionSteps.map((step, index) => (
+                  <div
+                    key={step}
+                    className="marathon-check-reveal flex gap-3"
+                    style={{ transitionDelay: `${index * 90}ms` }}
+                  >
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#c69a42]" />
+                    <p className="text-sm leading-6 text-[#33483b]">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-[1.6rem] border border-[#13271b]/10 bg-white/65 p-5 sm:p-6">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
+                Expected transformation
+              </p>
+              <h3 className="mt-3 font-serif text-3xl tracking-[-0.05em] text-[#13271b]">
+                A stronger local economy around young talent.
+              </h3>
+              <div className="mt-5 space-y-3">
+                {technologyOutcomes.map((outcome, index) => (
+                  <div
+                    key={outcome}
+                    className="marathon-check-reveal flex gap-3"
+                    style={{ transitionDelay: `${index * 90}ms` }}
+                  >
+                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#c69a42]" />
+                    <p className="text-sm leading-6 text-[#33483b]">{outcome}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#07120d] px-5 py-10 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1440px]">
           <IkeduruRouteMap />
@@ -501,10 +778,11 @@ export function IkeduruHalfMarathonPage({
             </article>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {impactNotes.map((note) => (
+              {impactNotes.map((note, index) => (
                 <article
                   key={note}
-                  className="flex gap-3 rounded-[1.2rem] bg-[#fff8e7] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.12)]"
+                  className="marathon-check-reveal flex gap-3 rounded-[1.2rem] bg-[#fff8e7] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.12)]"
+                  style={{ transitionDelay: `${index * 90}ms` }}
                 >
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[#c69a42]" />
                   <p className="text-sm leading-6 text-[#33483b]">{note}</p>
@@ -555,16 +833,65 @@ export function IkeduruHalfMarathonPage({
         </div>
       </section>
 
+      <section className="bg-[#07120d] px-5 py-10 text-[#fff8e7] sm:px-8 lg:px-12 lg:py-14">
+        <div className="mx-auto max-w-[1440px] rounded-[2rem] border border-[#c69a42]/16 bg-white/[0.035] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)] sm:p-7">
+          <div className="mb-7 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
+                Connected SDGs
+              </p>
+              <h2 className="mt-3 font-serif text-4xl tracking-[-0.055em] text-white sm:text-5xl">
+                The goals behind the run.
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-7 text-white/64">
+              The Ikeduru Half Marathon connects sport, education, innovation,
+              local economic growth, sustainable communities, and partnership.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {sdgDetails.map((sdg) => (
+              <article
+                key={sdg.code}
+                className="group overflow-hidden rounded-[1.15rem] border bg-[#fff8e7] p-4 text-[#13271b] shadow-[0_18px_52px_rgba(0,0,0,0.14)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,0,0,0.18)]"
+                style={{
+                  borderColor: `${sdg.color}55`,
+                  background: `linear-gradient(135deg, ${sdg.soft}, #fff8e7 58%, #ffffff)`,
+                }}
+              >
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <span
+                    className="inline-flex rounded-full px-3 py-1.5 text-xs font-black uppercase tracking-[0.14em] text-white shadow-[0_12px_30px_rgba(0,0,0,0.14)]"
+                    style={{ backgroundColor: sdg.color }}
+                  >
+                    {sdg.code}
+                  </span>
+                  <span
+                    className="h-3 w-3 rounded-full shadow-[0_0_0_6px_rgba(0,0,0,0.04)]"
+                    style={{ backgroundColor: sdg.color }}
+                  />
+                </div>
+                <h3 className="font-serif text-2xl leading-none tracking-[-0.045em]">
+                  {sdg.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[#33483b]">{sdg.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#07120d] px-5 py-10 text-[#13271b] sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1440px] rounded-[2rem] bg-[#fff8e7] p-5 shadow-[0_24px_70px_rgba(0,0,0,0.18)] sm:p-7">
           <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-[#c69a42]">
             Real Partners & Support Structure
           </p>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {partners.map((partner) => (
               <article
                 key={partner.title}
-                className="flex min-h-[230px] flex-col items-center justify-center rounded-[1.1rem] border border-[#13271b]/10 bg-white/70 p-5 text-center shadow-[0_18px_50px_rgba(19,39,27,0.08)]"
+                className="flex min-h-[250px] flex-col items-center justify-center rounded-[1.1rem] border border-[#13271b]/10 bg-white/70 p-5 text-center shadow-[0_18px_50px_rgba(19,39,27,0.08)]"
               >
                 {partner.logo ? (
                   <>
@@ -579,6 +906,11 @@ export function IkeduruHalfMarathonPage({
                         {partner.displayTitle}
                       </h3>
                     )}
+                    {partner.description && (
+                      <p className="mt-3 max-w-[15rem] text-xs leading-5 text-[#33483b]/78">
+                        {partner.description}
+                      </p>
+                    )}
                   </>
                 ) : (
                   <>
@@ -588,6 +920,11 @@ export function IkeduruHalfMarathonPage({
                     <h3 className="mt-5 text-sm font-black uppercase tracking-[0.12em] text-[#13271b]">
                       {partner.title}
                     </h3>
+                    {partner.description && (
+                      <p className="mt-3 max-w-[15rem] text-xs leading-5 text-[#33483b]/78">
+                        {partner.description}
+                      </p>
+                    )}
                   </>
                 )}
               </article>
@@ -716,12 +1053,120 @@ export function IkeduruHalfMarathonPage({
           }
         }
 
+
+        .marathon-chain-track {
+          position: relative;
+        }
+
+        .marathon-chain-track::before {
+          content: "";
+          position: absolute;
+          left: 1.35rem;
+          top: 1.75rem;
+          bottom: 1.75rem;
+          width: 2px;
+          border-radius: 999px;
+          background: linear-gradient(to bottom, rgba(198,154,66,0.2), rgba(226,32,37,0.14), rgba(198,154,66,0.18));
+        }
+
+        .marathon-chain-step {
+          opacity: 0;
+          transform: translateY(26px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .marathon-chain-step.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .marathon-chain-step.has-connector::after {
+          content: "";
+          position: absolute;
+          left: 1.35rem;
+          top: 3.35rem;
+          width: 2px;
+          height: calc(100% + 1.25rem);
+          border-radius: 999px;
+          background: linear-gradient(to bottom, #c69a42, #b63a2f, #c69a42);
+          box-shadow: 0 0 22px rgba(198,154,66,0.26);
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: transform 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+          z-index: 0;
+        }
+
+        .marathon-chain-step.has-connector.is-visible::after {
+          transform: scaleY(1);
+        }
+
+        .marathon-chain-dot {
+          transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease;
+        }
+
+        .marathon-chain-step.is-visible .marathon-chain-dot {
+          border-color: rgba(198,154,66,0.9);
+          transform: scale(1.04);
+          animation: marathonChainPulse 2.5s ease-in-out infinite;
+        }
+
+        .marathon-chain-arrow {
+          opacity: 0;
+          transform: translateY(-10px);
+          transition: opacity 0.55s ease 0.28s, transform 0.55s ease 0.28s, box-shadow 0.55s ease 0.28s;
+        }
+
+        .marathon-chain-step.is-visible .marathon-chain-arrow {
+          opacity: 1;
+          transform: translateY(0);
+          filter: drop-shadow(0 10px 12px rgba(182,58,47,0.22));
+          animation: marathonChainArrowBounce 1.15s ease-in-out infinite 0.75s;
+        }
+
+        .marathon-check-reveal {
+          opacity: 0;
+          transform: translateX(-18px);
+          transition: opacity 0.58s ease, transform 0.58s ease;
+        }
+
+        .marathon-check-reveal.is-visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .marathon-check-reveal svg {
+          transform: scale(0.7);
+          opacity: 0.45;
+          transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
+        }
+
+        .marathon-check-reveal.is-visible svg {
+          transform: scale(1);
+          opacity: 1;
+        }
+
+        @keyframes marathonChainPulse {
+          0%, 100% { box-shadow: 0 0 0 8px rgba(198,154,66,0.08), 0 16px 35px rgba(0,0,0,0.24); }
+          50% { box-shadow: 0 0 0 12px rgba(182,58,47,0.12), 0 20px 44px rgba(198,154,66,0.2); }
+        }
+
+        @keyframes marathonChainArrowBounce {
+          0%, 100% { transform: translateY(-2px); }
+          50% { transform: translateY(9px); }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .marathon-preview-button,
           .marathon-preview-image,
           .marathon-preview-hint,
           .marathon-modal-backdrop,
-          .marathon-modal-content {
+          .marathon-modal-content,
+          .marathon-chain-step,
+          .marathon-chain-step::after,
+          .marathon-chain-dot,
+          .marathon-chain-arrow,
+          .marathon-check-reveal,
+          .marathon-check-reveal svg {
             animation: none;
             transition: none;
           }
@@ -731,6 +1176,17 @@ export function IkeduruHalfMarathonPage({
           .marathon-preview-button:hover .marathon-preview-image,
           .marathon-preview-button:focus-visible .marathon-preview-image {
             transform: none;
+          }
+
+          .marathon-chain-step,
+          .marathon-check-reveal,
+          .marathon-check-reveal svg {
+            opacity: 1;
+            transform: none;
+          }
+
+          .marathon-chain-step.has-connector::after {
+            transform: scaleY(1);
           }
         }
       `}</style>
