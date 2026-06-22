@@ -26,6 +26,7 @@ import digitalYouthAutoHero from "@/assets/digital-youth-assets/campus/digital-y
 import digitalYouthCampusAtrium from "@/assets/digital-youth-assets/campus/digital-youth-campus-atrium.jpg";
 import digitalYouthCampusInnovationHub from "@/assets/digital-youth-assets/campus/digital-youth-campus-innovation-hub.jpg";
 import digitalYouthCampusStaircase from "@/assets/digital-youth-assets/campus/digital-youth-campus-staircase.jpg";
+import buildItConstructionHero from "@/assets/digital-youth-assets/campus/buildit-gprojects-construction-trade-hero.jpeg";
 
 import aspireAfricaLogo from "@/assets/digital-youth-assets/logos/aspire-africa-logo.png";
 import gProjectsLogo from "@/assets/digital-youth-assets/logos/g-projects-logo.png";
@@ -388,6 +389,50 @@ const partnerLogos = [
   { name: "Aspire Africa", logo: aspireAfricaLogo },
   { name: "G Projects", logo: gProjectsLogo },
   { name: "Government of Imo State", logo: imoStateGovernmentLogo },
+];
+
+const buildItPathwaySteps = [
+  {
+    step: "01",
+    title: "Train",
+    body: "Build practical construction and trade skills through the Building Academy.",
+    Icon: Hammer,
+  },
+  {
+    step: "02",
+    title: "Certify",
+    body: "Earn credentials that communicate trust, capability and readiness.",
+    Icon: CheckCircle2,
+  },
+  {
+    step: "03",
+    title: "Connect to BuildIT",
+    body: "Move from training into projects, suppliers, trade access and real opportunities.",
+    Icon: Building2,
+  },
+];
+
+const buildItBenefits = [
+  {
+    title: "Greater Visibility",
+    body: "Showcase skills and get discovered by builders, developers and contractors.",
+    Icon: Target,
+  },
+  {
+    title: "Trade Access",
+    body: "Connect with verified contractors, partners and construction opportunities.",
+    Icon: Handshake,
+  },
+  {
+    title: "Supplier Network",
+    body: "Access trusted material, service and project support networks.",
+    Icon: Factory,
+  },
+  {
+    title: "Real Opportunities",
+    body: "Bid, build, grow and participate in real construction and trade projects.",
+    Icon: Briefcase,
+  },
 ];
 
 function AnimatedImoMap() {
@@ -888,6 +933,21 @@ export function DigitalYouthProjectPage({
             }
           }
 
+          @keyframes digitalArrowLife {
+            0%, 100% {
+              transform: translateX(0);
+              opacity: 0.78;
+            }
+            45% {
+              transform: translateX(5px);
+              opacity: 1;
+            }
+            60% {
+              transform: translateX(2px);
+              opacity: 0.9;
+            }
+          }
+
           @keyframes sdgWheelSpin {
             0% {
               transform: rotate(0deg);
@@ -904,7 +964,8 @@ export function DigitalYouthProjectPage({
           }
 
           @media (prefers-reduced-motion: reduce) {
-            .sdg-wheel-spin {
+            .sdg-wheel-spin,
+            .digital-arrow-icon {
               animation: none;
             }
           }
@@ -939,6 +1000,18 @@ export function DigitalYouthProjectPage({
 
           .impact-arrow-flow {
             animation: impactArrowFlow 2.4s ease-in-out infinite;
+          }
+
+          .digital-arrow-icon {
+            animation: digitalArrowLife 1.85s ease-in-out infinite;
+            will-change: transform;
+          }
+
+          a:hover .digital-arrow-icon,
+          a:focus-visible .digital-arrow-icon,
+          button:hover .digital-arrow-icon,
+          button:focus-visible .digital-arrow-icon {
+            animation-duration: 0.82s;
           }
 
           .reveal-on-scroll {
@@ -1044,7 +1117,7 @@ export function DigitalYouthProjectPage({
               >
                 <span className="relative z-10 inline-flex items-center gap-2">
                   The Youth Development Centre{" "}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="digital-arrow-icon h-4 w-4" />
                 </span>
               </a>
             </div>
@@ -1797,7 +1870,7 @@ export function DigitalYouthProjectPage({
               <div className="mt-14 flex items-center gap-4 text-xs font-black uppercase tracking-[0.22em] text-[#c69a42]">
                 <span>Our Impact Areas</span>
                 <span className="impact-line-flow h-px w-20 bg-[#c69a42]" />
-                <ArrowRight className="impact-arrow-flow h-4 w-4 text-[#c69a42]" />
+                <ArrowRight className="digital-arrow-icon h-4 w-4 text-[#c69a42]" />
               </div>
             </div>
           </article>
@@ -1872,7 +1945,7 @@ export function DigitalYouthProjectPage({
           </div>
         </div>
       </section>
-      <section className="reveal-on-scroll bg-[#fff8ef] px-5 py-16 text-[#13271b] sm:px-8 lg:px-12 lg:py-24">
+      <section className="bg-[#fff8ef] px-5 py-16 text-[#13271b] sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto mb-10 max-w-[1440px]">
           <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#b17819]">
             Specialized Training Tracks
@@ -1887,7 +1960,7 @@ export function DigitalYouthProjectPage({
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-[1440px] items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto grid max-w-[1440px] gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="relative overflow-hidden rounded-[1.7rem] bg-[#07120d] p-7 text-white shadow-[0_25px_85px_rgba(7,18,13,0.14)] lg:p-10">
             <div className="absolute bottom-[-35%] right-[-15%] h-[420px] w-[420px] rounded-full bg-[#c69a42]/10 blur-3xl" />
 
@@ -1918,21 +1991,6 @@ export function DigitalYouthProjectPage({
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-8 rounded-[1.15rem] border border-[#c69a42]/30 bg-[#c69a42]/10 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#f2d184]">
-                  Linked Pathway: BuildIT
-                </p>
-                <p className="mt-3 text-sm leading-7 text-white/72">
-                  Trained artisans and construction trainees can transition into BuildIT for project access, job opportunities and practical deployment.
-                </p>
-                <a
-                  href="/projects/buildit"
-                  className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#c69a42]/40 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#f2d184] transition hover:bg-[#c69a42] hover:text-[#07120d]"
-                >
-                  Explore BuildIT <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
 
               <div className="mt-8 rounded-[1.2rem] border border-[#c69a42]/30 bg-white/6 p-5">
                 <div className="mb-3 flex items-center gap-3">
@@ -2008,6 +2066,106 @@ export function DigitalYouthProjectPage({
               ))}
             </div>
           </article>
+        </div>
+
+
+
+        <div className="mx-auto mt-10 max-w-[1440px] overflow-hidden rounded-[2rem] border border-[#13271b]/10 bg-[#07120d] text-white shadow-[0_30px_95px_rgba(7,18,13,0.18)]">
+          <div className="grid lg:grid-cols-[0.96fr_1.04fr]">
+            <article className="relative overflow-hidden p-7 lg:p-10">
+              <div className="absolute left-[-25%] top-[-35%] h-[380px] w-[380px] rounded-full bg-[#c69a42]/12 blur-3xl" />
+              <div className="absolute bottom-[-30%] right-[-20%] h-[360px] w-[360px] rounded-full bg-[#0b7a3a]/18 blur-3xl" />
+
+              <div className="relative">
+                <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#c69a42]/35 bg-white/6 px-4 py-2 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#f2d184]">
+                  <Hammer className="h-4 w-4" />
+                  From training to opportunity
+                </div>
+
+                <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#b73535]">
+                  BuildIT / GProjects
+                </p>
+
+                <h2 className="max-w-3xl font-serif text-[clamp(2.7rem,5vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.065em] text-[#fff8ef]">
+                  The Future of Construction &amp; Trade.
+                </h2>
+
+                <p className="mt-6 max-w-2xl text-base leading-8 text-white/76">
+                  Graduates of the Building Academy can transition into BuildIT/GProjects, where certified skills connect to visibility, trade access, supplier networks and real-world construction opportunities.
+                </p>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                  {buildItPathwaySteps.map(({ step, title, body, Icon }) => (
+                    <article
+                      key={title}
+                      className="rounded-[1.15rem] border border-[#c69a42]/25 bg-white/[0.06] p-5 transition duration-500 hover:-translate-y-1 hover:bg-white/[0.09]"
+                    >
+                      <div className="mb-5 flex items-start justify-between gap-4">
+                        <span className="grid h-9 w-9 place-items-center rounded-full bg-[#c69a42] text-xs font-black text-[#07120d]">
+                          {step}
+                        </span>
+                        <Icon className="h-6 w-6 text-[#f2d184]" />
+                      </div>
+
+                      <h3 className="font-serif text-2xl leading-7 text-[#fff8ef]">
+                        {title}
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-6 text-white/68">
+                        {body}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex flex-row flex-wrap gap-3">
+                  <a
+                    href="/projects/buildit"
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-[#b73535] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-white transition hover:-translate-y-0.5 hover:bg-[#9f2c2c]"
+                  >
+                    Explore BuildIT <ArrowRight className="digital-arrow-icon h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <aside className="relative min-h-[440px] overflow-hidden bg-[#07120d] lg:min-h-full">
+              <img
+                src={buildItConstructionHero}
+                alt="BuildIT and GProjects construction and trade pathway"
+                className="luxury-image-reveal absolute inset-0 h-full w-full object-cover object-center opacity-90"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,18,13,0.48)_0%,rgba(7,18,13,0.16)_42%,rgba(7,18,13,0.03)_100%)] lg:bg-[linear-gradient(90deg,rgba(7,18,13,0.42)_0%,rgba(7,18,13,0.12)_42%,transparent_100%)]" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-28 bg-[linear-gradient(90deg,rgba(255,248,239,0.24)_0%,rgba(242,209,132,0.14)_46%,transparent_100%)] backdrop-blur-[1px] lg:block" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-[1.25rem] border border-white/15 bg-[#07120d]/70 p-5 backdrop-blur-md">
+                <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#f2d184]">
+                  BuildIT Deployment Pathway
+                </p>
+                <h3 className="font-serif text-3xl leading-8 text-white">
+                  You train. You certify. You build communities and careers.
+                </h3>
+              </div>
+            </aside>
+          </div>
+
+          <div className="grid border-t border-white/10 bg-[#061a13] sm:grid-cols-2 lg:grid-cols-4">
+            {buildItBenefits.map(({ title, body, Icon }) => (
+              <article
+                key={title}
+                className="border-b border-white/10 p-6 last:border-b-0 sm:border-r sm:last:border-r-0 lg:border-b-0"
+              >
+                <div className="mb-4 grid h-12 w-12 place-items-center rounded-full border border-[#c69a42]/35 bg-white/6 text-[#f2d184]">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="font-serif text-2xl leading-7 text-[#fff8ef]">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-white/64">
+                  {body}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className="mx-auto mt-8 max-w-[1440px]">
@@ -2156,14 +2314,7 @@ export function DigitalYouthProjectPage({
               href="/#partners"
               className="inline-flex min-w-max shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-[#c69a42] px-4 py-3 text-xs font-black text-[#07120d] transition hover:-translate-y-0.5 hover:bg-[#e3bb62] sm:px-5"
             >
-              Partner With This Initiative <ArrowRight className="h-4 w-4" />
-            </a>
-
-            <a
-              href="/projects"
-              className="inline-flex min-w-max shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-white/20 px-4 py-3 text-xs font-black text-white transition hover:-translate-y-0.5 hover:bg-white/10 sm:px-5"
-            >
-              Explore BuildIT <ArrowRight className="h-4 w-4" />
+              Partner With This Initiative <ArrowRight className="digital-arrow-icon h-4 w-4" />
             </a>
           </div>
         </div>

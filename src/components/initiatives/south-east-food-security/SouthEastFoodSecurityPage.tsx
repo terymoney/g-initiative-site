@@ -271,8 +271,6 @@ const southEastProjects: {
     label: "Future / Expansion Concept",
     summary:
       "A future agro-enterprise expansion connected to food resilience.",
-    body:
-      "Isabella Farms & Resort can sit under the South-East Food Security Initiative as a future-facing agro-enterprise and community development track. If confirmed by the owner, it can represent the production, training, hospitality, and food-systems side of the initiative.",
     images: [seFoodSecurityCultivationWalkway, seFoodSecurityGardenOverview],
   },
 ];
