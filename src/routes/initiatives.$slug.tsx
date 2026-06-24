@@ -58,7 +58,7 @@ function InitiativeDetailPage() {
   if (initiative.slug === "build-it") {
     return (
       <main className="min-h-screen bg-[#f7fbf6] text-[#081b22]">
-        <SiteHeader />
+        <SiteHeader adaptive />
         <BuildItPage initiative={initiative} />
       </main>
     );

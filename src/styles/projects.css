@@ -75,6 +75,12 @@
   color: #fff8e7;
 }
 
+.projects-filter-pill--active:hover {
+  border-color: #13271b;
+  background: #13271b;
+  color: #fff8e7;
+}
+
 .projects-card {
   overflow: hidden;
   border: 1px solid rgba(19, 39, 27, 0.1);

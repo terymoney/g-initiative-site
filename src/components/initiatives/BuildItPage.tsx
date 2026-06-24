@@ -411,7 +411,10 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         `}
       </style>
 
-      <section className="buildit-hero relative isolate overflow-hidden">
+      <section
+        data-header-theme="dark"
+        className="buildit-hero relative isolate overflow-hidden"
+      >
         <img
           src={heroImg}
           alt="Modern construction skyline at golden dusk"
@@ -458,7 +461,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <section data-header-theme="light" className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-16 lg:grid-cols-2">
           <Reveal variant="left">
             <SectionHead
@@ -515,6 +518,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
 
       <section
         id="ecosystem"
+        data-header-theme="dark"
         className="buildit-dark relative overflow-hidden bg-[linear-gradient(135deg,#081b22_0%,#0b2a2f_48%,#0b7a4b_140%)] py-24 text-[#f7fbf6]"
       >
         <div className="mx-auto max-w-7xl px-6">
@@ -568,7 +572,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <section data-header-theme="light" className="mx-auto max-w-7xl px-6 py-24">
         <Reveal>
           <SectionHead
             icon={ShieldCheck}
@@ -604,7 +608,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         </Reveal>
       </section>
 
-      <section className="bg-[#eaf7f0]/60 py-24">
+      <section data-header-theme="light" className="bg-[#eaf7f0]/60 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <Reveal>
             <div className="max-w-2xl">
@@ -659,7 +663,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <section data-header-theme="light" className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal
             variant="left"
@@ -699,7 +703,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         </div>
       </section>
 
-      <section className="bg-[#eaf7f0]/60 py-24">
+      <section data-header-theme="light" className="bg-[#eaf7f0]/60 py-24">
         <div className="mx-auto max-w-7xl px-6">
           <Reveal>
             <SectionHead
@@ -765,7 +769,7 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <section data-header-theme="light" className="mx-auto max-w-7xl px-6 py-24">
         <Reveal>
           <SectionHead
             icon={Coins}
@@ -799,7 +803,11 @@ export function BuildItPage({ initiative: _initiative }: BuildItPageProps) {
 
       <BuildItAnalytics />
 
-      <section id="join" className="mx-auto max-w-7xl px-6 py-28">
+      <section
+        id="join"
+        data-header-theme="light"
+        className="mx-auto max-w-7xl px-6 py-28"
+      >
         <Reveal
           variant="zoom"
           className="buildit-join relative overflow-hidden rounded-[2.5rem] border border-[#081b22]/10 bg-[linear-gradient(135deg,#081b22_0%,#0b2a2f_48%,#0b7a4b_140%)] px-8 py-20 text-center text-[#f7fbf6] shadow-[0_32px_100px_rgba(8,27,34,0.20)]"

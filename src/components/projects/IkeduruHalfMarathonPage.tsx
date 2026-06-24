@@ -446,7 +446,7 @@ export function IkeduruHalfMarathonPage({
 
         <div className="relative z-10 mx-auto max-w-[1440px]">
           <div className="max-w-3xl">
-            <p className="mb-5 inline-flex rounded-full border border-[#c69a42]/35 bg-[#c69a42]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-[#e8c06a]">
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-[#e8c06a]">
               {initiativeTitle} • {project.category} • {project.year}
             </p>
             <h1 className="font-serif text-[clamp(4rem,9vw,10.5rem)] font-normal uppercase leading-[0.78] tracking-[-0.075em]">

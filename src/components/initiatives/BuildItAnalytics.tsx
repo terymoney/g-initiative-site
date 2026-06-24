@@ -163,6 +163,7 @@ export function BuildItAnalytics() {
   return (
     <section
       ref={ref}
+      data-header-theme="dark"
       className="buildit-analytics buildit-dark relative overflow-hidden bg-[linear-gradient(145deg,#071a20_0%,#0a2930_52%,#0a5d42_145%)] py-24 text-[#f7fbf6]"
     >
       <style>
