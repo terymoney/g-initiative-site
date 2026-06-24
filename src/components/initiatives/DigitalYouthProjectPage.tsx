@@ -1204,7 +1204,12 @@ export function DigitalYouthProjectPage({
                 <span>Digital Economy</span>
                 <span>Digital Literacy</span>
                 <span>Digital Industrialization</span>
-                <span className="buildit-hero-tag text-[#b8f7ca]">BuildIT / GProjects</span>
+                <a
+                  href="/initiatives/build-it"
+                  className="buildit-hero-tag text-[#b8f7ca] underline decoration-[#b8f7ca]/45 underline-offset-4 transition hover:text-white hover:decoration-white/70"
+                >
+                  BuildIT / GProjects
+                </a>
               </div>
             </div>
           </div>
@@ -2135,9 +2140,12 @@ export function DigitalYouthProjectPage({
                   From training to opportunity
                 </div>
 
-                <p className="mb-4 text-xs font-black uppercase tracking-[0.24em] text-[#b73535]">
+                <a
+                  href="/initiatives/build-it"
+                  className="mb-4 inline-flex text-xs font-black uppercase tracking-[0.24em] text-[#b73535] transition hover:text-[#f2d184]"
+                >
                   BuildIT / GProjects
-                </p>
+                </a>
 
                 <h2 className="max-w-3xl font-serif text-[clamp(2.7rem,5vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.065em] text-[#fff8ef]">
                   The Future of Construction &amp; Trade.
@@ -2174,7 +2182,7 @@ export function DigitalYouthProjectPage({
 
                 <div className="mt-8 flex flex-row flex-wrap gap-3">
                   <a
-                    href="/projects/buildit"
+                    href="/initiatives/build-it"
                     className="inline-flex items-center justify-center gap-2 rounded-md bg-[#b73535] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-white transition hover:-translate-y-0.5 hover:bg-[#9f2c2c]"
                   >
                     Explore BuildIT <ArrowRight className="digital-arrow-icon h-4 w-4" />
@@ -2192,9 +2200,12 @@ export function DigitalYouthProjectPage({
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,18,13,0.48)_0%,rgba(7,18,13,0.16)_42%,rgba(7,18,13,0.03)_100%)] lg:bg-[linear-gradient(90deg,rgba(7,18,13,0.42)_0%,rgba(7,18,13,0.12)_42%,transparent_100%)]" />
               <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-28 bg-[linear-gradient(90deg,rgba(255,248,239,0.24)_0%,rgba(242,209,132,0.14)_46%,transparent_100%)] backdrop-blur-[1px] lg:block" />
               <div className="absolute bottom-6 left-6 right-6 rounded-[1.25rem] border border-white/15 bg-[#07120d]/70 p-5 backdrop-blur-md">
-                <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#f2d184]">
+                <a
+                  href="/initiatives/build-it"
+                  className="mb-2 inline-flex text-xs font-black uppercase tracking-[0.2em] text-[#f2d184] transition hover:text-white"
+                >
                   BuildIT Deployment Pathway
-                </p>
+                </a>
                 <h3 className="font-serif text-3xl leading-8 text-white">
                   You train. You certify. You build communities and careers.
                 </h3>
@@ -2204,9 +2215,12 @@ export function DigitalYouthProjectPage({
 
           <div className="border-t border-[#13271b]/10 bg-[#fff8ef] px-5 py-6 sm:px-8 lg:px-12 lg:py-8">
             <div className="mx-auto max-w-[1440px]">
-              <p className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-[#8f1f1f]">
+              <a
+                href="/initiatives/build-it"
+                className="mb-5 inline-flex text-xs font-black uppercase tracking-[0.2em] text-[#8f1f1f] transition hover:text-[#b73535]"
+              >
                 BuildIT Platform Capabilities
-              </p>
+              </a>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 {buildItCapabilities.map(({ title, body, Icon }) => (
