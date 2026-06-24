@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Download, Menu, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
+import buildItProjectsCover from "@/assets/digital-youth-assets/campus/buildit-gprojects-construction-trade-hero.jpeg";
 import { initiatives } from "@/data/initiatives";
 import {
   projectCategories,
@@ -14,6 +15,13 @@ export const Route = createFileRoute("/projects/")({
   component: ProjectsPage,
 });
 
+type ArchiveFilter = "All" | ProjectCategory | "Construction & Trade";
+
+const archiveFilters: ArchiveFilter[] = [
+  ...projectCategories,
+  "Construction & Trade",
+];
+
 const navLinks = [
   { label: "About", href: "/#about" },
   { label: "Impact Areas", href: "/#impact-areas" },
@@ -25,13 +33,23 @@ const navLinks = [
 
 function ProjectsPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<"All" | ProjectCategory>(
-    "All",
-  );
+  const [activeCategory, setActiveCategory] =
+    useState<ArchiveFilter>("All");
+
+  const buildItInitiative = useMemo(() => {
+    return initiatives.find((initiative) => initiative.slug === "build-it");
+  }, []);
+
+  const showBuildItInitiative =
+    Boolean(buildItInitiative) &&
+    (activeCategory === "All" || activeCategory === "Construction & Trade");
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
-      return activeCategory === "All" || project.category === activeCategory;
+      if (activeCategory === "All") return true;
+      if (activeCategory === "Construction & Trade") return false;
+
+      return project.category === activeCategory;
     });
   }, [activeCategory]);
 
@@ -45,6 +63,11 @@ function ProjectsPage() {
       }))
       .filter((group) => group.items.length > 0);
   }, [filteredProjects]);
+
+  const visibleArchiveCount =
+    filteredProjects.length + (showBuildItInitiative ? 1 : 0);
+
+  const totalArchiveCount = projects.length + (buildItInitiative ? 1 : 0);
 
   return (
     <main className="projects-page min-h-screen bg-[#07120d] text-[#f7f1df]">
@@ -154,7 +177,7 @@ function ProjectsPage() {
               </h2>
 
               <p className="mt-5 max-w-xl text-sm leading-7 text-[#526555]">
-                Showing {filteredProjects.length} of {projects.length} project
+                Showing {visibleArchiveCount} of {totalArchiveCount} archive
                 records.
               </p>
             </div>
@@ -165,7 +188,7 @@ function ProjectsPage() {
               </p>
 
               <div className="projects-filter-bar">
-                {projectCategories.map((category) => (
+                {archiveFilters.map((category) => (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
@@ -183,6 +206,68 @@ function ProjectsPage() {
           </div>
 
           <div className="mt-14 space-y-16">
+            {showBuildItInitiative && buildItInitiative && (
+              <section key={buildItInitiative.slug}>
+                <div className="mb-7 border-b border-[#13271b]/10 pb-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.22em] text-[#e22025]">
+                    Part of {buildItInitiative.eyebrow}
+                  </p>
+
+                  <a
+                    href={`/initiatives/${buildItInitiative.slug}`}
+                    className="group inline-flex items-end gap-3"
+                    aria-label={`View ${buildItInitiative.title}`}
+                  >
+                    <h2 className="font-serif text-[clamp(2.1rem,3.6vw,4rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#13271b] transition group-hover:text-[#e22025]">
+                      {buildItInitiative.title}
+                    </h2>
+
+                    <ArrowRight className="mb-2 hidden h-6 w-6 text-[#e22025] transition group-hover:translate-x-1 sm:block" />
+                  </a>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  <article className="projects-card">
+                    <a
+                      href={`/initiatives/${buildItInitiative.slug}`}
+                      className="projects-card__image-wrap"
+                      aria-label={`View ${buildItInitiative.title}`}
+                    >
+                      <img
+                        src={buildItProjectsCover}
+                        alt={buildItInitiative.title}
+                        className="projects-card__image"
+                      />
+
+                      <div className="projects-card__status">
+                        {buildItInitiative.status}
+                      </div>
+                    </a>
+
+                    <div className="projects-card__body">
+                      <div className="projects-card__meta">
+                        <span>{buildItInitiative.eyebrow}</span>
+                        <span>{buildItInitiative.projectCountLabel}</span>
+                      </div>
+
+                      <h2>{buildItInitiative.title}</h2>
+
+                      <p>{buildItInitiative.description}</p>
+
+                      <div className="mt-7 flex flex-wrap gap-3">
+                        <a
+                          href={`/initiatives/${buildItInitiative.slug}`}
+                          className="projects-card__link"
+                        >
+                          View initiative <ArrowRight className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            )}
+
             {groupedProjects.map(({ initiative, items }) => (
               <section key={initiative.slug}>
                 <div className="mb-7 border-b border-[#13271b]/10 pb-5">

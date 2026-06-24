@@ -85,21 +85,29 @@ function CheckeredFlag({
 
 function MovingMarker({ path }: { path: string }) {
   return (
-    <circle
-      className="route-runner-dot"
-      r="3.8"
-      fill="#e22025"
-      stroke="#fff8e7"
-      strokeWidth="1.5"
-    >
+    <g className="route-runner-g" aria-label="Moving G route marker">
+      <text
+        x="0"
+        y="0"
+        dy="0.35em"
+        fill="#e22025"
+        stroke="#fff8e7"
+        strokeWidth="1.2"
+        paintOrder="stroke"
+        fontFamily="Inter, Arial, sans-serif"
+        fontSize="13"
+        fontWeight="1000"
+        textAnchor="middle"
+      >
+        G
+      </text>
       <animateMotion
         begin="0s"
         dur="28s"
         repeatCount="indefinite"
         path={path}
-        rotate="auto"
       />
-    </circle>
+    </g>
   );
 }
 

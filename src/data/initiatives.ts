@@ -8,6 +8,7 @@ import heroImpact from "@/assets/hero-impact.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 import seFoodSecurityCardCommunityOutreach from "@/assets/initiativessouth-east-food-security/se-food-security-card-community-outreach.jpeg";
+import buildItHero from "@/assets/build-it/builditt-hero.jpg";
 
 export type InitiativeStatus = "Active" | "Expansion" | "Recorded" | "Future";
 
@@ -130,6 +131,27 @@ export const initiatives: Initiative[] = [
     ],
     projectCountLabel: "8 ecosystem components",
     sdgs: ["SDG 4", "SDG 8", "SDG 9", "SDG 17"],
+  },
+  {
+    title: "BUILD IT / GProjects",
+    slug: "build-it",
+    status: "Active",
+    image: buildItHero,
+    eyebrow: "Construction & Trade",
+    description:
+      "A comprehensive unified ecosystem designed to bridge the gap between architectural planning, project management, material sourcing, professional hiring, real estate access, and global trade.",
+    storyTitle:
+      "Redefining construction and real estate through one connected ecosystem.",
+    storySummary:
+      "BUILD IT / GProjects is a construction and trade ecosystem built to simplify how people plan projects, source materials, manage builds, hire verified professionals, access real estate opportunities, and connect local construction activity to wider global supply chains. It brings together builders, artisans, suppliers, investors, developers, and project owners through a transparent digital platform.",
+    focus: [
+      "Builders Market for architectural plans, materials, sourcing, and escrow-backed transactions.",
+      "Pool Funding, co-op buying, and global supply-chain access for better pricing and smoother delivery.",
+      "Project Portfolio tools for budgets, timelines, BIM documents, task tracking, and collaboration.",
+      "Professional Job Pool, artisan visibility, AI Architect support, real estate access, and REIT-linked opportunities.",
+    ],
+    projectCountLabel: "7 ecosystem modules",
+    sdgs: ["SDG 8", "SDG 9", "SDG 11", "SDG 17"],
   },
   {
     title: "Girl Child & Women Development Initiative",

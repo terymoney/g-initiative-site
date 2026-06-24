@@ -232,11 +232,14 @@ const sectorPathways: SectorPathway[] = [
     Icon: Wrench,
   },
   {
-    title: "Building / Construction Industry",
+    title: "Construction Industry & BuildIT",
     items: [
-      "School furniture production.",
-      "Blackboards.",
-      "Chalk production.",
+      "BuildIT/GProjects pathway for project access, visibility and real site deployment.",
+      "Professional job pool for verified artisans, contractors and construction talent.",
+      "Builders Market for plans, materials, vendors and trade access.",
+      "Project portfolio tools for budgets, timelines and documentation.",
+      "Certified artisan and construction trade training.",
+      "School furniture, blackboards and chalk production.",
     ],
     Icon: Building2,
   },
@@ -412,26 +415,26 @@ const buildItPathwaySteps = [
   },
 ];
 
-const buildItBenefits = [
+const buildItCapabilities = [
   {
-    title: "Greater Visibility",
-    body: "Showcase skills and get discovered by builders, developers and contractors.",
-    Icon: Target,
+    title: "Builders Market",
+    body: "Access ready-to-build plans, material vendors and escrow-backed trade.",
+    Icon: ShoppingCart,
   },
   {
-    title: "Trade Access",
-    body: "Connect with verified contractors, partners and construction opportunities.",
-    Icon: Handshake,
+    title: "Professional Job Pool",
+    body: "Connect verified artisans and contractors to real project opportunities.",
+    Icon: UsersRound,
   },
   {
-    title: "Supplier Network",
-    body: "Access trusted material, service and project support networks.",
+    title: "Project Portfolio",
+    body: "Track budgets, timelines, documents and project progress in one place.",
+    Icon: Database,
+  },
+  {
+    title: "Supply Chain Access",
+    body: "Support material sourcing, logistics and supplier networks from factory to site.",
     Icon: Factory,
-  },
-  {
-    title: "Real Opportunities",
-    body: "Bid, build, grow and participate in real construction and trade projects.",
-    Icon: Briefcase,
   },
 ];
 
@@ -948,6 +951,39 @@ export function DigitalYouthProjectPage({
             }
           }
 
+          @keyframes buildItHeroGlow {
+            0%, 100% {
+              opacity: 0.84;
+              text-shadow: 0 0 0 rgba(11,122,58,0);
+            }
+            50% {
+              opacity: 1;
+              text-shadow: 0 0 14px rgba(119,239,161,0.88), 0 0 28px rgba(11,122,58,0.42);
+            }
+          }
+
+          @keyframes buildItPathwayGlow {
+            0%, 100% {
+              box-shadow: 0 0 0 rgba(198,154,66,0);
+              border-color: rgba(198,154,66,0.25);
+            }
+            18%, 34% {
+              box-shadow: 0 18px 42px rgba(198,154,66,0.13), 0 0 30px rgba(242,209,132,0.14);
+              border-color: rgba(198,154,66,0.58);
+            }
+          }
+
+          @keyframes buildItFinalPathwayGlow {
+            0%, 100% {
+              box-shadow: 0 0 0 rgba(198,154,66,0);
+              border-color: rgba(198,154,66,0.25);
+            }
+            18%, 34% {
+              box-shadow: 0 20px 48px rgba(198,154,66,0.18), 0 0 38px rgba(242,209,132,0.2);
+              border-color: rgba(242,209,132,0.76);
+            }
+          }
+
           @keyframes sdgWheelSpin {
             0% {
               transform: rotate(0deg);
@@ -965,7 +1001,9 @@ export function DigitalYouthProjectPage({
 
           @media (prefers-reduced-motion: reduce) {
             .sdg-wheel-spin,
-            .digital-arrow-icon {
+            .digital-arrow-icon,
+            .buildit-hero-tag,
+            .buildit-pathway-card {
               animation: none;
             }
           }
@@ -1012,6 +1050,20 @@ export function DigitalYouthProjectPage({
           button:hover .digital-arrow-icon,
           button:focus-visible .digital-arrow-icon {
             animation-duration: 0.82s;
+          }
+
+          .buildit-hero-tag {
+            animation: buildItHeroGlow 3.4s ease-in-out infinite;
+            will-change: opacity, text-shadow;
+          }
+
+          .buildit-pathway-card {
+            animation: buildItPathwayGlow 9s ease-in-out infinite;
+            will-change: box-shadow, border-color;
+          }
+
+          .buildit-pathway-card-final {
+            animation-name: buildItFinalPathwayGlow;
           }
 
           .reveal-on-scroll {
@@ -1152,6 +1204,7 @@ export function DigitalYouthProjectPage({
                 <span>Digital Economy</span>
                 <span>Digital Literacy</span>
                 <span>Digital Industrialization</span>
+                <span className="buildit-hero-tag text-[#b8f7ca]">BuildIT / GProjects</span>
               </div>
             </div>
           </div>
@@ -1316,7 +1369,7 @@ export function DigitalYouthProjectPage({
             .ecosystem-dotted-horizontal {
               background-image: repeating-linear-gradient(
                 to right,
-                rgba(198,154,66,0.78) 0 4px,
+                rgba(183,53,53,0.78) 0 4px,
                 transparent 4px 12px
               );
               background-repeat: repeat-x;
@@ -1327,7 +1380,7 @@ export function DigitalYouthProjectPage({
             .ecosystem-dotted-vertical {
               background-image: repeating-linear-gradient(
                 to bottom,
-                rgba(198,154,66,0.78) 0 4px,
+                rgba(183,53,53,0.78) 0 4px,
                 transparent 4px 12px
               );
               background-repeat: repeat-y;
@@ -1361,7 +1414,7 @@ export function DigitalYouthProjectPage({
             <div className="absolute bottom-[-30%] left-[-8%] h-[360px] w-[360px] rounded-full bg-[#0b7a3a]/10 blur-3xl" />
 
             <div className="relative mb-8 rounded-[1.3rem] bg-[#07120d] p-5 text-center text-white shadow-[0_20px_60px_rgba(16,35,25,0.12)]">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#f2d184]">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#fff8ef]">
                 How a youth moves through the ecosystem
               </p>
               <p className="mt-2 text-sm text-white/78">
@@ -1378,10 +1431,10 @@ export function DigitalYouthProjectPage({
               <div className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
                 {ecosystemSteps.map(({ title, body, Icon }, index) => (
                   <article key={title} className="relative text-center">
-                    <div className="relative mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full border border-[#c69a42]/20 bg-[#0b3a1f] text-[#f2d184] shadow-[0_14px_35px_rgba(11,58,31,0.14)]">
+                    <div className="relative mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full border border-white/10 bg-[#07120d] text-[#fff8ef] shadow-[0_14px_35px_rgba(7,18,13,0.14)]">
                       <Icon className="h-6 w-6" />
 
-                      <span className="absolute bottom-0 right-0 grid h-6 w-6 place-items-center rounded-full border border-[#fff8ef] bg-[#c69a42] text-[0.68rem] font-black text-[#07120d] shadow-[0_10px_25px_rgba(198,154,66,0.18)]">
+                      <span className="absolute bottom-0 right-0 grid h-6 w-6 place-items-center rounded-full border border-[#fff8ef] bg-[#b73535] text-[0.68rem] font-black text-[#fff8ef] shadow-[0_10px_25px_rgba(183,53,53,0.18)]">
                         {index + 1}
                       </span>
                     </div>
@@ -1400,7 +1453,7 @@ export function DigitalYouthProjectPage({
 
             <div className="relative mt-8">
               <div className="mb-5 text-center">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b17819]">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#07120d]">
                   Pathways opened by the ecosystem
                 </p>
               </div>
@@ -1410,12 +1463,12 @@ export function DigitalYouthProjectPage({
                   <div className="ecosystem-dotted-vertical h-full w-full" />
                 </div>
 
-                <div className="absolute bottom-0 left-[6%] right-[6%] border-t border-dashed border-[#c69a42]/75" />
+                <div className="absolute bottom-0 left-[6%] right-[6%] border-t border-dashed border-[#b73535]/75" />
 
                 {[6, 28, 50, 72, 94].map((left) => (
                   <span
                     key={left}
-                    className="absolute bottom-[-5px] h-3 w-3 -translate-x-1/2 rounded-full bg-[#c69a42]"
+                    className="absolute bottom-[-5px] h-3 w-3 -translate-x-1/2 rounded-full bg-[#b73535]"
                     style={{ left: `${left}%` }}
                   />
                 ))}
@@ -1428,7 +1481,7 @@ export function DigitalYouthProjectPage({
                     className="rounded-[1.25rem] border border-[#13271b]/10 bg-white p-5 text-left shadow-[0_18px_55px_rgba(16,35,25,0.06)]"
                   >
                     <div className="mb-4 flex items-start gap-3">
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#eaf4dc] text-[#0b3a1f]">
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#07120d] text-[#fff8ef]">
                         <Icon className="h-5 w-5" />
                       </div>
 
@@ -1443,7 +1496,7 @@ export function DigitalYouthProjectPage({
                       {leadsTo.map((item) => (
                         <p
                           key={item}
-                          className="text-[0.58rem] font-extrabold uppercase leading-4 tracking-[0.06em] text-[#8a5d12]"
+                          className="text-[0.58rem] font-extrabold uppercase leading-4 tracking-[0.06em] text-[#b73535]"
                         >
                           {item}
                         </p>
@@ -1460,7 +1513,7 @@ export function DigitalYouthProjectPage({
                 <p className="mt-1 text-sm text-white/68">Built today</p>
               </div>
 
-              <div className="rounded-[1.2rem] bg-[#c69a42] p-5 text-center text-[#07120d]">
+              <div className="rounded-[1.2rem] bg-[#8f1f1f] p-5 text-center text-[#fff8ef]">
                 <p className="font-serif text-3xl">Opportunities</p>
                 <p className="mt-1 text-sm font-semibold">
                   Opened through the ecosystem
@@ -2070,8 +2123,8 @@ export function DigitalYouthProjectPage({
 
 
 
-        <div className="mx-auto mt-10 max-w-[1440px] overflow-hidden rounded-[2rem] border border-[#13271b]/10 bg-[#07120d] text-white shadow-[0_30px_95px_rgba(7,18,13,0.18)]">
-          <div className="grid lg:grid-cols-[0.96fr_1.04fr]">
+        <div className="relative left-1/2 mt-10 w-screen -translate-x-1/2 overflow-hidden bg-[#07120d] text-white shadow-[0_30px_95px_rgba(7,18,13,0.18)]">
+          <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[0.96fr_1.04fr]">
             <article className="relative overflow-hidden p-7 lg:p-10">
               <div className="absolute left-[-25%] top-[-35%] h-[380px] w-[380px] rounded-full bg-[#c69a42]/12 blur-3xl" />
               <div className="absolute bottom-[-30%] right-[-20%] h-[360px] w-[360px] rounded-full bg-[#0b7a3a]/18 blur-3xl" />
@@ -2098,7 +2151,8 @@ export function DigitalYouthProjectPage({
                   {buildItPathwaySteps.map(({ step, title, body, Icon }) => (
                     <article
                       key={title}
-                      className="rounded-[1.15rem] border border-[#c69a42]/25 bg-white/[0.06] p-5 transition duration-500 hover:-translate-y-1 hover:bg-white/[0.09]"
+                      className={`buildit-pathway-card ${step === "03" ? "buildit-pathway-card-final" : ""} rounded-[1.15rem] border border-[#c69a42]/25 bg-white/[0.06] p-5 transition duration-500 hover:-translate-y-1 hover:bg-white/[0.09]`}
+                      style={{ animationDelay: `${(Number(step) - 1) * 1.15}s` }}
                     >
                       <div className="mb-5 flex items-start justify-between gap-4">
                         <span className="grid h-9 w-9 place-items-center rounded-full bg-[#c69a42] text-xs font-black text-[#07120d]">
@@ -2148,23 +2202,34 @@ export function DigitalYouthProjectPage({
             </aside>
           </div>
 
-          <div className="grid border-t border-white/10 bg-[#061a13] sm:grid-cols-2 lg:grid-cols-4">
-            {buildItBenefits.map(({ title, body, Icon }) => (
-              <article
-                key={title}
-                className="border-b border-white/10 p-6 last:border-b-0 sm:border-r sm:last:border-r-0 lg:border-b-0"
-              >
-                <div className="mb-4 grid h-12 w-12 place-items-center rounded-full border border-[#c69a42]/35 bg-white/6 text-[#f2d184]">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="font-serif text-2xl leading-7 text-[#fff8ef]">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-white/64">
-                  {body}
-                </p>
-              </article>
-            ))}
+          <div className="border-t border-[#13271b]/10 bg-[#fff8ef] px-5 py-6 sm:px-8 lg:px-12 lg:py-8">
+            <div className="mx-auto max-w-[1440px]">
+              <p className="mb-5 text-xs font-black uppercase tracking-[0.2em] text-[#8f1f1f]">
+                BuildIT Platform Capabilities
+              </p>
+
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {buildItCapabilities.map(({ title, body, Icon }) => (
+                  <article
+                    key={title}
+                    className="group rounded-[1rem] border border-[#13271b]/10 bg-white p-4 shadow-[0_16px_45px_rgba(16,35,25,0.06)] transition duration-500 hover:-translate-y-1 hover:border-[#8f1f1f]/30 hover:shadow-[0_22px_60px_rgba(16,35,25,0.1)]"
+                  >
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#8f1f1f] text-[#fff8ef] transition duration-500 group-hover:bg-[#07120d]">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <h3 className="font-serif text-xl leading-6 text-[#13271b]">
+                        {title}
+                      </h3>
+                    </div>
+
+                    <p className="text-sm leading-6 text-[#536458]">
+                      {body}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
