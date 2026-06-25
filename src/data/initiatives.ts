@@ -1,13 +1,12 @@
-import projectGrillit from "@/assets/project-grillit.jpg";
-import projectHealth from "@/assets/project-health.jpg";
-import projectMarathon from "@/assets/project-marathon.jpg";
-import projectCovid from "@/assets/project-covid.jpg";
+import projectGrillit from "@/assets/initiativessouth-east-food-security/se-food-security-field-team.jpeg";
+import projectHealth from "@/assets/girl-child-women/01-g-for-the-girl-child-project/02-health-dignity-and-skills/gfgc-health-worker-speaker.jpg";
+import projectMarathon from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runner-portrait-sepia.jpeg";
+import projectCovid from "@/assets/initiativessouth-east-food-security/covid_egg_04_g_initiative_vest_distribution.jpg";
 import heroCommunity from "@/assets/hero-community.jpg";
 import heroFoodSecurity from "@/assets/hero-foodsecurity.jpg";
-import heroImpact from "@/assets/hero-impact.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import seFoodSecurityCardCommunityOutreach from "@/assets/initiativessouth-east-food-security/se-food-security-card-community-outreach.jpeg";
+import heroImpact from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
+import gallery2 from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/gfgc-full-girls-lineup-wide.jpg";
+import gallery3 from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-community-stakeholders-group.jpg";
 import buildItHero from "@/assets/build-it/builditt-hero.jpg";
 
 export type InitiativeStatus = "Active" | "Expansion" | "Recorded" | "Future";

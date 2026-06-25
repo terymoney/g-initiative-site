@@ -105,7 +105,7 @@ function Home() {
         <div className="relative z-10 mx-auto flex min-h-[calc(100svh-6rem)] max-w-[1440px] flex-col justify-end px-5 pb-8 pt-20 sm:px-8 lg:px-12 lg:pb-14">
           <div className="grid items-end gap-12">
             <div className="max-w-5xl">
-              <div className="hero-kicker mb-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-[0.73rem] font-bold uppercase tracking-[0.24em] text-white/80 backdrop-blur-xl">
+              <div className="hero-kicker mb-7 flex w-fit items-center gap-3 text-[0.73rem] font-bold uppercase tracking-[0.24em] text-white/80">
                 <span className="hero-kicker-dot h-1.5 w-1.5 rounded-full bg-[#e22025]" />
                 Corporate Social Responsibility • Our Journey So Far
               </div>

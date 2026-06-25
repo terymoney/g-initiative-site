@@ -1,7 +1,33 @@
 import { ArrowRight } from "lucide-react";
 import { initiatives } from "@/data/initiatives";
+import foodSecurityCover from "@/assets/initiativessouth-east-food-security/covid_egg_01_hero_children_receiving_eggs.jpg";
+import youthSportsCover from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runner-portrait-sepia.jpeg";
+import educationCover from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
+import digitalYouthCover from "@/assets/aspire/aspire-masterclass-audience-wide.jpg";
+import girlChildWomenCover from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/gfgc-full-girls-lineup-wide.jpg";
+
+const featuredInitiativeSlugs = new Set([
+  "south-east-food-security-initiative",
+  "youth-sports-development-initiative",
+  "education-leadership-empowerment-initiative",
+  "digital-youth-project",
+  "build-it",
+  "girl-child-women-development-initiative",
+]);
+
+const featuredCoverImages: Record<string, string> = {
+  "south-east-food-security-initiative": foodSecurityCover,
+  "youth-sports-development-initiative": youthSportsCover,
+  "education-leadership-empowerment-initiative": educationCover,
+  "digital-youth-project": digitalYouthCover,
+  "girl-child-women-development-initiative": girlChildWomenCover,
+};
 
 export function FeaturedInitiatives() {
+  const featuredInitiatives = initiatives.filter((initiative) =>
+    featuredInitiativeSlugs.has(initiative.slug),
+  );
+
   return (
     <section
       id="initiatives"
@@ -36,8 +62,10 @@ export function FeaturedInitiatives() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {initiatives.map((initiative, index) => {
+          {featuredInitiatives.map((initiative, index) => {
             const isFeatured = index === 0;
+            const coverImage =
+              featuredCoverImages[initiative.slug] ?? initiative.image;
 
             return (
               <a
@@ -51,7 +79,7 @@ export function FeaturedInitiatives() {
                 ].join(" ")}
               >
                 <img
-                  src={initiative.image}
+                  src={coverImage}
                   alt={initiative.title}
                   className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />

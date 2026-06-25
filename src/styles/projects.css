@@ -50,7 +50,7 @@
 
 .projects-filter-pill {
   border: 1px solid rgba(19, 39, 27, 0.13);
-  border-radius: 999px;
+  border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.5);
   padding: 0.72rem 1rem;
   color: #13271b;
@@ -117,7 +117,7 @@
   position: absolute;
   left: 1rem;
   top: 1rem;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   background: rgba(7, 18, 13, 0.72);
   padding: 0.5rem 0.8rem;
   color: #fff8e7;
@@ -140,7 +140,7 @@
 }
 
 .projects-card__meta span {
-  border-radius: 999px;
+  border-radius: 0.5rem;
   background: rgba(12, 154, 75, 0.08);
   padding: 0.42rem 0.64rem;
   color: #0c843f;
@@ -190,7 +190,7 @@
 
 .project-detail-pill {
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
+  border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.09);
   padding: 0.58rem 0.82rem;
   color: rgba(255, 255, 255, 0.84);
@@ -212,7 +212,7 @@
 }
 
 .project-detail-sdg {
-  border-radius: 999px;
+  border-radius: 0.5rem;
   background: #13271b;
   padding: 0.7rem 1rem;
   color: #fff8e7;
@@ -859,7 +859,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  border-radius: 999px;
+  border-radius: 0.5rem;
   padding: 0.9rem 1.1rem;
   font-size: 0.86rem;
   font-weight: 900;
