@@ -1,11 +1,9 @@
 import {
-  ArrowLeft,
   ArrowRight,
   BadgeCheck,
   BookOpen,
   BriefcaseBusiness,
   CheckCircle2,
-  Download,
   Droplets,
   Globe2,
   HeartHandshake,
@@ -303,13 +301,6 @@ export function GirlChildWomenInitiativePage({
 
         <div className="relative z-10 mx-auto grid min-h-[calc(820px-7rem)] max-w-[1440px] items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-24">
           <div>
-            <a
-              href="/#initiatives"
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#13271b]/15 bg-white/60 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-[#13271b] shadow-[0_12px_40px_rgba(16,35,25,0.08)] backdrop-blur-xl"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to initiatives
-            </a>
-
             <p className="mb-5 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.28em] text-[#c45a7b]">
               <Sparkles className="h-4 w-4" />
               {initiative.title}
@@ -889,12 +880,6 @@ export function GirlChildWomenInitiativePage({
                   Partner with us <ArrowRight className="h-4 w-4" />
                 </a>
 
-                <a
-                  href="/assets/g-initiative-portfolio-2026.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white/85 transition hover:bg-white/10"
-                >
-                  <Download className="h-4 w-4" /> Download Project Portfolio
-                </a>
               </div>
             </div>
 

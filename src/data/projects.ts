@@ -27,6 +27,7 @@ export type ProjectCategory =
   | "Education & Leadership"
   | "Women & Girls"
   | "Enterprise & Creative"
+  | "Hospitality"
   | "Culture & Heritage"
   | "Community Infrastructure";
 
@@ -52,6 +53,7 @@ export type ImpactProject = {
   sdgs: string[];
   pathway: ProjectPathway;
   storyReady?: boolean;
+  initiativeAnchor?: string;
 };
 
 export const projectCategories: Array<"All" | ProjectCategory> = [
@@ -62,6 +64,7 @@ export const projectCategories: Array<"All" | ProjectCategory> = [
   "Education & Leadership",
   "Women & Girls",
   "Enterprise & Creative",
+  "Hospitality",
   "Culture & Heritage",
   "Community Infrastructure",
 ];
@@ -93,6 +96,7 @@ export const projects: ImpactProject[] = [
       impact: "Protein support for children and vulnerable households",
     },
     storyReady: false,
+    initiativeAnchor: "egg-distribution",
   },
   {
     title: "Provision of Feed to Support Agro-SME",
@@ -119,11 +123,12 @@ export const projects: ImpactProject[] = [
       impact: "Stronger local food production and reduced hunger risk",
     },
     storyReady: false,
+    initiativeAnchor: "agro-sme-feed-support",
   },
   {
     title: "Isabella Farms & Resort",
     slug: "isabella-farms-and-resort",
-    category: "Food Security",
+    category: "Hospitality",
     status: "Expansion",
     image: seFoodSecurityGardenOverview,
     year: "Expansion",

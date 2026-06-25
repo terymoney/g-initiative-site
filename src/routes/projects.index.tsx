@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import buildItProjectsCover from "@/assets/digital-youth-assets/campus/buildit-gprojects-construction-trade-hero.jpeg";
+import digitalYouthProjectsCover from "@/assets/digital-youth-assets/campus/digital-youth-campus-innovation-hub.jpg";
 import { SiteHeader } from "@/components/initiatives/SiteHeader";
 import { initiatives } from "@/data/initiatives";
 import {
@@ -15,10 +16,15 @@ export const Route = createFileRoute("/projects/")({
   component: ProjectsPage,
 });
 
-type ArchiveFilter = "All" | ProjectCategory | "Construction & Trade";
+type ArchiveFilter =
+  | "All"
+  | ProjectCategory
+  | "Digital Youth"
+  | "Construction & Trade";
 
 const archiveFilters: ArchiveFilter[] = [
   ...projectCategories,
+  "Digital Youth",
   "Construction & Trade",
 ];
 
@@ -30,6 +36,16 @@ function ProjectsPage() {
     return initiatives.find((initiative) => initiative.slug === "build-it");
   }, []);
 
+  const digitalYouthInitiative = useMemo(() => {
+    return initiatives.find(
+      (initiative) => initiative.slug === "digital-youth-project",
+    );
+  }, []);
+
+  const showDigitalYouthInitiative =
+    Boolean(digitalYouthInitiative) &&
+    (activeCategory === "All" || activeCategory === "Digital Youth");
+
   const showBuildItInitiative =
     Boolean(buildItInitiative) &&
     (activeCategory === "All" || activeCategory === "Construction & Trade");
@@ -37,6 +53,7 @@ function ProjectsPage() {
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
       if (activeCategory === "All") return true;
+      if (activeCategory === "Digital Youth") return false;
       if (activeCategory === "Construction & Trade") return false;
 
       return project.category === activeCategory;
@@ -48,16 +65,31 @@ function ProjectsPage() {
       .map((initiative) => ({
         initiative,
         items: filteredProjects.filter(
-          (project) => project.parentInitiativeSlug === initiative.slug,
+          (project) =>
+            project.parentInitiativeSlug === initiative.slug &&
+            project.category !== "Hospitality",
         ),
       }))
       .filter((group) => group.items.length > 0);
   }, [filteredProjects]);
 
-  const visibleArchiveCount =
-    filteredProjects.length + (showBuildItInitiative ? 1 : 0);
+  const hospitalityProjects = useMemo(
+    () =>
+      filteredProjects.filter(
+        (project) => project.category === "Hospitality",
+      ),
+    [filteredProjects],
+  );
 
-  const totalArchiveCount = projects.length + (buildItInitiative ? 1 : 0);
+  const visibleArchiveCount =
+    filteredProjects.length +
+    (showDigitalYouthInitiative ? 1 : 0) +
+    (showBuildItInitiative ? 1 : 0);
+
+  const totalArchiveCount =
+    projects.length +
+    (digitalYouthInitiative ? 1 : 0) +
+    (buildItInitiative ? 1 : 0);
 
   return (
     <main className="projects-page min-h-screen bg-[#07120d] text-[#f7f1df]">
@@ -133,6 +165,68 @@ function ProjectsPage() {
           </div>
 
           <div className="mt-14 space-y-16">
+            {showDigitalYouthInitiative && digitalYouthInitiative && (
+              <section key={digitalYouthInitiative.slug}>
+                <div className="mb-7 border-b border-[#13271b]/10 pb-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.22em] text-[#e22025]">
+                    Part of {digitalYouthInitiative.eyebrow}
+                  </p>
+
+                  <a
+                    href={`/initiatives/${digitalYouthInitiative.slug}`}
+                    className="group inline-flex items-end gap-3"
+                    aria-label={`View ${digitalYouthInitiative.title}`}
+                  >
+                    <h2 className="font-serif text-[clamp(2.1rem,3.6vw,4rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#13271b] transition group-hover:text-[#e22025]">
+                      {digitalYouthInitiative.title}
+                    </h2>
+
+                    <ArrowRight className="mb-2 hidden h-6 w-6 text-[#e22025] transition group-hover:translate-x-1 sm:block" />
+                  </a>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  <article className="projects-card">
+                    <a
+                      href={`/initiatives/${digitalYouthInitiative.slug}`}
+                      className="projects-card__image-wrap"
+                      aria-label={`View ${digitalYouthInitiative.title}`}
+                    >
+                      <img
+                        src={digitalYouthProjectsCover}
+                        alt={digitalYouthInitiative.title}
+                        className="projects-card__image"
+                      />
+
+                      <div className="projects-card__status">
+                        {digitalYouthInitiative.status}
+                      </div>
+                    </a>
+
+                    <div className="projects-card__body">
+                      <div className="projects-card__meta">
+                        <span>{digitalYouthInitiative.eyebrow}</span>
+                        <span>{digitalYouthInitiative.projectCountLabel}</span>
+                      </div>
+
+                      <h2>{digitalYouthInitiative.title}</h2>
+
+                      <p>{digitalYouthInitiative.description}</p>
+
+                      <div className="mt-7 flex flex-wrap gap-3">
+                        <a
+                          href={`/initiatives/${digitalYouthInitiative.slug}`}
+                          className="projects-card__link"
+                        >
+                          Explore ecosystem <ArrowRight className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            )}
+
             {showBuildItInitiative && buildItInitiative && (
               <section key={buildItInitiative.slug}>
                 <div className="mb-7 border-b border-[#13271b]/10 pb-5">
@@ -195,6 +289,62 @@ function ProjectsPage() {
               </section>
             )}
 
+            {hospitalityProjects.length > 0 && (
+              <section>
+                <div className="mb-7 border-b border-[#13271b]/10 pb-5">
+                  <p className="mb-3 text-xs font-black uppercase tracking-[0.22em] text-[#e22025]">
+                    Hospitality archive
+                  </p>
+
+                  <h2 className="font-serif text-[clamp(2.1rem,3.6vw,4rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#13271b]">
+                    Hospitality
+                  </h2>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  {hospitalityProjects.map((project) => (
+                    <article key={project.slug} className="projects-card">
+                      <a
+                        href={`/initiatives/${project.parentInitiativeSlug}`}
+                        className="projects-card__image-wrap"
+                        aria-label={`View ${project.title}`}
+                      >
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="projects-card__image"
+                        />
+
+                        <div className="projects-card__status">
+                          {project.status}
+                        </div>
+                      </a>
+
+                      <div className="projects-card__body">
+                        <div className="projects-card__meta">
+                          <span>{project.category}</span>
+                          {project.year && <span>{project.year}</span>}
+                        </div>
+
+                        <h2>{project.title}</h2>
+
+                        <p>{project.description}</p>
+
+                        <div className="mt-7 flex flex-wrap gap-3">
+                          <a
+                            href={`/initiatives/${project.parentInitiativeSlug}`}
+                            className="projects-card__link"
+                          >
+                            View concept <ArrowRight className="h-4 w-4" />
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {groupedProjects.map(({ initiative, items }) => (
               <section key={initiative.slug}>
                 <div className="mb-7 border-b border-[#13271b]/10 pb-5">
@@ -220,7 +370,11 @@ function ProjectsPage() {
                     const hasStoryPage = Boolean(project.storyReady);
                     const cardHref = hasStoryPage
                       ? `/projects/${project.slug}`
-                      : `/initiatives/${project.parentInitiativeSlug}`;
+                      : `/initiatives/${project.parentInitiativeSlug}${
+                          project.initiativeAnchor
+                            ? `#${project.initiativeAnchor}`
+                            : ""
+                        }`;
 
                     return (
                       <article key={project.slug} className="projects-card">
@@ -252,7 +406,10 @@ function ProjectsPage() {
 
                           <div className="mt-7 flex flex-wrap gap-3">
                             <a href={cardHref} className="projects-card__link">
-                              View project <ArrowRight className="h-4 w-4" />
+                              {project.initiativeAnchor
+                                ? "View intervention"
+                                : "View project"}{" "}
+                              <ArrowRight className="h-4 w-4" />
                             </a>
                           </div>
                         </div>

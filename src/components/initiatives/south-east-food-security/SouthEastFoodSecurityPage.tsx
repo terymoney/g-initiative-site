@@ -1,12 +1,12 @@
 import {
   ArrowRight,
   CheckCircle2,
-  Download,
   HeartHandshake,
   ShieldCheck,
   Sprout,
   Truck,
   Users,
+  X,
 } from "lucide-react";
 import {
   Children,
@@ -19,6 +19,7 @@ import {
 } from "react";
 import type { Initiative } from "@/data/initiatives";
 
+import heroCommunity from "@/assets/hero-community.jpg";
 import covidEggHeroChildrenReceivingEggs from "@/assets/initiativessouth-east-food-security/covid_egg_01_hero_children_receiving_eggs.jpg";
 import covidEggChildHoldingEgg from "@/assets/initiativessouth-east-food-security/covid_egg_02_child_holding_egg.jpg";
 import covidEggPickupWithEggsAndSupplies from "@/assets/initiativessouth-east-food-security/covid_egg_03_pickup_with_eggs_and_supplies.jpg";
@@ -27,11 +28,8 @@ import covidEggCommunityQueueDistribution from "@/assets/initiativessouth-east-f
 import covidEggChildrenSmilingAfterRelief from "@/assets/initiativessouth-east-food-security/covid_egg_06_children_smiling_after_relief.jpg";
 import covidEggTeamLoadingEggTrays from "@/assets/initiativessouth-east-food-security/covid_egg_07_team_loading_egg_trays.jpg";
 import covidEggCrowdDistributionTruck from "@/assets/initiativessouth-east-food-security/covid_egg_08_crowd_distribution_truck.jpg";
-import seFoodSecurityAccessRoad from "@/assets/initiativessouth-east-food-security/se-food-security-access-road.jpeg";
 import seFoodSecurityCommunityDistribution from "@/assets/initiativessouth-east-food-security/se-food-security-community-distribution.jpeg";
-import seFoodSecurityCultivationWalkway from "@/assets/initiativessouth-east-food-security/se-food-security-cultivation-walkway.jpeg";
 import seFoodSecurityFieldTeam from "@/assets/initiativessouth-east-food-security/se-food-security-field-team.jpeg";
-import seFoodSecuritySiloFieldVisit from "@/assets/initiativessouth-east-food-security/se-food-security-silo-field-visit.jpeg";
 
 type RevealVariant =
   | "up"
@@ -246,14 +244,50 @@ function SectionTitle({
 function CheckLine({
   children,
   dark = false,
+  delay = 0,
 }: {
   children: ReactNode;
   dark?: boolean;
+  delay?: number;
 }) {
+  const ref = useRef<HTMLLIElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(node);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -5% 0px",
+      },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <li className={`flex gap-3 ${dark ? "text-white/72" : "text-[#405244]"}`}>
+    <li
+      ref={ref}
+      className={`flex gap-3 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:translate-x-0 motion-reduce:opacity-100 ${
+        visible ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
+      } ${dark ? "text-white/72" : "text-[#405244]"}`}
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+    >
       <CheckCircle2
-        className={`mt-1 h-5 w-5 shrink-0 ${
+        className={`mt-1 h-5 w-5 shrink-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:scale-100 ${
+          visible ? "scale-100" : "scale-50"
+        } ${
           dark ? "text-[#9be7bf]" : "text-[#0b7a4b]"
         }`}
       />
@@ -373,6 +407,29 @@ export function SouthEastFoodSecurityPage({
 }: {
   initiative: Initiative;
 }) {
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState<
+    (typeof galleryImages)[number] | null
+  >(null);
+
+  useEffect(() => {
+    if (!selectedGalleryImage) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedGalleryImage(null);
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedGalleryImage]);
+
   return (
     <main className="south-east-food-security-page min-h-screen overflow-x-hidden bg-[#fff7ed] text-[#081b22] antialiased">
       <style>
@@ -383,9 +440,9 @@ export function SouthEastFoodSecurityPage({
 
           .south-east-food-security-page .chain-spine {
             position: absolute;
-            left: 1.9rem;
-            top: 4.6rem;
-            bottom: 4.6rem;
+            left: 0.95rem;
+            top: 2rem;
+            bottom: 2rem;
             width: 2px;
             overflow: hidden;
             background: rgba(11, 122, 75, 0.13);
@@ -394,44 +451,91 @@ export function SouthEastFoodSecurityPage({
           .south-east-food-security-page .chain-spine::after {
             content: "";
             position: absolute;
-            inset: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 28%;
             transform: translateY(-100%);
             background: linear-gradient(180deg, transparent, rgba(155,231,191,0.95), rgba(11,122,75,0.95), transparent);
-            animation: chainPulse 5.8s ease-in-out infinite;
+            animation: chainPulse 5.8s linear infinite;
           }
 
           @media (min-width: 1024px) {
             .south-east-food-security-page .chain-spine {
               left: 50%;
-              top: 6rem;
-              bottom: 6rem;
+              top: 2.25rem;
+              bottom: 2.25rem;
               transform: translateX(-50%);
             }
           }
 
-          .south-east-food-security-page .chain-branch {
-            position: absolute;
-            display: none;
-            background: rgba(11, 122, 75, 0.18);
-            overflow: hidden;
+          .south-east-food-security-page .chain-list {
+            display: grid;
+            gap: 2rem;
           }
 
-          .south-east-food-security-page .chain-branch::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            transform: translateX(-100%);
-            background: linear-gradient(90deg, transparent, rgba(155,231,191,0.95), rgba(11,122,75,0.95), transparent);
-            animation: branchPulse 6.4s ease-in-out infinite;
+          .south-east-food-security-page .chain-step {
+            position: relative;
+            display: grid;
+            grid-template-columns: 2rem minmax(0, 1fr);
+            align-items: center;
+            gap: 1.25rem;
+            min-width: 0;
+          }
+
+          .south-east-food-security-page .chain-step__card {
+            grid-column: 2;
+            grid-row: 1;
+            width: 100%;
+            max-width: 34rem;
+            min-width: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.045);
+            padding: 1.5rem;
+            backdrop-filter: blur(8px);
+            transition:
+              transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+              background 500ms ease,
+              border-color 500ms ease;
+          }
+
+          .south-east-food-security-page .chain-step__icon {
+            display: grid;
+            width: 3rem;
+            height: 3rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid rgba(155, 231, 191, 0.26);
+            border-radius: 0.75rem;
+            background: rgba(155, 231, 191, 0.08);
+            color: #9be7bf;
+          }
+
+          .south-east-food-security-page .chain-step__card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(155, 231, 191, 0.24);
+            background: rgba(255, 255, 255, 0.07);
           }
 
           @media (min-width: 1024px) {
-            .south-east-food-security-page .chain-branch {
-              display: block;
-              height: 2px;
-              left: 50%;
-              right: 12%;
-              top: 67.5%;
+            .south-east-food-security-page .chain-list {
+              gap: 2.5rem;
+            }
+
+            .south-east-food-security-page .chain-step {
+              grid-template-columns: minmax(0, 1fr) 4rem minmax(0, 1fr);
+              gap: 2.75rem;
+              min-height: 11rem;
+            }
+
+            .south-east-food-security-page .chain-step--left .chain-step__card {
+              grid-column: 1;
+              justify-self: end;
+            }
+
+            .south-east-food-security-page .chain-step--right .chain-step__card {
+              grid-column: 3;
+              justify-self: start;
             }
           }
 
@@ -452,21 +556,32 @@ export function SouthEastFoodSecurityPage({
             animation: quietFloat 8s ease-in-out infinite;
           }
 
-          @keyframes chainPulse {
-            0%, 100% {
-              transform: translateY(-100%);
-            }
-            50% {
-              transform: translateY(100%);
-            }
+          .south-east-food-security-page .food-security-arrow {
+            animation: foodSecurityArrowLife 1.85s ease-in-out infinite;
+            will-change: transform;
           }
 
-          @keyframes branchPulse {
-            0%, 100% {
-              transform: translateX(-100%);
+          .south-east-food-security-page a:hover .food-security-arrow,
+          .south-east-food-security-page a:focus-visible .food-security-arrow,
+          .south-east-food-security-page button:hover .food-security-arrow,
+          .south-east-food-security-page button:focus-visible .food-security-arrow {
+            animation-duration: 0.82s;
+          }
+
+          @keyframes chainPulse {
+            0% {
+              transform: translateY(-100%);
+              opacity: 0;
             }
-            50% {
-              transform: translateX(100%);
+            8% {
+              opacity: 1;
+            }
+            88% {
+              opacity: 1;
+            }
+            100% {
+              transform: translateY(460%);
+              opacity: 0;
             }
           }
 
@@ -476,6 +591,27 @@ export function SouthEastFoodSecurityPage({
             }
             50% {
               transform: translate3d(0, -10px, 0) scale(1.015);
+            }
+          }
+
+          @keyframes foodSecurityArrowLife {
+            0%, 100% {
+              transform: translateX(0);
+              opacity: 0.78;
+            }
+            45% {
+              transform: translateX(5px);
+              opacity: 1;
+            }
+            60% {
+              transform: translateX(2px);
+              opacity: 0.9;
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .south-east-food-security-page .food-security-arrow {
+              animation: none;
             }
           }
         `}
@@ -518,7 +654,8 @@ export function SouthEastFoodSecurityPage({
                 href="#egg-distribution"
                 className="inline-flex items-center gap-2 rounded-2xl bg-[#0b7a4b] px-7 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#095f3b]"
               >
-                View the response <ArrowRight className="h-4 w-4" />
+                View the response{" "}
+                <ArrowRight className="food-security-arrow h-4 w-4" />
               </a>
 
               <a
@@ -554,9 +691,15 @@ export function SouthEastFoodSecurityPage({
               </p>
 
               <ul className="mt-7 space-y-3">
-                <CheckLine>Provision of feed to support Agro-SME.</CheckLine>
-                <CheckLine>Emergency food relief for vulnerable families.</CheckLine>
-                <CheckLine>Food storage, distribution, and community support.</CheckLine>
+                <CheckLine delay={0}>
+                  Provision of feed to support Agro-SME.
+                </CheckLine>
+                <CheckLine delay={130}>
+                  Emergency food relief for vulnerable families.
+                </CheckLine>
+                <CheckLine delay={260}>
+                  Food storage, distribution, and community support.
+                </CheckLine>
               </ul>
             </Reveal>
 
@@ -565,8 +708,8 @@ export function SouthEastFoodSecurityPage({
               className="soft-image-wrap relative overflow-hidden rounded-[2rem] border border-[#081b22]/10 bg-white shadow-[0_28px_90px_rgba(8,27,34,0.08)]"
             >
               <img
-                src={seFoodSecuritySiloFieldVisit}
-                alt="Silo field visit connected to food storage and food-security systems"
+                src={covidEggChildrenSmilingAfterRelief}
+                alt="Children smiling after receiving food-security relief"
                 className="soft-image h-[520px] w-full object-cover"
               />
 
@@ -602,54 +745,45 @@ export function SouthEastFoodSecurityPage({
 
           <div className="chain-stage mt-16">
             <div className="chain-spine" />
-            <div className="chain-branch" />
 
-            <Reveal variant="stagger" className="space-y-8 lg:space-y-10">
+            <div className="chain-list">
               {chainSteps.map((step, index) => {
                 const Icon = step.Icon;
                 const isEven = index % 2 === 0;
-                const isStorageBranch = step.title === "Food Storage";
-                const isDistributionBranch = step.title === "Distribution Systems";
 
                 return (
-                  <article
-                    id={step.id}
+                  <Reveal
                     key={step.title}
-                    className={`relative grid gap-5 lg:grid-cols-2 lg:items-center ${
-                      isStorageBranch || isDistributionBranch
-                        ? "lg:ml-auto lg:max-w-[46%] lg:grid-cols-1"
-                        : ""
+                    className={`chain-step ${
+                      isEven ? "chain-step--left" : "chain-step--right"
                     }`}
+                    variant={isEven ? "left" : "right"}
                   >
-                    <div
-                      className={`flex items-start gap-5 ${
-                        isEven || isStorageBranch || isDistributionBranch
-                          ? "lg:pr-16"
-                          : "lg:col-start-2 lg:pl-16"
-                      }`}
-                    >
-                      <span className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/12 bg-[#f0f8f2]/10 text-[#9be7bf] shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
-                        <Icon className="h-7 w-7" />
-                      </span>
+                    <article id={step.id} className="chain-step__card">
+                      <div className="flex items-center gap-4">
+                        <span className="chain-step__icon">
+                          <Icon className="h-6 w-6" />
+                        </span>
 
-                      <div className="max-w-xl border border-white/10 bg-white/[0.045] p-6 backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-white/[0.07]">
-                        <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#9be7bf]">
-                          0{index + 1}
-                        </p>
+                        <div>
+                          <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#9be7bf]">
+                            0{index + 1}
+                          </p>
 
-                        <h3 className="mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em]">
-                          {step.title}
-                        </h3>
-
-                        <p className="mt-4 text-sm leading-7 text-white/68">
-                          {step.text}
-                        </p>
+                          <h3 className="mt-2 font-serif text-3xl leading-[0.95] tracking-[-0.045em]">
+                            {step.title}
+                          </h3>
+                        </div>
                       </div>
-                    </div>
-                  </article>
+
+                      <p className="mt-5 text-sm leading-7 text-white/68">
+                        {step.text}
+                      </p>
+                    </article>
+                  </Reveal>
                 );
               })}
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -658,7 +792,7 @@ export function SouthEastFoodSecurityPage({
         <div className="mx-auto max-w-[1440px] space-y-24">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <Reveal variant="zoom">
-              <Kicker>01 / Agro-SME feed support</Kicker>
+              <Kicker>Agro-SME feed support</Kicker>
 
               <SectionTitle>
                 Feed support came first because food security begins at source.
@@ -680,18 +814,12 @@ export function SouthEastFoodSecurityPage({
 
             <Reveal
               variant="image"
-              className="grid gap-4 sm:grid-cols-[0.78fr_1.22fr]"
+              className="overflow-hidden rounded-[2rem] shadow-[0_28px_90px_rgba(8,27,34,0.1)]"
             >
-              <img
-                src={seFoodSecurityCultivationWalkway}
-                alt="Cultivation walkway connected to food-source systems"
-                className="h-[460px] w-full rounded-[2rem] object-cover shadow-[0_24px_80px_rgba(8,27,34,0.08)]"
-              />
-
               <img
                 src={seFoodSecurityFieldTeam}
                 alt="Field team supporting South-East food-security implementation"
-                className="h-[460px] w-full rounded-[2rem] object-cover shadow-[0_24px_80px_rgba(8,27,34,0.08)]"
+                className="h-[560px] w-full object-cover object-[center_18%]"
               />
             </Reveal>
           </div>
@@ -711,7 +839,7 @@ export function SouthEastFoodSecurityPage({
             </Reveal>
 
             <Reveal variant="blur" className="order-1 lg:order-2">
-              <Kicker>02 / When the pandemic struck</Kicker>
+              <Kicker>When the pandemic struck</Kicker>
 
               <SectionTitle>
                 Vulnerable families faced hunger, uncertainty, and low savings.
@@ -734,7 +862,7 @@ export function SouthEastFoodSecurityPage({
 
           <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <Reveal variant="soft">
-              <Kicker>03 / COVID-19 quick response</Kicker>
+              <Kicker>COVID-19 quick response</Kicker>
 
               <SectionTitle>
                 Over 30,000 free eggs distributed to vulnerable families.
@@ -748,9 +876,13 @@ export function SouthEastFoodSecurityPage({
               </p>
 
               <ul className="mt-7 space-y-3">
-                <CheckLine>Combatting malnutrition in children.</CheckLine>
-                <CheckLine>Strengthening the health of entire families.</CheckLine>
-                <CheckLine>
+                <CheckLine delay={0}>
+                  Combatting malnutrition in children.
+                </CheckLine>
+                <CheckLine delay={130}>
+                  Strengthening the health of entire families.
+                </CheckLine>
+                <CheckLine delay={260}>
                   Giving families dignity, nourishment, and reassurance that they
                   were not forgotten.
                 </CheckLine>
@@ -817,15 +949,15 @@ export function SouthEastFoodSecurityPage({
           <Reveal variant="image">
             <div className="overflow-hidden rounded-[2rem] shadow-[0_28px_90px_rgba(8,27,34,0.1)]">
               <img
-                src={covidEggPickupWithEggsAndSupplies}
-                alt="Pickup truck carrying eggs and food supplies for community distribution"
+                src={covidEggTeamLoadingEggTrays}
+                alt="G Initiative team member loading egg trays for community distribution"
                 className="h-[540px] w-full object-cover"
               />
             </div>
           </Reveal>
 
           <Reveal variant="soft">
-            <Kicker>04 / From relief to resilience</Kicker>
+            <Kicker>From relief to resilience</Kicker>
 
             <SectionTitle>
               The project points beyond one-time emergency support.
@@ -839,18 +971,18 @@ export function SouthEastFoodSecurityPage({
             </p>
 
             <ul className="mt-7 space-y-3">
-              <CheckLine>
+              <CheckLine delay={0}>
                 Strengthen food storage and distribution infrastructure.
               </CheckLine>
-              <CheckLine>
+              <CheckLine delay={130}>
                 Support sustainable nutrition for children, pregnant women, and
                 the elderly.
               </CheckLine>
-              <CheckLine>
+              <CheckLine delay={260}>
                 Empower local farmers and agro-enterprises through capacity
                 building and market access.
               </CheckLine>
-              <CheckLine>
+              <CheckLine delay={390}>
                 Secure community resilience against future crises.
               </CheckLine>
             </ul>
@@ -879,16 +1011,57 @@ export function SouthEastFoodSecurityPage({
                 key={image.alt}
                 className={`gallery-card overflow-hidden rounded-[1.65rem] bg-white shadow-[0_22px_65px_rgba(8,27,34,0.09)] ${image.className}`}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="gallery-image h-full w-full object-cover"
-                />
+                <button
+                  type="button"
+                  onClick={() => setSelectedGalleryImage(image)}
+                  className="block h-full w-full cursor-zoom-in"
+                  aria-label={`View full image: ${image.alt}`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="gallery-image h-full w-full object-cover"
+                  />
+                </button>
               </article>
             ))}
           </Reveal>
         </div>
       </section>
+
+      {selectedGalleryImage && (
+        <div
+          className="fixed inset-0 z-[100] grid place-items-center bg-[#020704]/92 p-4 backdrop-blur-md sm:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedGalleryImage.alt}
+          onClick={() => setSelectedGalleryImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedGalleryImage(null)}
+            className="absolute right-4 top-4 z-10 grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-black/35 text-white transition hover:bg-black/60 sm:right-7 sm:top-7"
+            aria-label="Close full image"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <figure
+            className="flex max-h-[90vh] max-w-[94vw] flex-col items-center gap-3"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              src={selectedGalleryImage.src}
+              alt={selectedGalleryImage.alt}
+              className="max-h-[84vh] max-w-full object-contain shadow-[0_30px_100px_rgba(0,0,0,0.5)]"
+            />
+
+            <figcaption className="max-w-3xl text-center text-sm text-white/75">
+              {selectedGalleryImage.alt}
+            </figcaption>
+          </figure>
+        </div>
+      )}
 
       <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
@@ -908,28 +1081,14 @@ export function SouthEastFoodSecurityPage({
           </Reveal>
 
           <Reveal
-            variant="stagger"
-            className="grid gap-5 sm:grid-cols-[0.9fr_1.1fr]"
+            variant="image"
+            className="overflow-hidden rounded-[2rem] shadow-[0_28px_90px_rgba(8,27,34,0.1)]"
           >
             <img
               src={covidEggChildHoldingEgg}
               alt="Child holding egg and food support package"
-              className="h-[560px] w-full rounded-[2rem] object-cover shadow-[0_28px_90px_rgba(8,27,34,0.1)]"
+              className="h-[620px] w-full object-cover object-top"
             />
-
-            <div className="grid gap-5">
-              <img
-                src={covidEggChildrenSmilingAfterRelief}
-                alt="Children smiling during food relief response"
-                className="h-[270px] w-full rounded-[2rem] object-cover shadow-[0_22px_70px_rgba(8,27,34,0.08)]"
-              />
-
-              <img
-                src={covidEggTeamLoadingEggTrays}
-                alt="Team loading egg trays during distribution"
-                className="h-[270px] w-full rounded-[2rem] object-cover shadow-[0_22px_70px_rgba(8,27,34,0.08)]"
-              />
-            </div>
           </Reveal>
         </div>
       </section>
@@ -999,14 +1158,8 @@ export function SouthEastFoodSecurityPage({
                 href="/#partners"
                 className="inline-flex items-center gap-2 rounded-2xl bg-[#0b7a4b] px-7 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#095f3b]"
               >
-                Partner with us <ArrowRight className="h-4 w-4" />
-              </a>
-
-              <a
-                href="/assets/g-initiative-portfolio-2026.pdf"
-                className="inline-flex items-center gap-2 rounded-2xl border border-white/20 px-7 py-4 text-sm font-black text-white/85 transition hover:-translate-y-0.5 hover:bg-white/10"
-              >
-                <Download className="h-4 w-4" /> Download portfolio
+                Partner with us{" "}
+                <ArrowRight className="food-security-arrow h-4 w-4" />
               </a>
             </div>
           </Reveal>
@@ -1016,8 +1169,8 @@ export function SouthEastFoodSecurityPage({
             className="relative min-h-[500px] overflow-hidden rounded-[2rem] shadow-[0_32px_100px_rgba(0,0,0,0.28)]"
           >
             <img
-              src={seFoodSecurityAccessRoad}
-              alt="Access road connected to community reach and food-security movement"
+              src={heroCommunity}
+              alt="Community members gathered together"
               className="absolute inset-0 h-full w-full object-cover"
             />
 
