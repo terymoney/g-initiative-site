@@ -6,6 +6,7 @@ import { NwaihaWomenDevelopmentCenterPage } from "@/components/projects/NwaihaWo
 import { IkeduruEssayCompetitionPage } from "@/components/projects/IkeduruEssayCompetitionPage";
 import { AspireLeadershipMasterClassPage } from "@/components/projects/AspireLeadershipMasterClassPage";
 import { IkeduruHalfMarathonPage } from "@/components/projects/IkeduruHalfMarathonPage";
+import { IsabellaFarmsResortPage } from "@/components/projects/IsabellaFarmsResortPage";
 import { getInitiativeBySlug } from "@/data/initiatives";
 import { getProjectBySlug, projects } from "@/data/projects";
 
@@ -80,6 +81,11 @@ function ProjectDetailPage() {
           project={project}
           parentInitiative={parentInitiative}
           relatedProjects={relatedProjects}
+        />
+      ) : project.slug === "isabella-farms-and-resort" ? (
+        <IsabellaFarmsResortPage
+          project={project}
+          parentInitiative={parentInitiative}
         />
       ) : (
         <>

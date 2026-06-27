@@ -302,45 +302,49 @@ function ProjectsPage() {
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                  {hospitalityProjects.map((project) => (
-                    <article key={project.slug} className="projects-card">
-                      <a
-                        href={`/initiatives/${project.parentInitiativeSlug}`}
-                        className="projects-card__image-wrap"
-                        aria-label={`View ${project.title}`}
-                      >
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="projects-card__image"
-                        />
+                  {hospitalityProjects.map((project) => {
+                    const cardHref = project.storyReady
+                      ? `/projects/${project.slug}`
+                      : `/initiatives/${project.parentInitiativeSlug}`;
 
-                        <div className="projects-card__status">
-                          {project.status}
+                    return (
+                      <article key={project.slug} className="projects-card">
+                        <a
+                          href={cardHref}
+                          className="projects-card__image-wrap"
+                          aria-label={`View ${project.title}`}
+                        >
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="projects-card__image"
+                          />
+
+                          <div className="projects-card__status">
+                            {project.status}
+                          </div>
+                        </a>
+
+                        <div className="projects-card__body">
+                          <div className="projects-card__meta">
+                            <span>{project.category}</span>
+                            {project.year && <span>{project.year}</span>}
+                          </div>
+
+                          <h2>{project.title}</h2>
+
+                          <p>{project.description}</p>
+
+                          <div className="mt-7 flex flex-wrap gap-3">
+                            <a href={cardHref} className="projects-card__link">
+                              View resort vision{" "}
+                              <ArrowRight className="h-4 w-4" />
+                            </a>
+                          </div>
                         </div>
-                      </a>
-
-                      <div className="projects-card__body">
-                        <div className="projects-card__meta">
-                          <span>{project.category}</span>
-                          {project.year && <span>{project.year}</span>}
-                        </div>
-
-                        <h2>{project.title}</h2>
-
-                        <p>{project.description}</p>
-
-                        <div className="mt-7 flex flex-wrap gap-3">
-                          <a
-                            href={`/initiatives/${project.parentInitiativeSlug}`}
-                            className="projects-card__link"
-                          >
-                            View concept <ArrowRight className="h-4 w-4" />
-                          </a>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
+                      </article>
+                    );
+                  })}
                 </div>
               </section>
             )}

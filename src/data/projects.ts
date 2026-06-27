@@ -7,7 +7,6 @@ import heroFoodSecurity from "@/assets/hero-foodsecurity.jpg";
 import heroImpact from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
 import gallery1 from "@/assets/aspire/aspire-masterclass-participant-recognition-01.jpg";
 import gallery3 from "@/assets/girl-child-women/01-g-for-the-girl-child-project/03-partnership-and-officials/gfgc-community-stakeholders-group.jpg";
-import seFoodSecurityGardenOverview from "@/assets/initiativessouth-east-food-security/se-food-security-cultivation-walkway.jpeg";
 import seFoodSecurityGreenFieldCloseup from "@/assets/initiativessouth-east-food-security/se-food-security-silo-field-visit.jpeg";
 
 import gfgcHeroAudience from "@/assets/girl-child-women/01-g-for-the-girl-child-project/01-hero-and-audience/gfgc-hero-audience-under-canopy.jpg";
@@ -17,6 +16,7 @@ import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-
 import ikeduruClassroomWide from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
 import aspireStageSpeakers from "@/assets/aspire/aspire-masterclass-stage-speakers.jpg";
 import ikeduruMarathonRunnerPortraitSepia from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runner-portrait-sepia.jpeg";
+import isabellaFarmlandLandscape from "@/assets/Isabella_Farms_Resort/isabella_farmland_landscape.jpg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -130,26 +130,27 @@ export const projects: ImpactProject[] = [
     slug: "isabella-farms-and-resort",
     category: "Hospitality",
     status: "Expansion",
-    image: seFoodSecurityGardenOverview,
+    image: isabellaFarmlandLandscape,
     year: "Expansion",
     parentInitiativeSlug: "south-east-food-security-initiative",
     parentInitiativeTitle: "South-East Food Security Initiative",
     description:
-      "A future agro-enterprise and food-resilience expansion connected to cultivation, land development, training, hospitality, and sustainable food systems.",
+      "A sustainable agriculture, eco-tourism, hospitality, clean-water, and conservation expansion rooted in Akabo community impact.",
     overview:
-      "Isabella Farms & Resort can sit under the South-East Food Security Initiative as a future-facing agro-enterprise expansion. It connects land, cultivation, community development, food production, and resilience into the broader food-security story.",
+      "Isabella Farms & Resort is a future-facing agro-enterprise and hospitality expansion. It connects land, cultivation, food production, clean water, renewable energy, biodiversity conservation, and responsible tourism into the broader food-security story.",
     highlights: [
-      "Future agro-enterprise expansion.",
-      "Connected to food production and local systems.",
-      "Supports the long-term South-East food-resilience vision.",
+      "Sustainable agriculture and poultry production.",
+      "Clean-water support for surrounding households.",
+      "Farm hotel and eco-tourism destination vision.",
+      "Biodiversity conservation and land restoration.",
     ],
-    sdgs: ["SDG 1", "SDG 2", "SDG 8", "SDG 11"],
+    sdgs: ["SDG 2", "SDG 6", "SDG 7", "SDG 8", "SDG 13", "SDG 15"],
     pathway: {
       source: "South-East Food Security Initiative",
-      output: "Agro-enterprise and farm-resort expansion",
-      impact: "Food production, training, enterprise, and long-term resilience",
+      output: "Sustainable farm, resort, and conservation model",
+      impact: "Food security, clean water, green enterprise, and eco-tourism",
     },
-    storyReady: false,
+    storyReady: true,
   },
   {
     title: "COVID-19 Informative Media & Mass Awareness Campaign",
