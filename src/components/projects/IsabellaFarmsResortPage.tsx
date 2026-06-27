@@ -15,13 +15,13 @@ import { Reveal } from "@/components/Reveal";
 import type { Initiative } from "@/data/initiatives";
 import type { ImpactProject } from "@/data/projects";
 
-import heroImg from "@/assets/Isabella_Farms_Resort/isabella_farmland_landscape.jpg";
 import cropsImg from "@/assets/Isabella_Farms_Resort/isabella_farmland_crops.jpg";
 import pineappleImg from "@/assets/Isabella_Farms_Resort/isabella_pineapple_field.jpg";
-import openFarmImg from "@/assets/Isabella_Farms_Resort/isabella_open_farmland.jpg";
 import overgrownImg from "@/assets/Isabella_Farms_Resort/isabella_existing_structure_overgrown.jpg";
 import buildingsSiteImg from "@/assets/Isabella_Farms_Resort/isabella_existing_buildings_site.jpg";
-import resortImg from "@/assets/Isabella_Farms_Resort/isabella_resort_buildings.jpg";
+import futureResortImg from "@/assets/Isabella_Farms_Resort/isabella_resort_future.png";
+import heroImg from "@/assets/Isabella_Farms_Resort/isabella_resort_hero.png";
+import hospitalityResortImg from "@/assets/Isabella_Farms_Resort/isabella_resort_hospitality.png";
 import southEastFieldTeamImg from "@/assets/initiativessouth-east-food-security/se-food-security-field-team.jpeg";
 
 type IsabellaImpact = {
@@ -135,14 +135,14 @@ export function IsabellaFarmsResortPage({
 
           .isabella-farms-page .isabella-impact-card--light:hover {
             transform: translateY(-7px);
-            border-color: rgba(226, 32, 37, 0.32);
+            border-color: rgba(107, 74, 43, 0.34);
             background: rgba(255, 255, 255, 0.82);
             box-shadow: 0 30px 90px rgba(16, 35, 25, 0.13);
           }
 
           .isabella-farms-page .isabella-impact-card--dark:hover {
             transform: translateY(-7px);
-            border-color: rgba(255, 107, 111, 0.42);
+            border-color: rgba(216, 184, 146, 0.44);
             background: rgba(255, 255, 255, 0.1);
             box-shadow: 0 30px 90px rgba(0, 0, 0, 0.22);
           }
@@ -155,7 +155,7 @@ export function IsabellaFarmsResortPage({
 
           .isabella-farms-page .isabella-impact-card:hover .isabella-impact-icon {
             transform: rotate(-4deg) scale(1.08);
-            background: #e22025;
+            background: #6B4A2B;
           }
 
           .isabella-farms-page .isabella-initiative-link {
@@ -247,24 +247,25 @@ export function IsabellaFarmsResortPage({
       >
         <img
           src={heroImg}
-          alt="Sweeping farmland landscape at Isabella Farms and Resort"
+          alt="Sweeping farmland landscape at Isabella Farms & Resort"
           className="isabella-hero-image absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,13,0.4)_0%,rgba(7,18,13,0.38)_44%,rgba(7,18,13,0.96)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(226,32,37,0.2),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(155,231,191,0.14),transparent_24%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,13,0.04)_0%,rgba(7,18,13,0.08)_48%,rgba(7,18,13,0.58)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,18,13,0.7)_0%,rgba(7,18,13,0.42)_38%,rgba(7,18,13,0.08)_72%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(201,161,92,0.16),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(155,231,191,0.08),transparent_24%)]" />
 
         <div className="relative mx-auto w-full max-w-[1440px] pb-16 lg:pb-24">
           <Reveal variant="blur" className="max-w-5xl">
-            <p className="mb-5 text-xs font-black uppercase tracking-[0.28em] text-[#ff6b6f]">
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.28em] text-[#C9A15C]">
               A model of sustainable impact
             </p>
 
             <h1 className="font-serif text-[clamp(4rem,8vw,9.4rem)] font-normal leading-[0.84] tracking-[-0.075em]">
-              Isabella Farms <span className="text-[#ff3a40]">&</span> Resort
+              Isabella Farms <span className="text-[#C9A15C]">&amp;</span> Resort
             </h1>
 
             <p className="mt-7 max-w-3xl text-base leading-8 text-white/78 sm:text-lg">
-              More than an agricultural enterprise, Isabella Farms and Resort is
+              More than an agricultural enterprise, Isabella Farms &amp; Resort is
               a community-focused hub of sustainability, empowerment,
               eco-tourism, and environmental conservation.
             </p>
@@ -272,7 +273,7 @@ export function IsabellaFarmsResortPage({
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#journey"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#e22025] px-7 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#b9151b]"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#8A623A] px-7 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#6B4A2B]"
               >
                 Explore the vision <ArrowRight className="isabella-arrow h-4 w-4" />
               </a>
@@ -307,7 +308,7 @@ export function IsabellaFarmsResortPage({
       >
         <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-2">
           <Reveal variant="left">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#e22025]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
               The journey begins
             </p>
 
@@ -317,7 +318,7 @@ export function IsabellaFarmsResortPage({
 
             <div className="mt-7 space-y-5 text-base leading-8 text-[#405244] sm:text-lg">
               <p>
-                The journey of Isabella Farms began with a commitment to
+                The journey of Isabella Farms &amp; Resort began with a commitment to
                 producing quality poultry birds and eggs while supporting food
                 security within Akabo Community and its surrounding areas.
               </p>
@@ -328,10 +329,10 @@ export function IsabellaFarmsResortPage({
                 and the environment.
               </p>
               <p>
-                During the COVID-19 pandemic, Isabella Farms supported G
+                During the COVID-19 pandemic, Isabella Farms &amp; Resort supported G
                 Initiative's emergency food security response through the
                 distribution of over{" "}
-                <span className="font-black text-[#e22025]">30,000 free eggs</span>,
+                <span className="font-black text-[#6B4A2B]">30,000 free eggs</span>,
                 helping vulnerable families gain access to essential nutrition
                 during a period of widespread hardship.
               </p>
@@ -342,11 +343,11 @@ export function IsabellaFarmsResortPage({
             <figure className="isabella-image-wrap relative overflow-hidden rounded-[2rem] bg-[#07120d] shadow-[0_26px_85px_rgba(16,35,25,0.14)]">
               <img
                 src={cropsImg}
-                alt="Farmland crops at Isabella Farms and Resort"
+                alt="Farmland crops at Isabella Farms & Resort"
                 className="isabella-image h-[560px] w-full object-cover"
               />
               <figcaption className="absolute bottom-0 left-0 right-0 bg-[linear-gradient(180deg,transparent,rgba(7,18,13,0.86))] p-7 text-sm font-semibold leading-7 text-[#fff8e7]">
-                Isabella Farms began with practical food production and a
+                Isabella Farms &amp; Resort began with practical food production and a
                 commitment to community nourishment.
               </figcaption>
             </figure>
@@ -357,7 +358,7 @@ export function IsabellaFarmsResortPage({
       <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-[1440px]">
           <Reveal variant="up" className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#e22025]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
               Community impact
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
@@ -394,15 +395,15 @@ export function IsabellaFarmsResortPage({
         className="relative overflow-hidden bg-[#07120d] px-5 py-24 text-[#fff8e7] sm:px-8 lg:px-12 lg:py-32"
       >
         <img
-          src={resortImg}
-          alt="Resort buildings at Isabella Farms and Resort"
+          src={hospitalityResortImg}
+          alt="Nature-inspired farm resort hospitality at Isabella Farms & Resort"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(7,18,13,0.95)_0%,rgba(7,18,13,0.76)_55%,rgba(7,18,13,0.5)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(7,18,13,0.72)_0%,rgba(7,18,13,0.46)_55%,rgba(7,18,13,0.18)_100%)]" />
 
         <div className="relative mx-auto max-w-4xl">
           <Reveal variant="blur">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#ff6b6f]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#C9A15C]">
               Where nature meets hospitality
             </p>
             <h2 className="font-serif text-[clamp(2.8rem,5vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.06em]">
@@ -410,7 +411,7 @@ export function IsabellaFarmsResortPage({
             </h2>
             <div className="mt-7 space-y-5 text-base leading-8 text-white/78 sm:text-lg">
               <p>
-                Isabella Farms and Resort continues to grow beyond traditional
+                Isabella Farms &amp; Resort continues to grow beyond traditional
                 farming toward a broader vision that combines agriculture,
                 nature, hospitality, and sustainability.
               </p>
@@ -422,13 +423,13 @@ export function IsabellaFarmsResortPage({
               </p>
               <p>
                 By bringing together agribusiness, recreation, conservation, and
-                community development, Isabella Farms and Resort seeks to create
+                community development, Isabella Farms &amp; Resort seeks to create
                 meaningful experiences while supporting sustainable economic
                 growth and protecting the natural environment.
               </p>
             </div>
             <div className="mt-8 inline-flex items-center gap-3 border border-white/20 bg-white/8 px-5 py-3 text-sm font-semibold text-white/88 backdrop-blur">
-              <Hotel className="h-4 w-4 text-[#ff6b6f]" /> Agribusiness,
+              <Hotel className="h-4 w-4 text-[#C9A15C]" /> Agribusiness,
               recreation, and conservation
             </div>
           </Reveal>
@@ -438,7 +439,7 @@ export function IsabellaFarmsResortPage({
       <section className="bg-[#e6f1e8] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-[1440px]">
           <Reveal variant="up" className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#e22025]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
               From the ground up
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
@@ -450,12 +451,12 @@ export function IsabellaFarmsResortPage({
             {[
               {
                 src: overgrownImg,
-                alt: "Existing overgrown structure on the Isabella Farms site",
+                alt: "Existing overgrown structure on the Isabella Farms & Resort site",
                 caption: "Existing structures awaiting renewal",
               },
               {
                 src: buildingsSiteImg,
-                alt: "Existing buildings on the Isabella Farms site",
+                alt: "Existing buildings on the Isabella Farms & Resort site",
                 caption: "The site today, foundations for the future",
               },
             ].map((image) => (
@@ -482,13 +483,13 @@ export function IsabellaFarmsResortPage({
           <Reveal variant="zoom" className="isabella-image-wrap overflow-hidden rounded-[2rem] shadow-[0_24px_75px_rgba(16,35,25,0.13)]">
             <img
               src={pineappleImg}
-              alt="Lush pineapple field at Isabella Farms"
+              alt="Lush pineapple field at Isabella Farms & Resort"
               className="isabella-image h-[560px] w-full object-cover"
             />
           </Reveal>
 
           <Reveal variant="right">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#e22025]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
               Championing life on land
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.5rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
@@ -496,7 +497,7 @@ export function IsabellaFarmsResortPage({
             </h2>
             <p className="mt-7 text-base leading-8 text-[#405244] sm:text-lg">
               As part of G Initiative's commitment to environmental
-              sustainability, Isabella Farms and Resort advances Sustainable
+              sustainability, Isabella Farms &amp; Resort advances Sustainable
               Development Goal 15 through initiatives that promote biodiversity
               conservation, ecological restoration, and sustainable land
               management.
@@ -523,14 +524,14 @@ export function IsabellaFarmsResortPage({
       >
         <div className="mx-auto max-w-[1440px]">
           <Reveal variant="up" className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#ff6b6f]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#C9A15C]">
               Why it matters
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.6rem)] font-normal leading-[0.9] tracking-[-0.06em]">
               A larger vision of sustainable development.
             </h2>
             <p className="mt-5 text-base leading-8 text-white/72">
-              Every initiative at Isabella Farms and Resort contributes to a
+              Every initiative at Isabella Farms &amp; Resort contributes to a
               larger vision of sustainable development.
             </p>
           </Reveal>
@@ -541,7 +542,7 @@ export function IsabellaFarmsResortPage({
                 key={title}
                 className="isabella-impact-card isabella-impact-card--dark border border-white/12 bg-white/6 p-8 backdrop-blur"
               >
-                <div className="isabella-impact-icon grid h-12 w-12 place-items-center rounded-lg bg-[#e22025] text-white">
+                <div className="isabella-impact-icon grid h-12 w-12 place-items-center rounded-lg bg-[#6B4A2B] text-white">
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-6 font-serif text-3xl leading-[0.95] tracking-[-0.045em]">
@@ -557,7 +558,7 @@ export function IsabellaFarmsResortPage({
       <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-[1440px]">
           <Reveal variant="up" className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#e22025]">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
               Sustainable Development Goals
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
@@ -574,7 +575,7 @@ export function IsabellaFarmsResortPage({
                 key={sdg.code}
                 className={`min-h-[160px] border p-5 text-center shadow-[0_18px_55px_rgba(16,35,25,0.07)] ${
                   index === 5
-                    ? "border-[#e22025] bg-[#e22025] text-white"
+                    ? "border-[#6B4A2B] bg-[#6B4A2B] text-white"
                     : "border-[#13271b]/10 bg-[#f0f8f2] text-[#13271b]"
                 }`}
               >
@@ -596,23 +597,23 @@ export function IsabellaFarmsResortPage({
         className="relative overflow-hidden bg-[#07120d] px-5 py-24 text-center text-[#fff8e7] sm:px-8 lg:px-12 lg:py-32"
       >
         <img
-          src={openFarmImg}
-          alt="Open farmland horizon at Isabella Farms and Resort"
+          src={futureResortImg}
+          alt="Garden resort landscape at Isabella Farms & Resort"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,13,0.82),rgba(7,18,13,0.96))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,13,0.42),rgba(7,18,13,0.72))]" />
 
         <div className="relative mx-auto max-w-4xl">
           <Reveal variant="blur">
-            <Leaf className="mx-auto h-10 w-10 text-[#ff6b6f]" />
-            <p className="mt-6 text-xs font-black uppercase tracking-[0.26em] text-[#ff6b6f]">
+            <Leaf className="mx-auto h-10 w-10 text-[#C9A15C]" />
+            <p className="mt-6 text-xs font-black uppercase tracking-[0.26em] text-[#C9A15C]">
               Looking ahead
             </p>
             <h2 className="mt-4 font-serif text-[clamp(2.8rem,5vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.06em]">
               A model for the future.
             </h2>
             <p className="mt-7 text-base leading-8 text-white/76 sm:text-lg">
-              Isabella Farms and Resort continues to evolve as a model for
+              Isabella Farms &amp; Resort continues to evolve as a model for
               sustainable agriculture, conservation, community development, and
               responsible tourism. Through collaboration, innovation, and
               long-term investment, the project demonstrates how agriculture can
@@ -621,7 +622,7 @@ export function IsabellaFarmsResortPage({
             </p>
             <a
               href="/#partners"
-              className="mt-9 inline-flex items-center gap-2 rounded-lg bg-[#e22025] px-7 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#b9151b]"
+              className="mt-9 inline-flex items-center gap-2 rounded-lg bg-[#8A623A] px-7 py-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-[#6B4A2B]"
             >
               Partner with G Initiative{" "}
               <ArrowRight className="isabella-arrow h-4 w-4" />
@@ -646,7 +647,7 @@ export function IsabellaFarmsResortPage({
               </div>
 
               <div className="p-6 sm:p-8 lg:p-10">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#e22025]">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#6B4A2B]">
                   Connected initiative
                 </p>
                 <h2 className="mt-3 font-serif text-[clamp(2.15rem,3.6vw,4rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#13271b]">
