@@ -23,6 +23,18 @@ import futureResortImg from "@/assets/Isabella_Farms_Resort/isabella_resort_futu
 import heroImg from "@/assets/Isabella_Farms_Resort/isabella_resort_hero.png";
 import hospitalityResortImg from "@/assets/Isabella_Farms_Resort/isabella_resort_hospitality.png";
 import southEastFieldTeamImg from "@/assets/initiativessouth-east-food-security/se-food-security-field-team.jpeg";
+import map2006Img from "@/assets/Isabella_Farms_Resort/isabella_map_2006.jpg";
+import map2010Img from "@/assets/Isabella_Farms_Resort/isabella_map_2010.jpg";
+import map2011Img from "@/assets/Isabella_Farms_Resort/isabella_map_2011.jpg";
+import map2014Img from "@/assets/Isabella_Farms_Resort/isabella_map_2014.jpg";
+import map2015Img from "@/assets/Isabella_Farms_Resort/isabella_map_2015.jpg";
+import map2017Img from "@/assets/Isabella_Farms_Resort/isabella_map_2017.jpg";
+import map2018Img from "@/assets/Isabella_Farms_Resort/isabella_map_2018.jpg";
+import map2019Img from "@/assets/Isabella_Farms_Resort/isabella_map_2019.jpg";
+import map2020Img from "@/assets/Isabella_Farms_Resort/isabella_map_2020.jpg";
+import map2021Img from "@/assets/Isabella_Farms_Resort/isabella_map_2021.jpg";
+import map2022Img from "@/assets/Isabella_Farms_Resort/isabella_map_2022.jpg";
+import futureVisionImg from "@/assets/Isabella_Farms_Resort/isabella_future_resort_vision.png";
 
 type IsabellaImpact = {
   Icon: LucideIcon;
@@ -49,7 +61,7 @@ const impacts: IsabellaImpact[] = [
   {
     Icon: Egg,
     title: "Strengthening Food Security",
-    body: "The continuous production of poultry birds and eggs helps improve access to affordable protein, contributing to better nutrition and stronger food security for families within Akabo Community and beyond.",
+    body: "The continuous production of poultry birds, eggs, and farm products helps improve access to affordable nutrition, contributing to stronger food security for families within Akabo Community and beyond.",
   },
 ];
 
@@ -76,7 +88,7 @@ const whyItMatters: IsabellaImpact[] = [
   {
     Icon: HeartHandshake,
     title: "For Communities",
-    body: "It creates opportunities through agriculture, eco-tourism, conservation, and green enterprise.",
+    body: "It creates opportunities through agriculture, food enterprise, eco-tourism, conservation, and green employment.",
   },
   {
     Icon: TreePine,
@@ -86,8 +98,69 @@ const whyItMatters: IsabellaImpact[] = [
   {
     Icon: Globe2,
     title: "For Visitors",
-    body: "It offers an opportunity to experience nature while supporting initiatives that create lasting environmental and social impact.",
+    body: "It offers an opportunity to experience nature, wellness, and hospitality while supporting initiatives that create lasting environmental and social impact.",
   },
+];
+
+const foodEcosystem: IsabellaImpact[] = [
+  {
+    Icon: Sprout,
+    title: "Jungle Juice",
+    body: "A fresh juice venture envisioned to transform fruits into natural juice products for guests, sellers, and surrounding markets.",
+  },
+  {
+    Icon: Egg,
+    title: "Grill It",
+    body: "A food brand connected to the farm through poultry production, linking farm-raised chicken to prepared meals, hospitality, and commercial food supply.",
+  },
+];
+
+const wellnessExperiences = [
+  "African-inspired luxury hut-style condos",
+  "Swimming pools, steam rooms, and saunas",
+  "Yoga, meditation, exercise, and nature-led wellness",
+  "Farm-to-table dining and self-cook produce experiences",
+];
+
+const landscapeStages = [
+  {
+    label: "Past",
+    title: "The early landscape",
+    subtitle: "Circa 2006",
+    body: "A largely natural setting, marked by greenery, quiet access paths, and the early shape of the estate.",
+    src: map2006Img,
+    alt: "Google Earth view of the Isabella Farms & Resort area around 2006",
+  },
+  {
+    label: "Present",
+    title: "A developing estate",
+    subtitle: "Recent view",
+    body: "Growing access, visible activity, and stronger development around the estate show a landscape already in motion.",
+    src: map2022Img,
+    alt: "Recent Google Earth view of the Isabella Farms & Resort estate",
+  },
+  {
+    label: "Future",
+    title: "The next chapter",
+    subtitle: "The resort vision",
+    body: "A future agro-hospitality destination shaped by farming, wellness, conservation, and African-inspired hospitality.",
+    src: futureVisionImg,
+    alt: "Future concept vision for Isabella Farms & Resort as an agro-hospitality destination",
+  },
+];
+
+const landscapeTimeline = [
+  { year: "2006", src: map2006Img },
+  { year: "2010", src: map2010Img },
+  { year: "2011", src: map2011Img },
+  { year: "2014", src: map2014Img },
+  { year: "2015", src: map2015Img },
+  { year: "2017", src: map2017Img },
+  { year: "2018", src: map2018Img },
+  { year: "2019", src: map2019Img },
+  { year: "2020", src: map2020Img },
+  { year: "2021", src: map2021Img },
+  { year: "2022", src: map2022Img },
 ];
 
 export function IsabellaFarmsResortPage({
@@ -265,9 +338,9 @@ export function IsabellaFarmsResortPage({
             </h1>
 
             <p className="mt-7 max-w-3xl text-base leading-8 text-white/78 sm:text-lg">
-              More than an agricultural enterprise, Isabella Farms &amp; Resort is
-              a community-focused hub of sustainability, empowerment,
-              eco-tourism, and environmental conservation.
+              Isabella Farms &amp; Resort is a farm-based destination where
+              agriculture, hospitality, wellness, food production, and
+              community development come together.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -289,15 +362,16 @@ export function IsabellaFarmsResortPage({
       <section className="bg-[#fff7ed] px-5 py-20 text-center sm:px-8 lg:px-12 lg:py-28">
         <Reveal variant="up" className="mx-auto max-w-5xl">
           <p className="text-xl leading-9 text-[#33483b] sm:text-2xl sm:leading-10">
-            Established through the Corporate Social Responsibility arm of
-            GProjects Limited, known as{" "}
+            More than an agricultural enterprise, it is a community-focused hub
+            of sustainability, empowerment, eco-tourism, and environmental
+            conservation. Established through the Corporate Social Responsibility
+            arm of GProjects Limited, known as{" "}
             <span className="font-serif text-3xl text-[#0b7a4b]">
               G Initiative
             </span>
-            , the project brings together sustainable agriculture, community
-            development, clean energy, biodiversity conservation, and
-            responsible tourism to create lasting environmental and social
-            impact.
+            , the project brings together sustainable agriculture, clean energy,
+            biodiversity conservation, responsible hospitality, and community
+            development to create lasting environmental and social impact.
           </p>
         </Reveal>
       </section>
@@ -332,9 +406,16 @@ export function IsabellaFarmsResortPage({
                 During the COVID-19 pandemic, Isabella Farms &amp; Resort supported G
                 Initiative's emergency food security response through the
                 distribution of over{" "}
-                <span className="font-black text-[#6B4A2B]">30,000 free eggs</span>,
-                helping vulnerable families gain access to essential nutrition
-                during a period of widespread hardship.
+                <span className="font-black text-[#6B4A2B]">30,000 free eggs</span>
+                {" "}to vulnerable families. At a time when many households faced
+                food insecurity, the intervention provided essential nutrition,
+                especially for children, and helped combat the risk of
+                malnutrition during a period of widespread hardship.
+              </p>
+              <p>
+                This moment reinforced the purpose behind Isabella Farms: to
+                nourish communities, respond to urgent needs, and create value
+                far beyond agricultural production.
               </p>
             </div>
           </Reveal>
@@ -351,6 +432,110 @@ export function IsabellaFarmsResortPage({
                 commitment to community nourishment.
               </figcaption>
             </figure>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[0.92fr_1.08fr]">
+          <Reveal variant="left">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
+              The working farm
+            </p>
+            <h2 className="font-serif text-[clamp(2.7rem,5vw,5.5rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
+              Rooted in production, shaped for hospitality.
+            </h2>
+            <div className="mt-7 space-y-5 text-base leading-8 text-[#405244] sm:text-lg">
+              <p>
+                Agriculture remains the foundation of Isabella Farms &amp; Resort.
+                The farm produces poultry birds, eggs, fruits, vegetables, and
+                other farm products that support food supply, nutrition, and
+                local enterprise.
+              </p>
+              <p>
+                Its agricultural base strengthens the identity of the destination,
+                ensuring that the future resort is not separated from the land,
+                but deeply rooted in its productivity.
+              </p>
+              <p>
+                From poultry production to fresh farm produce, Isabella Farms
+                continues to support food security while laying the foundation for
+                a richer farm-to-table hospitality experience.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal variant="right" className="grid gap-5 sm:grid-cols-2">
+            {[
+              {
+                src: buildingsSiteImg,
+                alt: "Existing buildings on the Isabella Farms & Resort site",
+                caption: "A site evolving into its next chapter",
+              },
+              {
+                src: overgrownImg,
+                alt: "Existing overgrown structure on the Isabella Farms & Resort site",
+                caption: "The land, infrastructure, and vision taking shape",
+              },
+            ].map((image) => (
+              <figure
+                key={image.caption}
+                className="isabella-image-wrap relative overflow-hidden rounded-[1.6rem] bg-[#07120d] shadow-[0_24px_75px_rgba(16,35,25,0.13)]"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="isabella-image h-80 w-full object-cover"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,transparent,rgba(7,18,13,0.88))] p-6 text-sm font-black text-[#fff8e7]">
+                  {image.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#e6f1e8] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-[1440px]">
+          <Reveal variant="up" className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
+              From farm produce to food enterprise
+            </p>
+            <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
+              A wider G Initiative food ecosystem.
+            </h2>
+            <p className="mt-5 text-base leading-8 text-[#405244] sm:text-lg">
+              The vision for Isabella Farms &amp; Resort extends into a wider G
+              Initiative food ecosystem where farming, processing, hospitality,
+              and enterprise work together.
+            </p>
+          </Reveal>
+
+          <Reveal variant="stagger" className="mt-14 grid gap-6 md:grid-cols-2">
+            {foodEcosystem.map(({ Icon, title, body }) => (
+              <article
+                key={title}
+                className="isabella-impact-card isabella-impact-card--light border border-[#13271b]/10 bg-white/70 p-8 shadow-[0_22px_70px_rgba(16,35,25,0.08)]"
+              >
+                <div className="isabella-impact-icon grid h-12 w-12 place-items-center rounded-lg bg-[#13271b] text-[#fff8e7]">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-6 font-serif text-4xl leading-[0.95] tracking-[-0.045em] text-[#13271b]">
+                  {title}
+                </h3>
+                <p className="mt-4 text-base leading-8 text-[#405244]">{body}</p>
+              </article>
+            ))}
+          </Reveal>
+
+          <Reveal
+            variant="up"
+            className="mx-auto mt-12 max-w-4xl border-l-4 border-[#6B4A2B] bg-white/60 p-7 text-base leading-8 text-[#405244] shadow-[0_18px_55px_rgba(16,35,25,0.07)]"
+          >
+            Together, these projects show how Isabella Farms &amp; Resort can move
+            beyond production into a complete value chain where food is grown,
+            processed, served, experienced, and distributed.
           </Reveal>
         </div>
       </section>
@@ -407,30 +592,110 @@ export function IsabellaFarmsResortPage({
               Where nature meets hospitality
             </p>
             <h2 className="font-serif text-[clamp(2.8rem,5vw,5.8rem)] font-normal leading-[0.9] tracking-[-0.06em]">
-              A farm hotel and eco-tourism destination.
+              A farm hotel and wellness agro-resort.
             </h2>
             <div className="mt-7 space-y-5 text-base leading-8 text-white/78 sm:text-lg">
               <p>
-                Isabella Farms &amp; Resort continues to grow beyond traditional
-                farming toward a broader vision that combines agriculture,
-                nature, hospitality, and sustainability.
+                Isabella Farms &amp; Resort is envisioned as a farm hotel and
+                wellness agro-resort where nature, comfort, and African
+                hospitality come together.
               </p>
               <p>
-                The long-term vision is to develop the project into a farm hotel
-                and eco-tourism destination where visitors can experience modern
-                farming, organic food production, nature-inspired hospitality,
-                and environmentally responsible living within one destination.
+                The future destination will feature African-inspired luxury
+                hut-style condos, serene relaxation areas, swimming pools, steam
+                rooms, saunas, and nature-led spaces for rest, yoga, meditation,
+                and exercise.
               </p>
               <p>
-                By bringing together agribusiness, recreation, conservation, and
-                community development, Isabella Farms &amp; Resort seeks to create
-                meaningful experiences while supporting sustainable economic
-                growth and protecting the natural environment.
+                Guests will be welcomed into an environment where fresh farm
+                produce, warm hospitality, and peaceful landscapes create a
+                restorative experience. They may enjoy farm-to-table dining,
+                access seasonal fruits and vegetables, or choose a more personal
+                self-cook experience inspired by the produce of the farm.
               </p>
             </div>
             <div className="mt-8 inline-flex items-center gap-3 border border-white/20 bg-white/8 px-5 py-3 text-sm font-semibold text-white/88 backdrop-blur">
-              <Hotel className="h-4 w-4 text-[#C9A15C]" /> Agribusiness,
-              recreation, and conservation
+              <Hotel className="h-4 w-4 text-[#C9A15C]" /> Lodging, wellness,
+              fresh food, and African hospitality
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[0.98fr_1.02fr]">
+          <Reveal variant="left">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
+              Wellness, rest and renewal
+            </p>
+            <h2 className="font-serif text-[clamp(2.7rem,5vw,5.5rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
+              A destination designed for restoration.
+            </h2>
+            <p className="mt-7 text-base leading-8 text-[#405244] sm:text-lg">
+              Wellness is central to the future vision of Isabella Farms &amp;
+              Resort. The project is designed to support rest, recreation,
+              movement, and restoration through spaces for relaxation, fitness,
+              meditation, and nature-based wellness. As the destination develops,
+              the vision also allows room for professional health and restorative
+              care services, expanding Isabella's role beyond hospitality into a
+              place of renewal.
+            </p>
+          </Reveal>
+
+          <Reveal variant="stagger" className="grid gap-4 sm:grid-cols-2">
+            {wellnessExperiences.map((item, index) => (
+              <article
+                key={item}
+                className="isabella-impact-card isabella-impact-card--light border border-[#13271b]/10 bg-white/70 p-6 shadow-[0_18px_55px_rgba(16,35,25,0.07)]"
+              >
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-[#13271b] font-serif text-xl text-[#fff8e7]">
+                  {index + 1}
+                </div>
+                <p className="text-sm font-black leading-6 text-[#13271b] sm:text-base">
+                  {item}
+                </p>
+              </article>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section
+        data-header-theme="dark"
+        className="bg-[#07120d] px-5 py-20 text-[#fff8e7] sm:px-8 lg:px-12 lg:py-28"
+      >
+        <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+          <Reveal variant="left" className="isabella-image-wrap overflow-hidden rounded-[2rem] shadow-[0_24px_75px_rgba(0,0,0,0.24)]">
+            <img
+              src={futureVisionImg}
+              alt="Future resort vision with cableway, wellness spaces, and agro-hospitality landscape"
+              className="isabella-image h-[540px] w-full object-cover"
+            />
+          </Reveal>
+
+          <Reveal variant="right">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#C9A15C]">
+              A signature scenic experience
+            </p>
+            <h2 className="font-serif text-[clamp(2.7rem,5vw,5.5rem)] font-normal leading-[0.9] tracking-[-0.06em]">
+              An elevated view of the destination.
+            </h2>
+            <div className="mt-7 space-y-5 text-base leading-8 text-white/74 sm:text-lg">
+              <p>
+                One of the future highlights of Isabella Farms &amp; Resort is the
+                vision for a scenic cableway experience.
+              </p>
+              <p>
+                Designed to take advantage of the estate's natural elevation, the
+                cableway would offer guests a memorable journey with panoramic
+                views of the resort landscape, farmland, and surrounding
+                environment.
+              </p>
+              <p>
+                More than a transport feature, it is envisioned as a signature
+                attraction — an elevated experience that connects movement,
+                scenery, leisure, and discovery.
+              </p>
             </div>
           </Reveal>
         </div>
@@ -438,42 +703,95 @@ export function IsabellaFarmsResortPage({
 
       <section className="bg-[#e6f1e8] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-[1440px]">
-          <Reveal variant="up" className="mx-auto max-w-3xl text-center">
+          <Reveal variant="up" className="mx-auto max-w-4xl text-center">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
-              From the ground up
+              A landscape in transformation
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
-              A landscape in transformation.
+              From land to living destination.
             </h2>
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#405244] sm:text-lg">
+              Across the years, the Isabella Farms &amp; Resort estate has grown
+              from a largely natural landscape into a developing agricultural
+              and hospitality site. As the vision expands, the land is being
+              shaped into a destination for food production, wellness,
+              hospitality, conservation, and long-term community value.
+            </p>
           </Reveal>
 
-          <Reveal variant="stagger" className="mt-12 grid gap-5 sm:grid-cols-2">
-            {[
-              {
-                src: overgrownImg,
-                alt: "Existing overgrown structure on the Isabella Farms & Resort site",
-                caption: "Existing structures awaiting renewal",
-              },
-              {
-                src: buildingsSiteImg,
-                alt: "Existing buildings on the Isabella Farms & Resort site",
-                caption: "The site today, foundations for the future",
-              },
-            ].map((image) => (
-              <figure
-                key={image.caption}
-                className="isabella-image-wrap relative overflow-hidden rounded-[1.6rem] bg-[#07120d] shadow-[0_24px_75px_rgba(16,35,25,0.13)]"
+          <Reveal variant="stagger" className="mt-14 grid gap-6 lg:grid-cols-3">
+            {landscapeStages.map((stage) => (
+              <article
+                key={stage.label}
+                className="overflow-hidden rounded-[1.4rem] border border-[#13271b]/10 bg-white/70 shadow-[0_22px_70px_rgba(16,35,25,0.08)]"
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="isabella-image h-80 w-full object-cover"
-                />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,transparent,rgba(7,18,13,0.88))] p-6 text-sm font-black text-[#fff8e7]">
-                  {image.caption}
-                </figcaption>
-              </figure>
+                <div className="relative h-72 overflow-hidden bg-[#07120d]">
+                  <img
+                    src={stage.src}
+                    alt={stage.alt}
+                    className="isabella-image h-full w-full object-cover"
+                  />
+                  <div className="absolute left-5 top-5 rounded-lg bg-[#13271b] px-5 py-2 text-xs font-black uppercase tracking-[0.16em] text-[#fff8e7]">
+                    {stage.label}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6B4A2B]">
+                    {stage.subtitle}
+                  </p>
+                  <h3 className="mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em] text-[#13271b]">
+                    {stage.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-[#405244]">
+                    {stage.body}
+                  </p>
+                </div>
+              </article>
             ))}
+          </Reveal>
+
+          <Reveal
+            variant="up"
+            className="mt-12 rounded-[1.4rem] bg-[#07120d] p-6 text-[#fff8e7] shadow-[0_24px_75px_rgba(16,35,25,0.16)] lg:p-8"
+          >
+            <div className="grid gap-8 lg:grid-cols-[0.35fr_1fr] lg:items-center">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#C9A15C]">
+                  Journey of growth
+                </p>
+                <h3 className="mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em]">
+                  Through the years.
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-white/68">
+                  A visual timeline of the estate's growth, from earlier
+                  satellite views to its emerging future.
+                </p>
+              </div>
+
+              <div className="flex gap-4 overflow-x-auto pb-2">
+                {landscapeTimeline.map((item) => (
+                  <figure key={item.year} className="min-w-[170px]">
+                    <p className="mb-2 text-center text-xs font-black tracking-[0.14em] text-[#C9A15C]">
+                      {item.year}
+                    </p>
+                    <img
+                      src={item.src}
+                      alt={`Google Earth timeline view of Isabella Farms & Resort in ${item.year}`}
+                      className="h-24 w-full rounded-lg object-cover"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal
+            variant="up"
+            className="mx-auto mt-10 max-w-4xl bg-white/70 p-7 text-center text-base leading-8 text-[#405244] shadow-[0_18px_55px_rgba(16,35,25,0.07)]"
+          >
+            As the area continues to grow, Isabella Farms &amp; Resort stands as
+            an anchor for sustainable development, community impact, and
+            long-term economic value.
           </Reveal>
         </div>
       </section>
@@ -613,12 +931,12 @@ export function IsabellaFarmsResortPage({
               A model for the future.
             </h2>
             <p className="mt-7 text-base leading-8 text-white/76 sm:text-lg">
-              Isabella Farms &amp; Resort continues to evolve as a model for
-              sustainable agriculture, conservation, community development, and
-              responsible tourism. Through collaboration, innovation, and
-              long-term investment, the project demonstrates how agriculture can
-              create opportunities that extend far beyond food production,
-              strengthening communities and protecting natural ecosystems.
+              Isabella Farms &amp; Resort is evolving into a model for sustainable
+              agriculture, food enterprise, wellness hospitality, conservation,
+              and community-centered development. Its future brings together a
+              working farm, fresh food production, African-inspired
+              accommodation, wellness experiences, eco-tourism, and responsible
+              land development within one integrated destination.
             </p>
             <a
               href="/#partners"
