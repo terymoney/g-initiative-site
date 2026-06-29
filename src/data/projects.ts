@@ -16,7 +16,7 @@ import nwaihaCenterDesignRender from "@/assets/girl-child-women/03-nwaiha-women-
 import ikeduruClassroomWide from "@/assets/essay/ikeduru-essay-classroom-wide.jpeg";
 import aspireStageSpeakers from "@/assets/aspire/aspire-masterclass-stage-speakers.jpg";
 import ikeduruMarathonRunnerPortraitSepia from "@/assets/ikeduru-half-marathon/ikeduru-marathon-runner-portrait-sepia.jpeg";
-import isabellaFarmlandLandscape from "@/assets/Isabella_Farms_Resort/isabella_farmland_landscape.jpg";
+import isabellaProjectCardLandscape from "@/assets/Isabella_Farms_Resort/isabella_project_card_landscape.jpeg";
 
 export type ProjectStatus = "Completed" | "Active" | "Expansion" | "Future";
 
@@ -130,7 +130,7 @@ export const projects: ImpactProject[] = [
     slug: "isabella-farms-and-resort",
     category: "Hospitality",
     status: "Expansion",
-    image: isabellaFarmlandLandscape,
+    image: isabellaProjectCardLandscape,
     year: "Expansion",
     parentInitiativeSlug: "south-east-food-security-initiative",
     parentInitiativeTitle: "South-East Food Security Initiative",

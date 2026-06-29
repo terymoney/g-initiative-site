@@ -1592,13 +1592,13 @@ export function IsabellaFarmsResortPage({
       )}
 
       {parentInitiative && (
-        <section className="bg-[#fff7ed] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
-          <div className="mx-auto max-w-[1180px] border-t border-[#13271b]/10 pt-10">
+        <section className="bg-[#fff7ed] py-12 lg:py-16">
+          <div className="w-full border-t border-[#13271b]/10 pt-8">
             <Reveal
               variant="up"
-              className="grid overflow-hidden rounded-[1.4rem] border border-[#13271b]/10 bg-[#e6f1e8] shadow-[0_20px_58px_rgba(16,35,25,0.09)] lg:grid-cols-[0.72fr_1.28fr]"
+              className="grid w-full overflow-hidden border-y border-[#13271b]/10 bg-[#e6f1e8] shadow-[0_18px_48px_rgba(16,35,25,0.08)] lg:grid-cols-[0.42fr_1.58fr]"
             >
-              <div className="isabella-image-wrap min-h-[250px] overflow-hidden bg-[#07120d] lg:min-h-[330px]">
+              <div className="isabella-image-wrap min-h-[180px] overflow-hidden bg-[#07120d] sm:min-h-[210px] lg:min-h-[230px]">
                 <img
                   src={southEastFieldTeamImg}
                   alt={parentInitiative.title}
@@ -1606,24 +1606,24 @@ export function IsabellaFarmsResortPage({
                 />
               </div>
 
-              <div className="p-6 sm:p-8 lg:p-10">
+              <div className="px-5 py-5 sm:px-8 sm:py-6 lg:px-12 lg:py-7">
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-[#6B4A2B]">
                   Connected initiative
                 </p>
-                <h2 className="mt-3 font-serif text-[clamp(2.15rem,3.6vw,4rem)] font-normal leading-[0.92] tracking-[-0.055em] text-[#13271b]">
+                <h2 className="mt-2 font-serif text-[clamp(1.9rem,3vw,3.2rem)] font-normal leading-[0.94] tracking-[-0.052em] text-[#13271b]">
                   {parentInitiative.title}
                 </h2>
-                <p className="mt-5 max-w-2xl text-sm leading-7 text-[#405244] sm:text-base">
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-[#405244] sm:text-[0.95rem]">
                   {parentInitiative.description}
                 </p>
 
-                <div className="mt-5 text-xs font-black uppercase tracking-[0.16em] text-[#405244]/75">
+                <div className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-[#405244]/75">
                   {parentInitiative.sdgs.join(" / ")}
                 </div>
 
                 <a
                   href={`/initiatives/${parentInitiative.slug}`}
-                  className="isabella-initiative-link mt-7"
+                  className="isabella-initiative-link mt-5"
                 >
                   <span>View initiative story</span>
                   <ArrowRight className="isabella-arrow h-4 w-4" />
