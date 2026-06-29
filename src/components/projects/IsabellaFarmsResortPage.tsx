@@ -8,9 +8,11 @@ import {
   Leaf,
   Sprout,
   TreePine,
+  X,
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import type { Initiative } from "@/data/initiatives";
 import type { ImpactProject } from "@/data/projects";
@@ -45,6 +47,13 @@ type IsabellaImpact = {
 type IsabellaFarmsResortPageProps = {
   project: ImpactProject;
   parentInitiative?: Initiative;
+};
+
+type LandscapePreview = {
+  src: string;
+  alt: string;
+  title: string;
+  subtitle?: string;
 };
 
 const impacts: IsabellaImpact[] = [
@@ -150,23 +159,116 @@ const landscapeStages = [
 ];
 
 const landscapeTimeline = [
-  { year: "2006", src: map2006Img },
-  { year: "2010", src: map2010Img },
-  { year: "2011", src: map2011Img },
-  { year: "2014", src: map2014Img },
-  { year: "2015", src: map2015Img },
-  { year: "2017", src: map2017Img },
-  { year: "2018", src: map2018Img },
-  { year: "2019", src: map2019Img },
-  { year: "2020", src: map2020Img },
-  { year: "2021", src: map2021Img },
-  { year: "2022", src: map2022Img },
+  {
+    year: "2006",
+    src: map2006Img,
+    era: "Origin landscape",
+    note: "The natural estate footprint before visible development.",
+  },
+  {
+    year: "2010",
+    src: map2010Img,
+    era: "Early definition",
+    note: "A clearer reading of the land and its surrounding access.",
+  },
+  {
+    year: "2011",
+    src: map2011Img,
+    era: "Estate outline",
+    note: "The property begins to read as a distinct destination.",
+  },
+  {
+    year: "2014",
+    src: map2014Img,
+    era: "Land intelligence",
+    note: "The wider setting gives shape to future planning decisions.",
+  },
+  {
+    year: "2015",
+    src: map2015Img,
+    era: "Quiet expansion",
+    note: "Development potential becomes more visible in the landscape.",
+  },
+  {
+    year: "2017",
+    src: map2017Img,
+    era: "Access pattern",
+    note: "Movement routes and surrounding activity become easier to trace.",
+  },
+  {
+    year: "2018",
+    src: map2018Img,
+    era: "Growth signal",
+    note: "The estate sits within a more active development corridor.",
+  },
+  {
+    year: "2019",
+    src: map2019Img,
+    era: "Developing context",
+    note: "The land's relationship to nearby settlement becomes clearer.",
+  },
+  {
+    year: "2020",
+    src: map2020Img,
+    era: "Future readiness",
+    note: "The site is positioned for a broader agro-hospitality vision.",
+  },
+  {
+    year: "2021",
+    src: map2021Img,
+    era: "Destination logic",
+    note: "The estate begins to read as part of a larger visitor experience.",
+  },
+  {
+    year: "2022",
+    src: map2022Img,
+    era: "Living destination",
+    note: "A clearer picture of the land, access, and development potential.",
+  },
 ];
 
 export function IsabellaFarmsResortPage({
   project,
   parentInitiative,
 }: IsabellaFarmsResortPageProps) {
+  const [selectedLandscapeImage, setSelectedLandscapeImage] =
+    useState<LandscapePreview | null>(null);
+  const [activeLandscapeIndex, setActiveLandscapeIndex] = useState(0);
+  const activeTimelineItem = landscapeTimeline[activeLandscapeIndex];
+  const activeTimelineYear = Number(activeTimelineItem.year);
+  const activeTimelineAge = activeTimelineYear - Number(landscapeTimeline[0].year);
+  const timelineProgress =
+    (activeLandscapeIndex / (landscapeTimeline.length - 1)) * 100;
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveLandscapeIndex(
+        (currentIndex) => (currentIndex + 1) % landscapeTimeline.length,
+      );
+    }, 2800);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedLandscapeImage) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedLandscapeImage(null);
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedLandscapeImage]);
+
   return (
     <main className="isabella-farms-page min-h-screen overflow-x-hidden bg-[#fff7ed] text-[#13271b]">
       <style>
@@ -196,6 +298,120 @@ export function IsabellaFarmsResortPage({
           .isabella-farms-page .isabella-image-wrap:hover .isabella-image {
             transform: scale(1.045);
             filter: saturate(1.08) contrast(1.03);
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur, .stagger) {
+            opacity: 0;
+            will-change: opacity, transform, filter;
+            transition:
+              opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1050ms cubic-bezier(0.22, 1, 0.36, 1),
+              filter 1050ms cubic-bezier(0.22, 1, 0.36, 1);
+          }
+
+          .isabella-farms-page .reveal {
+            transform: translate3d(0, 36px, 0);
+            filter: blur(10px);
+          }
+
+          .isabella-farms-page .reveal-left {
+            transform: translate3d(-42px, 22px, 0);
+            filter: blur(10px);
+          }
+
+          .isabella-farms-page .reveal-right {
+            transform: translate3d(42px, 22px, 0);
+            filter: blur(10px);
+          }
+
+          .isabella-farms-page .reveal-zoom {
+            transform: translate3d(0, 26px, 0) scale(0.94);
+            filter: blur(12px);
+          }
+
+          .isabella-farms-page .reveal-blur {
+            transform: translate3d(0, 20px, 0);
+            filter: blur(16px);
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur, .stagger).is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur):not(.is-visible) > :is(p, h1, h2, h3, a, div, ul) {
+            opacity: 0;
+            transform: translateY(18px);
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur).is-visible > :is(p, h1, h2, h3, a, div, ul) {
+            animation: isabellaSequenceReveal 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur).is-visible > :nth-child(2) {
+            animation-delay: 90ms;
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur).is-visible > :nth-child(3) {
+            animation-delay: 170ms;
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur).is-visible > :nth-child(4) {
+            animation-delay: 250ms;
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur).is-visible > :nth-child(5) {
+            animation-delay: 330ms;
+          }
+
+          .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur).is-visible > :nth-child(6) {
+            animation-delay: 410ms;
+          }
+
+          .isabella-farms-page .stagger > * {
+            opacity: 0;
+            transform: translate3d(0, 34px, 0) scale(0.96);
+            filter: blur(12px);
+            transform-origin: center;
+            transition:
+              opacity 840ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 920ms cubic-bezier(0.22, 1, 0.36, 1),
+              filter 920ms cubic-bezier(0.22, 1, 0.36, 1);
+          }
+
+          .isabella-farms-page .stagger.is-visible > * {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0);
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(2) {
+            transition-delay: 90ms;
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(3) {
+            transition-delay: 180ms;
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(4) {
+            transition-delay: 270ms;
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(5) {
+            transition-delay: 360ms;
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(6) {
+            transition-delay: 450ms;
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(7) {
+            transition-delay: 540ms;
+          }
+
+          .isabella-farms-page .stagger.is-visible > :nth-child(8) {
+            transition-delay: 630ms;
           }
 
           .isabella-farms-page .isabella-impact-card {
@@ -269,6 +485,132 @@ export function IsabellaFarmsResortPage({
             animation: isabellaCheckIn 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
           }
 
+          .isabella-farms-page .isabella-timeline-card {
+            position: relative;
+          }
+
+          .isabella-farms-page .isabella-timeline-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background:
+              linear-gradient(110deg, transparent 0%, rgba(201, 161, 92, 0.12) 42%, transparent 68%),
+              linear-gradient(180deg, rgba(255, 248, 231, 0.06), transparent 42%);
+            opacity: 0.82;
+            animation: isabellaTimelineSheen 8s ease-in-out infinite;
+          }
+
+          .isabella-farms-page .isabella-timeline-kicker {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+          }
+
+          .isabella-farms-page .isabella-timeline-kicker::after {
+            content: "";
+            width: 3.25rem;
+            height: 1px;
+            background: linear-gradient(90deg, #C9A15C, transparent);
+            transform-origin: left;
+            animation: isabellaLineReveal 3.4s ease-in-out infinite;
+          }
+
+          .isabella-farms-page .isabella-luxury-title {
+            background: linear-gradient(90deg, #fff8e7 0%, #C9A15C 48%, #fff8e7 100%);
+            background-size: 220% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: isabellaTextGleam 9s ease-in-out infinite;
+          }
+
+          .isabella-farms-page .isabella-age-panel {
+            position: relative;
+            overflow: hidden;
+          }
+
+          .isabella-farms-page .isabella-age-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 0%, rgba(255, 248, 231, 0.12) 45%, transparent 65%);
+            transform: translateX(-120%);
+            animation: isabellaPanelSweep 5.2s ease-in-out infinite;
+          }
+
+          .isabella-farms-page .isabella-featured-map {
+            isolation: isolate;
+          }
+
+          .isabella-farms-page .isabella-featured-map::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            border: 1px solid rgba(255, 248, 231, 0.18);
+            border-radius: inherit;
+            box-shadow: inset 0 0 55px rgba(201, 161, 92, 0.14);
+          }
+
+          .isabella-farms-page .isabella-featured-map::after {
+            content: "";
+            position: absolute;
+            inset: -35% 58% -35% -35%;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(90deg, transparent, rgba(255, 248, 231, 0.12), transparent);
+            transform: translateX(-80%) rotate(10deg);
+            animation: isabellaMapGleam 6.5s ease-in-out infinite;
+          }
+
+          .isabella-farms-page .isabella-map-year {
+            display: inline-block;
+            text-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+            animation: isabellaYearRise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          }
+
+          .isabella-farms-page .isabella-map-era {
+            animation: isabellaTextLift 760ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+          }
+
+          .isabella-farms-page .isabella-timeline-progress {
+            transform-origin: left;
+            transition: width 850ms cubic-bezier(0.22, 1, 0.36, 1);
+          }
+
+          .isabella-farms-page .isabella-year-card {
+            transform-origin: center;
+          }
+
+          .isabella-farms-page .isabella-year-card-active {
+            animation: isabellaActiveYearCard 2.8s ease-in-out infinite;
+          }
+
+          .isabella-farms-page .isabella-display-card {
+            position: relative;
+            transform-origin: center;
+            transition:
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 700ms ease;
+          }
+
+          .isabella-farms-page .isabella-display-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 34px 90px rgba(16, 35, 25, 0.15);
+          }
+
+          .isabella-farms-page .isabella-stage-label {
+            transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+          }
+
+          .isabella-farms-page .isabella-display-card:hover .isabella-stage-label {
+            transform: translateY(-3px);
+          }
+
           @keyframes isabellaArrowMove {
             0%, 100% {
               transform: translateX(0);
@@ -302,13 +644,126 @@ export function IsabellaFarmsResortPage({
             }
           }
 
+          @keyframes isabellaSequenceReveal {
+            from {
+              opacity: 0;
+              transform: translateY(18px);
+              filter: blur(8px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+              filter: blur(0);
+            }
+          }
+
+          @keyframes isabellaTimelineSheen {
+            0%, 100% {
+              opacity: 0.58;
+              background-position: 0% 50%;
+            }
+            50% {
+              opacity: 0.95;
+              background-position: 100% 50%;
+            }
+          }
+
+          @keyframes isabellaLineReveal {
+            0%, 100% {
+              transform: scaleX(0.58);
+              opacity: 0.56;
+            }
+            50% {
+              transform: scaleX(1);
+              opacity: 1;
+            }
+          }
+
+          @keyframes isabellaTextGleam {
+            0%, 100% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+          }
+
+          @keyframes isabellaPanelSweep {
+            0%, 62% {
+              transform: translateX(-120%);
+            }
+            100% {
+              transform: translateX(120%);
+            }
+          }
+
+          @keyframes isabellaMapGleam {
+            0%, 68% {
+              transform: translateX(-80%) rotate(10deg);
+              opacity: 0;
+            }
+            78% {
+              opacity: 1;
+            }
+            100% {
+              transform: translateX(210%) rotate(10deg);
+              opacity: 0;
+            }
+          }
+
+          @keyframes isabellaYearRise {
+            from {
+              opacity: 0;
+              transform: translateY(16px) scale(0.96);
+              filter: blur(6px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+              filter: blur(0);
+            }
+          }
+
+          @keyframes isabellaTextLift {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes isabellaActiveYearCard {
+            0%, 100% {
+              box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32), 0 0 0 rgba(201, 161, 92, 0);
+            }
+            50% {
+              box-shadow: 0 20px 54px rgba(0, 0, 0, 0.38), 0 0 28px rgba(201, 161, 92, 0.22);
+            }
+          }
+
           @media (prefers-reduced-motion: reduce) {
             .isabella-farms-page .isabella-arrow,
             .isabella-farms-page .isabella-hero-image,
-            .isabella-farms-page .isabella-check {
+            .isabella-farms-page .isabella-check,
+            .isabella-farms-page .isabella-timeline-card::before,
+            .isabella-farms-page .isabella-timeline-kicker::after,
+            .isabella-farms-page .isabella-luxury-title,
+            .isabella-farms-page .isabella-age-panel::after,
+            .isabella-farms-page .isabella-featured-map::after,
+            .isabella-farms-page .isabella-map-year,
+            .isabella-farms-page .isabella-map-era,
+            .isabella-farms-page .isabella-year-card-active,
+            .isabella-farms-page .isabella-display-card,
+            .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur, .stagger),
+            .isabella-farms-page :is(.reveal, .reveal-left, .reveal-right, .reveal-zoom, .reveal-blur, .stagger) > * {
               animation: none;
               opacity: 1;
               transform: none;
+              filter: none;
+              transition: none;
             }
           }
         `}
@@ -496,48 +951,291 @@ export function IsabellaFarmsResortPage({
         </div>
       </section>
 
-      <section className="bg-[#e6f1e8] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <section className="bg-[#e6f1e8] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-[1440px]">
-          <Reveal variant="up" className="mx-auto max-w-3xl text-center">
+          <Reveal variant="up" className="mx-auto max-w-4xl text-center">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
-              From farm produce to food enterprise
+              A landscape in transformation
             </p>
             <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
-              A wider G Initiative food ecosystem.
+              From land to living destination.
             </h2>
-            <p className="mt-5 text-base leading-8 text-[#405244] sm:text-lg">
-              The vision for Isabella Farms &amp; Resort extends into a wider G
-              Initiative food ecosystem where farming, processing, hospitality,
-              and enterprise work together.
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#405244] sm:text-lg">
+              Across the years, the Isabella Farms &amp; Resort estate has grown
+              from a largely natural landscape into a developing agricultural
+              and hospitality site. As the vision expands, the land is being
+              shaped into a destination for food production, wellness,
+              hospitality, conservation, and long-term community value.
             </p>
           </Reveal>
 
-          <Reveal variant="stagger" className="mt-14 grid gap-6 md:grid-cols-2">
-            {foodEcosystem.map(({ Icon, title, body }) => (
+          <Reveal variant="stagger" className="mt-12 grid gap-6 lg:grid-cols-3">
+            {landscapeStages.map((stage) => (
               <article
-                key={title}
-                className="isabella-impact-card isabella-impact-card--light border border-[#13271b]/10 bg-white/70 p-8 shadow-[0_22px_70px_rgba(16,35,25,0.08)]"
+                key={stage.label}
+                className="isabella-display-card overflow-hidden rounded-[1.4rem] border border-[#13271b]/10 bg-white/70 shadow-[0_22px_70px_rgba(16,35,25,0.08)]"
               >
-                <div className="isabella-impact-icon grid h-12 w-12 place-items-center rounded-lg bg-[#13271b] text-[#fff8e7]">
-                  <Icon className="h-6 w-6" />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSelectedLandscapeImage({
+                      src: stage.src,
+                      alt: stage.alt,
+                      title: stage.title,
+                      subtitle: stage.subtitle,
+                    })
+                  }
+                  className="group relative block h-72 w-full overflow-hidden bg-[#07120d] text-left"
+                  aria-label={`View full image: ${stage.title}`}
+                >
+                  <img
+                    src={stage.src}
+                    alt={stage.alt}
+                    className="isabella-image h-full w-full object-cover"
+                  />
+                  <div className="isabella-stage-label absolute left-5 top-5 rounded-lg bg-[#13271b] px-5 py-2 text-xs font-black uppercase tracking-[0.16em] text-[#fff8e7]">
+                    {stage.label}
+                  </div>
+                  <span className="absolute bottom-5 right-5 rounded-lg border border-white/20 bg-white/90 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#13271b] opacity-0 shadow-[0_14px_38px_rgba(0,0,0,0.18)] transition group-hover:opacity-100 group-focus-visible:opacity-100">
+                    View full
+                  </span>
+                </button>
+                <div className="p-6">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6B4A2B]">
+                    {stage.subtitle}
+                  </p>
+                  <h3 className="isabella-card-heading mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em] text-[#13271b]">
+                    {stage.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-[#405244]">
+                    {stage.body}
+                  </p>
                 </div>
-                <h3 className="mt-6 font-serif text-4xl leading-[0.95] tracking-[-0.045em] text-[#13271b]">
-                  {title}
-                </h3>
-                <p className="mt-4 text-base leading-8 text-[#405244]">{body}</p>
               </article>
             ))}
           </Reveal>
 
           <Reveal
             variant="up"
-            className="mx-auto mt-12 max-w-4xl border-l-4 border-[#6B4A2B] bg-white/60 p-7 text-base leading-8 text-[#405244] shadow-[0_18px_55px_rgba(16,35,25,0.07)]"
+            className="isabella-timeline-card mt-12 overflow-hidden rounded-[1.4rem] border border-[#C9A15C]/15 bg-[#07120d] p-6 text-[#fff8e7] shadow-[0_24px_75px_rgba(16,35,25,0.16)] lg:p-8"
           >
-            Together, these projects show how Isabella Farms &amp; Resort can move
-            beyond production into a complete value chain where food is grown,
-            processed, served, experienced, and distributed.
+            <div className="relative z-[1] grid gap-8 lg:grid-cols-[0.36fr_0.64fr] lg:items-center">
+              <div className="min-w-0">
+                <p className="isabella-timeline-kicker text-xs font-black uppercase tracking-[0.22em] text-[#C9A15C]">
+                  Journey of growth
+                </p>
+                <h3 className="isabella-luxury-title mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em]">
+                  Through the years.
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-white/68">
+                  A visual record of how the estate has taken shape over time,
+                  from early satellite views to a clearer picture of the land,
+                  access, and future development potential.
+                </p>
+
+                <div className="mt-6 grid grid-cols-[0.95fr_1.05fr] gap-3">
+                  <div className="isabella-age-panel rounded-xl border border-[#C9A15C]/22 bg-white/[0.06] px-4 py-3">
+                    <p className="text-[0.62rem] font-black uppercase tracking-[0.2em] text-white/46">
+                      Estate age
+                    </p>
+                    <p
+                      key={`age-${activeTimelineItem.year}`}
+                      className="isabella-map-era mt-2 font-serif text-3xl leading-none text-[#C9A15C]"
+                    >
+                      {activeTimelineAge === 0
+                        ? "Origin"
+                        : `+${activeTimelineAge} yrs`}
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3">
+                    <p className="text-[0.62rem] font-black uppercase tracking-[0.2em] text-white/46">
+                      Active frame
+                    </p>
+                    <p
+                      key={`era-${activeTimelineItem.year}`}
+                      className="isabella-map-era mt-2 text-sm font-bold leading-5 text-[#fff8e7]"
+                    >
+                      {activeTimelineItem.era}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="min-w-0">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setSelectedLandscapeImage({
+                      src: activeTimelineItem.src,
+                      alt: `Google Earth timeline view of Isabella Farms & Resort in ${activeTimelineItem.year}`,
+                      title: `${activeTimelineItem.year} estate view`,
+                      subtitle: "Journey of growth",
+                    })
+                  }
+                  className="isabella-featured-map group relative block aspect-[1600/1038] w-full overflow-hidden rounded-[1.1rem] border border-[#C9A15C]/35 bg-[#07120d] shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
+                  aria-label={`View full map image for ${activeTimelineItem.year}`}
+                >
+                  <img
+                    key={`map-${activeTimelineItem.year}`}
+                    src={activeTimelineItem.src}
+                    alt={`Google Earth timeline view of Isabella Farms & Resort in ${activeTimelineItem.year}`}
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute left-5 top-5 z-[2] rounded-xl border border-white/14 bg-[#07120d]/72 px-4 py-3 text-left shadow-[0_18px_48px_rgba(0,0,0,0.28)] backdrop-blur-md">
+                    <p className="text-[0.62rem] font-black uppercase tracking-[0.2em] text-white/52">
+                      {activeTimelineItem.era}
+                    </p>
+                    <p
+                      key={`note-${activeTimelineItem.year}`}
+                      className="isabella-map-era mt-1 max-w-[15rem] text-xs leading-5 text-white/72"
+                    >
+                      {activeTimelineItem.note}
+                    </p>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 z-[2] bg-[linear-gradient(180deg,transparent,rgba(7,18,13,0.88))] p-5">
+                    <p
+                      key={`year-${activeTimelineItem.year}`}
+                      className="isabella-map-year font-serif text-6xl leading-none text-[#C9A15C] sm:text-7xl"
+                    >
+                      {activeTimelineItem.year}
+                    </p>
+                    <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-white/72">
+                      Featured timeline view
+                    </p>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div className="relative z-[1] mt-5 h-px overflow-hidden bg-white/10">
+              <div
+                className="isabella-timeline-progress h-full bg-[linear-gradient(90deg,#6B4A2B,#C9A15C,#fff8e7)]"
+                style={{ width: `${timelineProgress}%` }}
+              />
+            </div>
+
+            <div className="relative z-[1] mt-5 grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-[repeat(11,minmax(0,1fr))]">
+              {landscapeTimeline.map((item, index) => {
+                const isActive = index === activeLandscapeIndex;
+
+                return (
+                  <button
+                    key={item.year}
+                    type="button"
+                    onClick={() => {
+                      setActiveLandscapeIndex(index);
+                      setSelectedLandscapeImage({
+                        src: item.src,
+                        alt: `Google Earth timeline view of Isabella Farms & Resort in ${item.year}`,
+                        title: `${item.year} estate view`,
+                        subtitle: "Journey of growth",
+                      });
+                    }}
+                    className={`isabella-year-card min-w-0 rounded-lg border p-1.5 text-left transition-all duration-500 ${
+                      isActive
+                        ? "isabella-year-card-active -translate-y-1 scale-[1.03] border-[#C9A15C] bg-white/[0.14] shadow-[0_16px_38px_rgba(0,0,0,0.32)] ring-1 ring-[#C9A15C]/45"
+                        : "border-white/10 bg-white/[0.045] opacity-72 hover:-translate-y-1 hover:opacity-100"
+                    }`}
+                    aria-label={`View full map image for ${item.year}`}
+                  >
+                    <p
+                      className={`mb-1.5 text-center text-[0.68rem] font-black leading-none tracking-[0.1em] ${
+                        isActive ? "text-[#C9A15C]" : "text-white/56"
+                      }`}
+                    >
+                      {item.year}
+                    </p>
+                    <img
+                      src={item.src}
+                      alt={`Google Earth timeline view of Isabella Farms & Resort in ${item.year}`}
+                      className="h-14 w-full rounded-md object-cover sm:h-16 lg:h-14"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          <Reveal
+            variant="up"
+            className="mx-auto mt-10 max-w-4xl bg-white/70 p-7 text-center text-base leading-8 text-[#405244] shadow-[0_18px_55px_rgba(16,35,25,0.07)]"
+          >
+            As the area continues to grow, Isabella Farms &amp; Resort stands as
+            an anchor for sustainable development, community impact, and
+            long-term economic value.
           </Reveal>
         </div>
+      </section>
+
+      <section
+        data-header-theme="dark"
+        className="relative overflow-hidden bg-[#07120d] px-5 py-20 text-[#fff8e7] sm:px-8 lg:px-12 lg:py-28"
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(201,161,92,0.08)_0%,transparent_34%,rgba(255,248,231,0.035)_100%)]" />
+
+        <div className="relative mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+          <Reveal variant="left">
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.26em] text-[#C9A15C]">
+              Food enterprise pipeline
+            </p>
+            <h2 className="font-serif text-[clamp(2.85rem,5.4vw,6rem)] font-normal leading-[0.88] tracking-[-0.06em]">
+              Grown here. Refined into food brands.
+            </h2>
+            <p className="mt-7 max-w-2xl text-base leading-8 text-white/72 sm:text-lg">
+              Isabella Farms &amp; Resort is designed to do more than produce food.
+              It can become the source point for a wider G Initiative ecosystem
+              where farm output moves into prepared meals, fresh beverages,
+              guest experiences, and local enterprise.
+            </p>
+
+            <div className="mt-10 grid max-w-xl grid-cols-3 border-y border-white/12 py-5 text-center">
+              {["Grow", "Prepare", "Serve"].map((step) => (
+                <div key={step} className="border-l border-white/12 first:border-l-0">
+                  <p className="font-serif text-3xl leading-none text-[#C9A15C]">
+                    {step}
+                  </p>
+                  <p className="mt-2 text-[0.62rem] font-black uppercase tracking-[0.18em] text-white/48">
+                    Value chain
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal variant="stagger" className="grid gap-5 md:grid-cols-2">
+            {foodEcosystem.map(({ Icon, title, body }, index) => (
+              <article
+                key={title}
+                className="isabella-impact-card isabella-impact-card--dark border border-white/12 bg-white/[0.055] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur"
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <div className="isabella-impact-icon grid h-12 w-12 place-items-center rounded-lg bg-[#8A623A] text-white">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <span className="font-serif text-5xl leading-none text-white/12">
+                    0{index + 1}
+                  </span>
+                </div>
+                <p className="mt-8 text-xs font-black uppercase tracking-[0.22em] text-[#C9A15C]">
+                  Enterprise concept
+                </p>
+                <h3 className="mt-3 font-serif text-4xl leading-[0.95] tracking-[-0.045em]">
+                  {title}
+                </h3>
+                <p className="mt-5 text-sm leading-7 text-white/68">{body}</p>
+              </article>
+            ))}
+          </Reveal>
+        </div>
+
+        <Reveal
+          variant="up"
+          className="relative mx-auto mt-12 max-w-[1440px] border-t border-white/12 pt-7 text-sm leading-7 text-white/68 sm:text-base"
+        >
+          The result is a cleaner value chain: food is grown on the farm,
+          developed into brands, served through hospitality, and distributed
+          through community and commercial channels.
+        </Reveal>
       </section>
 
       <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -701,101 +1399,6 @@ export function IsabellaFarmsResortPage({
         </div>
       </section>
 
-      <section className="bg-[#e6f1e8] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-        <div className="mx-auto max-w-[1440px]">
-          <Reveal variant="up" className="mx-auto max-w-4xl text-center">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.26em] text-[#6B4A2B]">
-              A landscape in transformation
-            </p>
-            <h2 className="font-serif text-[clamp(2.7rem,5vw,5.4rem)] font-normal leading-[0.9] tracking-[-0.06em] text-[#13271b]">
-              From land to living destination.
-            </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#405244] sm:text-lg">
-              Across the years, the Isabella Farms &amp; Resort estate has grown
-              from a largely natural landscape into a developing agricultural
-              and hospitality site. As the vision expands, the land is being
-              shaped into a destination for food production, wellness,
-              hospitality, conservation, and long-term community value.
-            </p>
-          </Reveal>
-
-          <Reveal variant="stagger" className="mt-14 grid gap-6 lg:grid-cols-3">
-            {landscapeStages.map((stage) => (
-              <article
-                key={stage.label}
-                className="overflow-hidden rounded-[1.4rem] border border-[#13271b]/10 bg-white/70 shadow-[0_22px_70px_rgba(16,35,25,0.08)]"
-              >
-                <div className="relative h-72 overflow-hidden bg-[#07120d]">
-                  <img
-                    src={stage.src}
-                    alt={stage.alt}
-                    className="isabella-image h-full w-full object-cover"
-                  />
-                  <div className="absolute left-5 top-5 rounded-lg bg-[#13271b] px-5 py-2 text-xs font-black uppercase tracking-[0.16em] text-[#fff8e7]">
-                    {stage.label}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6B4A2B]">
-                    {stage.subtitle}
-                  </p>
-                  <h3 className="mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em] text-[#13271b]">
-                    {stage.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-[#405244]">
-                    {stage.body}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </Reveal>
-
-          <Reveal
-            variant="up"
-            className="mt-12 rounded-[1.4rem] bg-[#07120d] p-6 text-[#fff8e7] shadow-[0_24px_75px_rgba(16,35,25,0.16)] lg:p-8"
-          >
-            <div className="grid gap-8 lg:grid-cols-[0.35fr_1fr] lg:items-center">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#C9A15C]">
-                  Journey of growth
-                </p>
-                <h3 className="mt-3 font-serif text-3xl leading-[0.95] tracking-[-0.045em]">
-                  Through the years.
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-white/68">
-                  A visual timeline of the estate's growth, from earlier
-                  satellite views to its emerging future.
-                </p>
-              </div>
-
-              <div className="flex gap-4 overflow-x-auto pb-2">
-                {landscapeTimeline.map((item) => (
-                  <figure key={item.year} className="min-w-[170px]">
-                    <p className="mb-2 text-center text-xs font-black tracking-[0.14em] text-[#C9A15C]">
-                      {item.year}
-                    </p>
-                    <img
-                      src={item.src}
-                      alt={`Google Earth timeline view of Isabella Farms & Resort in ${item.year}`}
-                      className="h-24 w-full rounded-lg object-cover"
-                    />
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal
-            variant="up"
-            className="mx-auto mt-10 max-w-4xl bg-white/70 p-7 text-center text-base leading-8 text-[#405244] shadow-[0_18px_55px_rgba(16,35,25,0.07)]"
-          >
-            As the area continues to grow, Isabella Farms &amp; Resort stands as
-            an anchor for sustainable development, community impact, and
-            long-term economic value.
-          </Reveal>
-        </div>
-      </section>
-
       <section className="bg-[#fff7ed] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-[1440px] items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
           <Reveal variant="zoom" className="isabella-image-wrap overflow-hidden rounded-[2rem] shadow-[0_24px_75px_rgba(16,35,25,0.13)]">
@@ -948,6 +1551,45 @@ export function IsabellaFarmsResortPage({
           </Reveal>
         </div>
       </section>
+
+      {selectedLandscapeImage && (
+        <div
+          className="fixed inset-0 z-[100] grid place-items-center bg-[#020704]/92 p-4 backdrop-blur-md sm:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedLandscapeImage.title}
+          onClick={() => setSelectedLandscapeImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedLandscapeImage(null)}
+            className="absolute right-4 top-4 z-10 grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-black/35 text-white transition hover:bg-black/60 sm:right-7 sm:top-7"
+            aria-label="Close full image"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <figure
+            className="flex max-h-[90vh] max-w-[94vw] flex-col items-center gap-3"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              src={selectedLandscapeImage.src}
+              alt={selectedLandscapeImage.alt}
+              className="max-h-[84vh] max-w-full object-contain shadow-[0_30px_100px_rgba(0,0,0,0.5)]"
+            />
+
+            <figcaption className="max-w-3xl text-center text-sm text-white/76">
+              {selectedLandscapeImage.subtitle && (
+                <span className="mb-1 block text-xs font-black uppercase tracking-[0.18em] text-[#C9A15C]">
+                  {selectedLandscapeImage.subtitle}
+                </span>
+              )}
+              {selectedLandscapeImage.title}
+            </figcaption>
+          </figure>
+        </div>
+      )}
 
       {parentInitiative && (
         <section className="bg-[#fff7ed] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
